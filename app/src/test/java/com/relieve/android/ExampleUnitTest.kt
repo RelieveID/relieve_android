@@ -1,4 +1,4 @@
-package com.relieve.android.relieve
+package com.relieve.android
 
 import org.junit.Test
 
