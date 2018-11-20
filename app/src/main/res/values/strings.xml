@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Relieve</string>
+
+    <string name="status_banner">status banner</string>
 </resources>
