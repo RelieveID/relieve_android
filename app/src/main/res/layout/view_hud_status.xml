@@ -11,7 +11,11 @@
         android:id="@+id/ivBanners"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_margin="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/rounded_corner_grey_big"
         tools:layout_editor_absoluteX="16dp" />
 
@@ -34,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                tools:text="Bojongsoang, Bandung Barat"
+                tools:text="@string/status_location"
                 android:fontFamily="@font/circular_std_medium"
                 android:textSize="14sp"
                 android:padding="17dp"

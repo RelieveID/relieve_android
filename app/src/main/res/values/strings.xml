@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">Relieve</string>
 
+    <!--TitleBar-->
+    <string name="hello">Halo</string>
+    <string name="default_username">Muh. Alif Akbar</string>
+    <string name="default_title">Discover</string>
+    <string name="default_subtitle">Update informasi terkini bencana di seluruh Indonesia</string>
+
+    <!--HUD-->
     <string name="status_banner">status banner</string>
+    <string name="status_location">Bojongsoang, Bandung Barat</string>
 </resources>
