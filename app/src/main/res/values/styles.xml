@@ -9,9 +9,18 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/circular_std_book</item>
         <item name="android:colorBackground">@android:color/white</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
     <style name="AppTheme.Toolbar">
         <item name="android:fontFamily">@font/circular_std_black</item>
         <item name="android:textSize">18sp</item>
+    </style>
+    <style name="AppTheme.BottomModal"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet</item>
+    </style>
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppTheme.BottomModal</item>
     </style>
 </resources>

@@ -25,4 +25,8 @@
     <string name="call">Call</string>
     <string name="chat">Chat</string>
     <string name="profile">Profile</string>
+
+    <!--Notice-->
+    <string name="notice">Awas!!\nGempa terjadi didekatmu</string>
+    <string name="imsafe">Saya Aman</string>
 </resources>

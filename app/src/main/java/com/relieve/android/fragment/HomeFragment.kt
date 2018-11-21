@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.relieve.android.R
 import com.relieve.android.adapter.RvAdapter
 import com.relieve.android.base.Component
@@ -80,11 +81,22 @@ class HomeFragment : Fragment() {
                     SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT),
                     FamilyItem(".jpg", FamilyStatus.Good, "Ayah"),
                     FamilyItem(".jpg", FamilyStatus.Bad, "Ibu"),
-                    FamilyItem(".jpg", FamilyStatus.Unknown, "Kasih Ku"),
+                    FamilyItem(".jpg", FamilyStatus.Unknown, "Kasih Ku") {
+                        test()
+                    },
                     FamilyItem("", FamilyStatus.Unknown, "", true),
                     SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
                 )
             ))
+        }
+    }
+
+    private fun test() {
+        context?.let { ctx ->
+            BottomSheetDialog(ctx).apply {
+                setContentView(layoutInflater.inflate(R.layout.sheet_notice, null))
+                show()
+            }
         }
     }
 }

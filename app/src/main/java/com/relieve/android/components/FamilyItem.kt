@@ -16,7 +16,8 @@ enum class FamilyStatus {
 class FamilyItem(val image: String,
                  val status: FamilyStatus,
                  val nickName: String,
-                 val isAddBUtton: Boolean = false) : Component {
+                 val isAddButton: Boolean = false,
+                 val onClick: (() -> Unit)? = null) : Component {
 
     companion object {
         val VIEW_TYPE = FamilyItem::class.java.hashCode()
@@ -46,7 +47,10 @@ class FamilyItem(val image: String,
                         view.vSafeBg.visibility = View.INVISIBLE
                     }
                 }
-                if (data.isAddBUtton) view.btnAddUser.visibility = View.VISIBLE
+                if (data.isAddButton) view.btnAddUser.visibility = View.VISIBLE
+                view.setOnClickListener {
+                    data.onClick?.invoke()
+                }
             }
         }
     }
