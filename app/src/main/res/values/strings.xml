@@ -7,6 +7,12 @@
     <string name="default_title">Discover</string>
     <string name="default_subtitle">Update informasi terkini bencana di seluruh Indonesia</string>
 
+    <!--Discover-->
+    <string name="map">Map</string>
+    <string name="default_text">Lorem Ipsum de Omar Aspirin</string>
+    <string name="disaster_time">2 menit yang lalu</string>
+    <string name="disaster_live">Live</string>
+
     <!--HUD-->
     <string name="status_banner">status banner</string>
     <string name="status_location">Bojongsoang, Bandung Barat</string>
