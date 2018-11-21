@@ -3,7 +3,7 @@ package com.relieve.android
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.relieve.android.components.BottomNavBar
-import kotlinx.android.synthetic.main.view_bottom_nav.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun bindNavClick() {
-        BottomNavBar(bottomBar).apply {
+        BottomNavBar(navHome).apply {
             setHomeClickListener {
 
             }
