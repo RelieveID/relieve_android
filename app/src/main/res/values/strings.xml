@@ -13,6 +13,7 @@
     <string name="disaster_time">2 menit yang lalu</string>
     <string name="disaster_time_template">%s yang lalu</string>
     <string name="disaster_live">Live</string>
+    <string name="disaster_now">Sekarang!</string>
 
     <!--HUD-->
     <string name="status_banner">status banner</string>

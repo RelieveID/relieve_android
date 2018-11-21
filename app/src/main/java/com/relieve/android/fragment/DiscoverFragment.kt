@@ -14,6 +14,7 @@ import com.relieve.android.R
 import com.relieve.android.adapter.RvAdapter
 import com.relieve.android.base.Component
 import com.relieve.android.base.RelieveViewHolder
+import com.relieve.android.components.DisasterItem
 import com.relieve.android.components.DiscoverItem
 import com.relieve.android.components.TitleBarItem
 import com.relieve.android.components.VerticalGridRecycler
@@ -29,6 +30,7 @@ class DiscoverFragment : Fragment() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RelieveViewHolder {
             return when (viewType) {
                 TitleBarItem.VIEW_TYPE -> { TitleBarItem.createViewHolder(ctx, parent) }
+                DisasterItem.VIEW_TYPE -> { DisasterItem.createViewHolder(ctx, parent) }
                 VerticalGridRecycler.VIEW_TYPE -> {
                     VerticalGridRecycler.createViewHolder(ctx, 2,
                         childViewHolderCreator = { childParent, childViewType ->
@@ -40,17 +42,7 @@ class DiscoverFragment : Fragment() {
                                     override fun bind(data: Component) {}
                                 }
                             }
-                        }, spanDecider = { position ->
-                            if (position < components.size) {
-                                when (getItemViewType(position)) {
-                                    TitleBarItem.VIEW_TYPE -> 2
-                                    DiscoverItem.VIEW_TYPE -> 1
-                                    else -> 1
-                                }
-                            } else {
-                                1
-                            }
-                        }
+                        }, spanDecider = { 1 }
                     )
                 }
 
@@ -79,6 +71,7 @@ class DiscoverFragment : Fragment() {
 
     private fun render() {
         adapter.apply {
+            add(DisasterItem(0, 0,"Gunung Semeru Meletus", "Probolinggo, Jawa Timur"))
             add(TitleBarItem("Highlight Bencana", ""))
             add(VerticalGridRecycler(listOf(
                 DiscoverItem(0, 0, "Palu", 0,true),

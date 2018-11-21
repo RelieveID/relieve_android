@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icLive"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:tint="@color/colorDanger"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvNow"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNow"
+        app:srcCompat="@drawable/ic_live" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNow"
+        android:layout_width="0dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/circular_std_black"
+        android:text="@string/disaster_now"
+        android:textColor="@color/colorDanger"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icLive" />
+
+    <View
+        android:id="@+id/mvDisasterMap"
+        app:layout_constraintTop_toBottomOf="@+id/tvNow"
+        android:background="@drawable/rounded_corner_rect_grey_big"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="220dp" />
+
+    <TextView
+        android:id="@+id/tvDisasterTitle"
+        android:fontFamily="@font/circular_std_black"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp"
+        tools:text="Gunung Semeru Meletus"
+        android:textColor="@color/colorTextBlack"
+        app:layout_constraintTop_toBottomOf="@+id/mvDisasterMap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tvDisasterSubtitle"
+        android:fontFamily="@font/circular_std_book"
+        android:textSize="10sp"
+        android:layout_marginTop="4dp"
+        tools:text="Probolinggo, Jawa Timur"
+        android:textColor="@color/colorTextBlack"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisasterTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</androidx.constraintlayout.widget.ConstraintLayout>
