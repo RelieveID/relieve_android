@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="70dp"
+    android:padding="8dp"
+    android:layout_height="wrap_content">
+    <View
+        android:id="@+id/vDangerBg"
+        android:background="@drawable/layer_circle_danger"
+        android:layout_width="54dp"
+        android:layout_height="54dp"/>
+    <View
+        android:id="@+id/vSafeBg"
+        android:background="@drawable/layer_circle_safe"
+        android:layout_width="54dp"
+        android:layout_height="54dp"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivUserImage"
+        android:padding="16dp"
+        android:background="@drawable/circle_grey"
+        app:layout_constraintStart_toStartOf="@+id/vDangerBg"
+        app:layout_constraintEnd_toEndOf="@+id/vDangerBg"
+        app:layout_constraintTop_toTopOf="@+id/vDangerBg"
+        app:layout_constraintBottom_toBottomOf="@+id/vDangerBg"
+        android:layout_width="49dp"
+        android:layout_height="49dp" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnAddUser"
+        app:srcCompat="@drawable/ic_add_user"
+        android:padding="16dp"
+        android:visibility="gone"
+        android:background="@drawable/circle_primary"
+        app:layout_constraintStart_toStartOf="@+id/vDangerBg"
+        app:layout_constraintEnd_toEndOf="@+id/vDangerBg"
+        app:layout_constraintTop_toTopOf="@+id/vDangerBg"
+        app:layout_constraintBottom_toBottomOf="@+id/vDangerBg"
+        android:layout_width="49dp"
+        android:layout_height="49dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvUserName"
+        app:layout_constraintTop_toBottomOf="@id/ivUserImage"
+        android:layout_marginTop="4dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:fontFamily="@font/circular_std_medium"
+        android:textColor="@color/colorTextBlack"
+        android:gravity="center"
+        android:textSize="10sp"
+        tools:text="@string/default_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

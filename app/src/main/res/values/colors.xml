@@ -2,9 +2,11 @@
 <resources>
     <color name="colorDanger">#F34949</color>
     <color name="colorPrimary">#1B76BC</color>
-    <color name="colorPrimaryDark">#1B76BC</color>
+    <color name="colorPrimaryDark">#105a93</color>
     <color name="colorAccent">#5EB6F9</color>
     <color name="colorTextBlack">#3D3D3D</color>
+    <color name="colorTextCharcoal">#1A1A1A</color>
     <color name="colorTextGrey">#929292</color>
     <color name="colorEmptyRect">#C4C4C4</color>
+    <color name="colorEmptyChip">#E5E5E5</color>
 </resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="4dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/mvDisasterMap"
+        android:contentDescription="@string/map"
+        android:background="@drawable/rounded_corner_rect_grey_big"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="146dp"
+        android:layout_height="120dp" />
+    <LinearLayout
+        app:layout_constraintTop_toTopOf="@+id/mvDisasterMap"
+        app:layout_constraintLeft_toLeftOf="@+id/mvDisasterMap"
+        app:layout_constraintStart_toStartOf="@+id/mvDisasterMap"
+        android:background="@drawable/rounded_corner_chipped_grey"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="4dp"
+        android:paddingEnd="12dp"
+        android:layout_height="25dp">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivDisasterIcon"
+            app:srcCompat="@drawable/ic_rain"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvDisasterTitle"
+        tools:text="@string/default_text"
+        android:fontFamily="@font/circular_std_bold"
+        android:textColor="@color/colorTextCharcoal"
+        android:layout_marginTop="6dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@+id/mvDisasterMap"
+        app:layout_constraintStart_toStartOf="@+id/mvDisasterMap"
+        app:layout_constraintEnd_toEndOf="@+id/mvDisasterMap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvDisasterSubtitle"
+        tools:text="@string/disaster_time"
+        android:fontFamily="@font/circular_std_medium"
+        android:textSize="12sp"
+        android:textColor="@color/colorTextGrey"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisasterTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvDisasterTitle"
+        app:layout_constraintEnd_toEndOf="@+id/tvDisasterTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDisasterLive"
+        android:text="@string/disaster_live"
+        android:fontFamily="@font/circular_std_medium"
+        android:textSize="12sp"
+        android:textColor="@color/colorDanger"
+        android:drawableStart="@drawable/ic_live_location"
+        android:drawablePadding="4dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisasterTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvDisasterTitle"
+        app:layout_constraintEnd_toEndOf="@+id/tvDisasterTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
