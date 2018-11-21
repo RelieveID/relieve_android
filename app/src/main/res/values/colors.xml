@@ -2,7 +2,7 @@
 <resources>
     <color name="colorDanger">#F34949</color>
     <color name="colorPrimary">#1B76BC</color>
-    <color name="colorPrimaryDark">#1B76BC</color>
+    <color name="colorPrimaryDark">#105a93</color>
     <color name="colorAccent">#5EB6F9</color>
     <color name="colorTextBlack">#3D3D3D</color>
     <color name="colorTextCharcoal">#1A1A1A</color>
