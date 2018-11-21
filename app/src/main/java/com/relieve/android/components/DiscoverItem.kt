@@ -4,9 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout.LayoutParams
+import androidx.core.view.setMargins
 import com.relieve.android.R
 import com.relieve.android.base.Component
 import com.relieve.android.base.RelieveViewHolder
+import com.relieve.android.helper.dptoPx
 import com.relieve.android.helper.secondToTimeText
 import kotlinx.android.synthetic.main.view_disaster_news.view.*
 
@@ -18,8 +21,13 @@ class DiscoverItem(val latitude: Long,
 
     companion object {
         val VIEW_TYPE = DiscoverItem::class.java.hashCode()
-        fun createViewHolder(ctx: Context, parent: ViewGroup?) : ViewHolder {
-            return ViewHolder(LayoutInflater.from(ctx).inflate(R.layout.view_disaster_news, parent, false))
+        fun createViewHolder(ctx: Context, parent: ViewGroup?, shouldFillWidth: Boolean = false) : ViewHolder {
+            return ViewHolder(LayoutInflater.from(ctx).inflate(R.layout.view_disaster_news, parent, false).apply {
+                val width = if (shouldFillWidth) LayoutParams.MATCH_PARENT else 146.dptoPx()
+                layoutParams = LayoutParams(width, LayoutParams.WRAP_CONTENT).apply {
+                    setMargins(4.dptoPx())
+                }
+            })
         }
     }
 

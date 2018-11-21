@@ -6,7 +6,7 @@ import com.relieve.android.base.Component
 import com.relieve.android.base.RelieveViewHolder
 
 abstract class RvAdapter<VH : RelieveViewHolder>(val ctx: Context) : RecyclerView.Adapter<VH>() {
-    private val components = ArrayList<Component>()
+    protected val components = ArrayList<Component>()
 
     override fun getItemCount(): Int = components.size
 
