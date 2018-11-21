@@ -1,4 +1,4 @@
-package com.relieve.android.components
+package com.relieve.android.helper
 
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -22,7 +22,9 @@ class BottomNavBar (val view: View) {
     }
 
     private fun selectButton(index: Int) {
-        buttons[index].first.setColorFilter(ContextCompat.getColor(view.context, R.color.colorPrimary),
+        buttons[index].first.setColorFilter(ContextCompat.getColor(view.context,
+            R.color.colorPrimary
+        ),
             android.graphics.PorterDuff.Mode.SRC_IN)
 
         buttons[index].second.visibility = View.VISIBLE

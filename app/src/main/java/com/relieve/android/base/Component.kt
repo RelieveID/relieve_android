@@ -1,4 +1,4 @@
-package com.relieve.android.components
+package com.relieve.android.base
 
 interface Component {
     val viewType: Int

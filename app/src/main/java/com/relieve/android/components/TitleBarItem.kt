@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.relieve.android.R
+import com.relieve.android.base.Component
+import com.relieve.android.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_title_bar.view.*
 
-class TitleBar(val title: String = "", val subtitle: String = "") : Component {
+class TitleBarItem(val title: String = "", val subtitle: String = "") : Component {
     companion object {
-        val VIEW_TYPE = TitleBar::class.java.hashCode()
+        val VIEW_TYPE = TitleBarItem::class.java.hashCode()
         fun createViewHolder(ctx: Context, parent: ViewGroup?) : ViewHolder {
             return ViewHolder(LayoutInflater.from(ctx).inflate(R.layout.view_title_bar, parent, false))
         }
@@ -21,7 +23,7 @@ class TitleBar(val title: String = "", val subtitle: String = "") : Component {
 
     class ViewHolder(val view: View) : RelieveViewHolder(view) {
         override fun bind(data: Component) {
-            if (data is TitleBar) {
+            if (data is TitleBarItem) {
                 view.tvTitle.text = data.title.capitalize()
                 view.tvSubtitle.text = data.subtitle.capitalize()
             }

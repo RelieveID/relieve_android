@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Relieve</string>
 
-    <!--TitleBar-->
+    <!--TitleBarItem-->
     <string name="hello">Halo</string>
     <string name="default_username">Muh. Alif Akbar</string>
     <string name="default_title">Discover</string>
@@ -11,6 +11,7 @@
     <string name="map">Map</string>
     <string name="default_text">Lorem Ipsum de Omar Aspirin</string>
     <string name="disaster_time">2 menit yang lalu</string>
+    <string name="disaster_time_template">%s yang lalu</string>
     <string name="disaster_live">Live</string>
 
     <!--HUD-->

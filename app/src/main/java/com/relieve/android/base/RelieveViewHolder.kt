@@ -1,4 +1,4 @@
-package com.relieve.android.components
+package com.relieve.android.base
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

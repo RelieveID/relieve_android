@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.relieve.android.R
+import com.relieve.android.base.Component
+import com.relieve.android.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_user_bar.view.*
 
-class UserBar(val greet: String, val name: String) : Component {
+class UserBarItem(val greet: String, val name: String) : Component {
     companion object {
-        val VIEW_TYPE = UserBar::class.java.hashCode()
+        val VIEW_TYPE = UserBarItem::class.java.hashCode()
 
         fun createViewHolder(ctx: Context, parent: ViewGroup?) : ViewHolder {
             return ViewHolder(LayoutInflater.from(ctx).inflate(R.layout.view_user_bar, parent, false))
@@ -22,7 +24,7 @@ class UserBar(val greet: String, val name: String) : Component {
 
     class ViewHolder(val view: View) : RelieveViewHolder(view) {
         override fun bind (data: Component) {
-            if (data is UserBar) {
+            if (data is UserBarItem) {
                 view.tvGreet.text = data.greet.capitalize()
                 view.tvName.text = data.name.capitalize()
             }
