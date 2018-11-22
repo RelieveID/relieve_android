@@ -55,6 +55,10 @@ class CallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recycler_view_with_toolbar)
 
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
+
         rvWithToolbar.layoutManager = LinearLayoutManager(this)
         rvWithToolbar.adapter = adapter
 
