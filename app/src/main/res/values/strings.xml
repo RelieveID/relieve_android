@@ -35,6 +35,12 @@
     <string name="no_chat_desc">Hubungi kerbat mu atau bergabung di group informasi sebuah bencana</string>
 
     <!--Call-->
+    <string name="emergency_police">Kantor Polisi</string>
+    <string name="emergency_hospital">Ambulance</string>
+    <string name="emergency_red_cross">Palang Merah</string>
+    <string name="emergency_fire_fighter">Pemadam Kebakaran</string>
+    <string name="emergency_sar">Badan SAR</string>
+    <string name="emergency_other">Lainnya</string>
     <string name="emergency_call">Panggilan Darurat</string>
     <string name="emergency_foundation">Lembaga Penanganan Darurat</string>
     <string name="emergency_fam">Panggilan Cepat</string>

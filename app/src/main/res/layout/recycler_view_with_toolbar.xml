@@ -9,7 +9,7 @@
     tools:context=".activity.CallActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        app:title="@string/app_name"
+        app:navigationIcon="@drawable/ic_cross"
         app:titleTextAppearance="@style/AppTheme.MainToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

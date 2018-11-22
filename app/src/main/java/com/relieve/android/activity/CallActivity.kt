@@ -21,6 +21,18 @@ class CallActivity : AppCompatActivity() {
             return when (viewType) {
                 UserBarItem.VIEW_TYPE -> { UserBarItem.createViewHolder(ctx, parent) }
                 TitleBarItem.VIEW_TYPE -> { TitleBarItem.createViewHolder(ctx, parent) }
+                LocationPickerItem.VIEW_TYPE -> { LocationPickerItem.createViewHolder(ctx, parent) }
+                VerticalGridRecycler.VIEW_TYPE -> {
+                    VerticalGridRecycler.createViewHolder(ctx, 2, childViewHolderCreator = { childParent, childViewType ->
+                        when (childViewType) {
+                            EmergencyCallItem.VIEW_TYPE -> { EmergencyCallItem.createViewHolder(ctx, childParent) }
+                            EmergencyOptionItem.VIEW_TYPE -> { EmergencyOptionItem.createViewHolder(ctx, childParent) }
+                            else -> object : RelieveViewHolder(View(ctx)) {
+                                override fun bind(data: Component) {}
+                            }
+                        }
+                    }, spanDecider = { 1 })
+                }
                 HorizontalRecycler.VIEW_TYPE -> {
                     HorizontalRecycler.createViewHolder(ctx) { childParent, childViewType ->
                         when (childViewType) {
@@ -52,7 +64,16 @@ class CallActivity : AppCompatActivity() {
     private fun render() {
         adapter.apply {
             add(UserBarItem("", getString(R.string.emergency_call)))
+            add(LocationPickerItem())
             add(TitleBarItem(getString(R.string.emergency_foundation), ""))
+            add(VerticalGridRecycler(listOf(
+                EmergencyCallItem(R.drawable.ic_guard, getString(R.string.emergency_police)),
+                EmergencyCallItem(R.drawable.ic_ambulance, getString(R.string.emergency_hospital)),
+                EmergencyCallItem(R.drawable.ic_red_cross, getString(R.string.emergency_red_cross)),
+                EmergencyCallItem(R.drawable.ic_fire, getString(R.string.emergency_fire_fighter)),
+                EmergencyCallItem(R.drawable.ic_flashlight, getString(R.string.emergency_sar)),
+                EmergencyOptionItem(R.drawable.ic_others, getString(R.string.emergency_other))
+            )))
             add(TitleBarItem(getString(R.string.emergency_fam), ""))
             add(
                 HorizontalRecycler (
