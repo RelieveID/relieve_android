@@ -29,22 +29,49 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun selectToolbar(index: Int) {
+        if (index < fragments.size) {
+            when (fragments[index]) {
+                is HomeFragment -> {
+                    toolbar.title = getString(R.string.app_name)
+                    toolbar.setTitleTextAppearance(this, R.style.AppTheme_MainToolbar)
+                }
+                is DiscoverFragment -> {
+                    toolbar.title = getString(R.string.discover)
+                    toolbar.setTitleTextAppearance(this, R.style.AppTheme_OtherToolbar)
+                }
+                is ChatFragment -> {
+                    toolbar.title = getString(R.string.chat)
+                    toolbar.setTitleTextAppearance(this, R.style.AppTheme_OtherToolbar)
+                }
+                is ProfileFragment -> {
+                    toolbar.title = getString(R.string.profile)
+                    toolbar.setTitleTextAppearance(this, R.style.AppTheme_OtherToolbar)
+                }
+            }
+        }
+    }
+
     private fun bindNavClick() {
         BottomNavBar(navHome).apply {
             setHomeClickListener {
                 selectFragment(0)
+                selectToolbar(0)
             }
             setDiscoverClickListener {
                 selectFragment(1)
+                selectToolbar(1)
             }
             setCallClickListener {
 //                selectFragment(2)
             }
             setChatClickListener {
                 selectFragment(2)
+                selectToolbar(2)
             }
             setProfileClickListener {
                 selectFragment(3)
+                selectToolbar(3)
             }
         }
     }

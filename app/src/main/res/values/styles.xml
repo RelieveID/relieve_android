@@ -11,9 +11,15 @@
         <item name="android:colorBackground">@android:color/white</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
-    <style name="AppTheme.Toolbar">
+    <style name="AppTheme.MainToolbar">
         <item name="android:fontFamily">@font/circular_std_black</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">18sp</item>
+    </style>
+    <style name="AppTheme.OtherToolbar">
+        <item name="android:fontFamily">@font/circular_std_black</item>
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:textSize">22sp</item>
     </style>
     <style name="AppTheme.BottomModal"
         parent="Widget.Design.BottomSheet.Modal">

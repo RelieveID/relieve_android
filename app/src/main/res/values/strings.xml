@@ -29,4 +29,8 @@
     <!--Notice-->
     <string name="notice">Awas!!\nGempa terjadi didekatmu</string>
     <string name="imsafe">Saya Aman</string>
+
+    <!--Chat-->
+    <string name="no_chat_title">Tidak ada chat aktif</string>
+    <string name="no_chat_desc">Hubungi kerbat mu atau bergabung di group informasi sebuah bencana</string>
 </resources>

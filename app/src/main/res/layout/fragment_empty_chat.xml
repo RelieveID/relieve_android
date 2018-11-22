@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:background="@drawable/circle_grey_big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:text="@string/no_chat_title"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/circular_std_bold"
+        android:textColor="@color/colorTextCharcoal"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:text="@string/no_chat_desc"
+        android:textSize="12sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginEnd="39dp"
+        android:fontFamily="@font/circular_std_book"
+        android:textColor="@color/colorTextGrey"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
