@@ -6,27 +6,45 @@
     android:layout_margin="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <LinearLayout
-        android:orientation="vertical"
-        android:paddingTop="14dp"
-        android:paddingBottom="14dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivEmergencyFoundationIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/ic_guard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="12dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivEmergencyFoundationCheck"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:tint="@color/colorPrimary"
+            app:srcCompat="@drawable/ic_check"
+            android:layout_margin="8dp"
+            android:layout_width="16dp"
+            android:layout_height="16dp" />
+
         <TextView
             android:id="@+id/tvEmergencyFoundation"
-            android:text="@string/emergency_police"
-            android:fontFamily="@font/circular_std_medium"
-            android:textSize="14sp"
-            android:layout_marginTop="6dp"
-            android:textColor="@color/colorTextBlack"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="14dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:fontFamily="@font/circular_std_medium"
+            android:text="@string/emergency_police"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivEmergencyFoundationIcon" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
