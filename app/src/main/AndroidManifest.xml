@@ -28,7 +28,7 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PhoneActivity"></activity>
+        <activity android:name=".activity.CallActivity"></activity>
     </application>
 
 </manifest>

@@ -2,7 +2,7 @@
 <androidx.recyclerview.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rvHome"
+    android:id="@+id/rvFull"
     android:layout_weight="1"
     tools:listitem="@layout/view_title_bar"
     android:layout_width="match_parent"

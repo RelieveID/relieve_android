@@ -1,5 +1,6 @@
 package com.relieve.android.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.transaction
@@ -63,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 selectToolbar(1)
             }
             setCallClickListener {
-//                selectFragment(2)
+                startActivity(Intent(this@MainActivity, CallActivity::class.java))
             }
             setChatClickListener {
                 selectFragment(2)

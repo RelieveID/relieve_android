@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout.LayoutParams
-import androidx.core.view.setPadding
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.relieve.android.R
 import com.relieve.android.adapter.RvAdapter
@@ -18,7 +15,6 @@ import com.relieve.android.components.DisasterItem
 import com.relieve.android.components.DiscoverItem
 import com.relieve.android.components.TitleBarItem
 import com.relieve.android.components.VerticalGridRecycler
-import com.relieve.android.helper.dptoPx
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
 
 class DiscoverFragment : Fragment() {
@@ -60,8 +56,8 @@ class DiscoverFragment : Fragment() {
                               savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.recycler_view_full, container, false).apply {
             adapter = Adapter(context)
-            this.rvHome.adapter = adapter
-            this.rvHome.layoutManager = LinearLayoutManager(context)
+            this.rvFull.adapter = adapter
+            this.rvFull.layoutManager = LinearLayoutManager(context)
         }
     }
 

@@ -25,6 +25,7 @@ class TitleBarItem(val title: String = "", val subtitle: String = "") : Componen
         override fun bind(data: Component) {
             if (data is TitleBarItem) {
                 view.tvTitle.text = data.title.capitalize()
+                if (data.subtitle.isNotEmpty()) view.tvSubtitle.visibility = View.VISIBLE
                 view.tvSubtitle.text = data.subtitle.capitalize()
             }
         }

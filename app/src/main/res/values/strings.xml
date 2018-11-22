@@ -33,4 +33,9 @@
     <!--Chat-->
     <string name="no_chat_title">Tidak ada chat aktif</string>
     <string name="no_chat_desc">Hubungi kerbat mu atau bergabung di group informasi sebuah bencana</string>
+
+    <!--Call-->
+    <string name="emergency_call">Panggilan Darurat</string>
+    <string name="emergency_foundation">Lembaga Penanganan Darurat</string>
+    <string name="emergency_fam">Panggilan Cepat</string>
 </resources>

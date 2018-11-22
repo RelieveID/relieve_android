@@ -12,6 +12,7 @@
         android:id="@+id/tvGreet"
         tools:text="@string/hello"
         android:textSize="22sp"
+        android:visibility="gone"
         android:fontFamily="@font/circular_std_book"
         android:textColor="@color/colorTextBlack"
         android:layout_width="match_parent"

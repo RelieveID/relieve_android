@@ -52,8 +52,8 @@ class HomeFragment : Fragment() {
                               savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.recycler_view_full, container, false).apply {
             adapter = Adapter(context)
-            this.rvHome.layoutManager = LinearLayoutManager(context)
-            this.rvHome.adapter = adapter
+            this.rvFull.layoutManager = LinearLayoutManager(context)
+            this.rvFull.adapter = adapter
         }
     }
 

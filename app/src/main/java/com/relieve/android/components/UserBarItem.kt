@@ -25,6 +25,7 @@ class UserBarItem(val greet: String, val name: String) : Component {
     class ViewHolder(val view: View) : RelieveViewHolder(view) {
         override fun bind (data: Component) {
             if (data is UserBarItem) {
+                if (data.greet.isNotEmpty()) view.tvGreet.visibility = View.VISIBLE
                 view.tvGreet.text = data.greet.capitalize()
                 view.tvName.text = data.name.capitalize()
             }

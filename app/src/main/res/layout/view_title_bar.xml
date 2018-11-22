@@ -19,6 +19,7 @@
     <TextView
         android:id="@+id/tvSubtitle"
         tools:text="@string/default_subtitle"
+        android:visibility="gone"
         android:textSize="10sp"
         android:fontFamily="@font/circular_std_book"
         android:textColor="@color/colorTextGrey"
