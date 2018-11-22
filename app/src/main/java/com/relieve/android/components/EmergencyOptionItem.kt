@@ -11,7 +11,9 @@ import com.relieve.android.base.Component
 import com.relieve.android.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_emergency_call.view.*
 
-class EmergencyOptionItem(@DrawableRes val icon: Int, val text: String) : Component {
+class EmergencyOptionItem(@DrawableRes val icon: Int,
+                          val text: String,
+                          val onclick: (() -> Unit)? = null) : Component {
 
     companion object {
         val VIEW_TYPE = EmergencyOptionItem::class.java.hashCode()
@@ -34,6 +36,8 @@ class EmergencyOptionItem(@DrawableRes val icon: Int, val text: String) : Compon
             if (data is EmergencyOptionItem) {
                 view.ivEmergencyFoundationIcon.setImageResource(data.icon)
                 view.tvEmergencyFoundation.text = data.text
+
+                view.setOnClickListener { data.onclick?.invoke() }
             }
         }
     }

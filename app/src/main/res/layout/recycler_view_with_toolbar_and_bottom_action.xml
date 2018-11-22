@@ -34,7 +34,6 @@
             android:textSize="18sp"
             android:gravity="center"
             android:height="52dp"
-            android:visibility="gone"
             android:text="@string/edit_service"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -47,6 +46,7 @@
             android:gravity="center"
             android:height="52dp"
             android:text="@string/save_service"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

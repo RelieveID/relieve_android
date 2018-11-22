@@ -1,5 +1,6 @@
 package com.relieve.android.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -76,7 +77,9 @@ class CallActivity : AppCompatActivity() {
                 EmergencyCallItem(R.drawable.ic_red_cross, getString(R.string.emergency_red_cross)),
                 EmergencyCallItem(R.drawable.ic_fire, getString(R.string.emergency_fire_fighter)),
                 EmergencyCallItem(R.drawable.ic_flashlight, getString(R.string.emergency_sar)),
-                EmergencyOptionItem(R.drawable.ic_others, getString(R.string.emergency_other))
+                EmergencyOptionItem(R.drawable.ic_others, getString(R.string.emergency_other)) {
+                    startActivity(Intent(this@CallActivity, CallListActivity::class.java))
+                }
             )))
             add(TitleBarItem(getString(R.string.emergency_fam), ""))
             add(
