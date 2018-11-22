@@ -29,6 +29,8 @@
     <!--Notice-->
     <string name="notice">Awas!!\nGempa terjadi didekatmu</string>
     <string name="imsafe">Saya Aman</string>
+    <string name="edit_service">Edit Layanan Pilihan</string>
+    <string name="save_service">Simpan</string>
 
     <!--Chat-->
     <string name="no_chat_title">Tidak ada chat aktif</string>
