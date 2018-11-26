@@ -2,8 +2,10 @@ package com.relieve.android.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.transaction
+import com.google.firebase.iid.FirebaseInstanceId
 import com.relieve.android.helper.BottomNavBar
 import com.relieve.android.R
 import com.relieve.android.fragment.*

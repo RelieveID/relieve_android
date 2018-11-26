@@ -48,4 +48,5 @@
     <string name="emergency_fam">Panggilan Cepat</string>
     <string name="emergency_maximum_reached">Ups! maaf maksimal hanya 5</string>
     <string name="emergency_understand">Mengerti</string>
+    <string name="default_notification_channel_id">default</string>
 </resources>

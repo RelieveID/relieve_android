@@ -66,6 +66,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.google.code.gson:gson:2.8.5'
 
+    // fcm - notification
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+
     // leak canary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
@@ -76,7 +79,10 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$lifecycle_version" // lifecycle
     testImplementation "androidx.room:room-testing:$room_version" // room
     androidTestImplementation "android.arch.work:work-testing:$work_version" // work manager
-    androidTestImplementation "android.arch.navigation:navigation-testing:$nav_version" // navigation
+    androidTestImplementation "android.arch.navigation:navigation-testing:$nav_version"
+    // navigation
     androidTestImplementation "androidx.test.ext:junit:1.0.0"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 }
+
+apply plugin: 'com.google.gms.google-services'
