@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.relieve.android.R
-import com.relieve.android.base.Component
-import com.relieve.android.base.RelieveViewHolder
+import com.relieve.android.lib_rsux.base.Component
+import com.relieve.android.lib_rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_hud_status.view.*
 
 class StatusBarItem(val image: String = "", val location: String = "", isUpdated: Boolean = true) :

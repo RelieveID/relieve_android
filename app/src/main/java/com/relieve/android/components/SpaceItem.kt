@@ -2,13 +2,9 @@ package com.relieve.android.components
 
 import android.content.Context
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout.LayoutParams
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.relieve.android.adapter.RvAdapter
-import com.relieve.android.base.Component
-import com.relieve.android.base.RelieveViewHolder
+import com.relieve.android.lib_rsux.base.Component
+import com.relieve.android.lib_rsux.base.RelieveViewHolder
 import com.relieve.android.helper.dptoPx
 
 class SpaceItem(val width: Int, val height: Int) : Component {

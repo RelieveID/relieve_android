@@ -1,9 +1,9 @@
-package com.relieve.android.adapter
+package com.relieve.android.lib_rsux.adapter
 
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
-import com.relieve.android.base.Component
-import com.relieve.android.base.RelieveViewHolder
+import com.relieve.android.lib_rsux.base.Component
+import com.relieve.android.lib_rsux.base.RelieveViewHolder
 
 abstract class RvAdapter<VH : RelieveViewHolder>(val ctx: Context) : RecyclerView.Adapter<VH>() {
     protected val components = ArrayList<Component>()

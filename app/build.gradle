@@ -29,6 +29,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
 
+    // locals
+    api project(':lib_rsux')
+
     // Views
     implementation "androidx.appcompat:appcompat:$versions.xAppCompat"
     implementation "androidx.constraintlayout:constraintlayout:$versions.xConstraintLayout"

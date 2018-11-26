@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.relieve.android.R
-import com.relieve.android.adapter.RvAdapter
-import com.relieve.android.base.Component
-import com.relieve.android.base.RelieveViewHolder
+import com.relieve.android.lib_rsux.base.Component
+import com.relieve.android.lib_rsux.base.RelieveViewHolder
 import com.relieve.android.components.*
 import com.relieve.android.helper.dptoPx
+import com.relieve.android.lib_rsux.adapter.RvAdapter
 import kotlinx.android.synthetic.main.recycler_view_with_toolbar.*
 
 class CallListActivity : AppCompatActivity() {

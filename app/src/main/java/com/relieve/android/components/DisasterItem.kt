@@ -4,13 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout.LayoutParams
-import androidx.core.view.setMargins
 import com.relieve.android.R
-import com.relieve.android.base.Component
-import com.relieve.android.base.RelieveViewHolder
-import com.relieve.android.helper.dptoPx
-import com.relieve.android.helper.secondToTimeText
+import com.relieve.android.lib_rsux.base.Component
+import com.relieve.android.lib_rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_disaster_news.view.*
 
 class DisasterItem(val latitude: Long,

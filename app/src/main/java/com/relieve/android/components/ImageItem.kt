@@ -1,19 +1,14 @@
 package com.relieve.android.components
 
 import android.content.Context
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout.LayoutParams
 import androidx.core.content.ContextCompat
-import androidx.core.view.setMargins
 import com.relieve.android.R
-import com.relieve.android.base.Component
-import com.relieve.android.base.RelieveViewHolder
+import com.relieve.android.lib_rsux.base.Component
+import com.relieve.android.lib_rsux.base.RelieveViewHolder
 import com.relieve.android.helper.dptoPx
-import com.relieve.android.helper.secondToTimeText
-import kotlinx.android.synthetic.main.view_disaster_news.view.*
 
 class ImageItem : Component {
 

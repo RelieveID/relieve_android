@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.relieve.android.R
-import com.relieve.android.adapter.RvAdapter
-import com.relieve.android.base.Component
-import com.relieve.android.base.RelieveViewHolder
+import com.relieve.android.lib_rsux.base.Component
+import com.relieve.android.lib_rsux.base.RelieveViewHolder
 import com.relieve.android.components.DisasterItem
 import com.relieve.android.components.DiscoverItem
 import com.relieve.android.components.TitleBarItem
 import com.relieve.android.components.VerticalGridRecycler
+import com.relieve.android.lib_rsux.adapter.RvAdapter
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
 
 class DiscoverFragment : Fragment() {

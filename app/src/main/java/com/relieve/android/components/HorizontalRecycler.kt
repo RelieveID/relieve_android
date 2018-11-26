@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.LinearLayout.LayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.relieve.android.adapter.RvAdapter
-import com.relieve.android.base.Component
-import com.relieve.android.base.RelieveViewHolder
+import com.relieve.android.lib_rsux.base.Component
+import com.relieve.android.lib_rsux.base.RelieveViewHolder
 import com.relieve.android.helper.dptoPx
+import com.relieve.android.lib_rsux.adapter.RvAdapter
 
 class HorizontalRecycler(val components: List<Component>) : Component {
     companion object {
