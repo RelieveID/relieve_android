@@ -58,9 +58,6 @@ ext.versions = [
 
         lifecycle          : '2.0.0',
 
-        fastAdapter        : '3.3.1',
-        fastAdapterCommon  : '3.3.1',
-
         retrofit           : '2.5.0',
         lottie             : '2.6.1',
         gson               : '2.8.5',
