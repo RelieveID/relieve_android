@@ -1,4 +1,4 @@
-package com.relieve.android.lib_rsux;
+package com.relieve.android.rsux;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

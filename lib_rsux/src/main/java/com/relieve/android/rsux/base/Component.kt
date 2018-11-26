@@ -1,4 +1,4 @@
-package com.relieve.android.lib_rsux.base
+package com.relieve.android.rsux.base
 
 import android.view.ViewGroup
 

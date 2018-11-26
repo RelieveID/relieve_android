@@ -1,4 +1,4 @@
-package com.relieve.android.lib_rsux;
+package com.relieve.android.rsux;
 
 import org.junit.Test;
 

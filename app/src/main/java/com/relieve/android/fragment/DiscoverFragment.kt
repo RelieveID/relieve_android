@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.relieve.android.R
-import com.relieve.android.lib_rsux.base.Component
-import com.relieve.android.lib_rsux.base.RelieveViewHolder
+import com.relieve.android.rsux.base.Component
+import com.relieve.android.rsux.base.RelieveViewHolder
 import com.relieve.android.components.DisasterItem
 import com.relieve.android.components.DiscoverItem
 import com.relieve.android.components.TitleBarItem
-import com.relieve.android.components.VerticalGridRecycler
-import com.relieve.android.lib_rsux.adapter.RvAdapter
+import com.relieve.android.components.adapter.VerticalGridRecycler
+import com.relieve.android.rsux.adapter.RvAdapter
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
 
 class DiscoverFragment : Fragment() {
@@ -69,23 +69,27 @@ class DiscoverFragment : Fragment() {
         adapter.apply {
             add(DisasterItem(0, 0,"Gunung Semeru Meletus", "Probolinggo, Jawa Timur"))
             add(TitleBarItem("Highlight Bencana", ""))
-            add(VerticalGridRecycler(listOf(
-                DiscoverItem(0, 0, "Palu", 0,true),
-                DiscoverItem(0, 0, "Lombok", 100, false),
-                DiscoverItem(0, 0, "Jakarta", 200, false),
-                DiscoverItem(0, 0, "Bandung", 300, false),
-                DiscoverItem(0, 0, "Surabaya", 400, false),
-                DiscoverItem(0, 0, "Bali", 500, false),
-                DiscoverItem(0, 0, "Makassar", 600, false),
-                DiscoverItem(0, 0, "Lombok", 700, false),
-                DiscoverItem(0, 0, "Banjarmasin", 800, false),
-                DiscoverItem(0, 0, "Bali", 1_000, false),
-                DiscoverItem(0, 0, "Lombok", 2_000, false),
-                DiscoverItem(0, 0, "Surabaya", 2_500, false),
-                DiscoverItem(0, 0, "Jakarta", 3_000, false),
-                DiscoverItem(0, 0, "Jakarta", 3_010, false),
-                DiscoverItem(0, 0, "Jakarta", 4_000, false)
-            )))
+            add(
+                VerticalGridRecycler(
+                    listOf(
+                        DiscoverItem(0, 0, "Palu", 0, true),
+                        DiscoverItem(0, 0, "Lombok", 100, false),
+                        DiscoverItem(0, 0, "Jakarta", 200, false),
+                        DiscoverItem(0, 0, "Bandung", 300, false),
+                        DiscoverItem(0, 0, "Surabaya", 400, false),
+                        DiscoverItem(0, 0, "Bali", 500, false),
+                        DiscoverItem(0, 0, "Makassar", 600, false),
+                        DiscoverItem(0, 0, "Lombok", 700, false),
+                        DiscoverItem(0, 0, "Banjarmasin", 800, false),
+                        DiscoverItem(0, 0, "Bali", 1_000, false),
+                        DiscoverItem(0, 0, "Lombok", 2_000, false),
+                        DiscoverItem(0, 0, "Surabaya", 2_500, false),
+                        DiscoverItem(0, 0, "Jakarta", 3_000, false),
+                        DiscoverItem(0, 0, "Jakarta", 3_010, false),
+                        DiscoverItem(0, 0, "Jakarta", 4_000, false)
+                    )
+                )
+            )
         }
     }
 

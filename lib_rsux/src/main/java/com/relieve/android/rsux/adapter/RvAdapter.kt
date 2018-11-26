@@ -1,12 +1,11 @@
-package com.relieve.android.lib_rsux.adapter
+package com.relieve.android.rsux.adapter
 
-import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.relieve.android.lib_rsux.base.Component
-import com.relieve.android.lib_rsux.base.RelieveViewHolder
+import com.relieve.android.rsux.base.Component
+import com.relieve.android.rsux.base.RelieveViewHolder
 
-abstract class RvAdapter<C: Component<C, VH>, VH: RelieveViewHolder<C, VH>>(val ctx: Context)
+abstract class RvAdapter<C: Component<C, VH>, VH: RelieveViewHolder<C, VH>>
     : RecyclerView.Adapter<VH>() {
 
     protected val components = ArrayList<C>()
@@ -16,8 +15,10 @@ abstract class RvAdapter<C: Component<C, VH>, VH: RelieveViewHolder<C, VH>>(val 
     override fun getItemViewType(position: Int): Int =
         components[position].viewType
 
-    override fun onBindViewHolder(holder: VH, position: Int) =
+    override fun onBindViewHolder(holder: VH, position: Int) {
+        holder.unbind()
         holder.bind(components[position])
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
         components.find { it.viewType == viewType }!!.createViewHolder(parent)

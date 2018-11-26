@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.relieve.android.R
-import com.relieve.android.lib_rsux.base.Component
-import com.relieve.android.lib_rsux.base.RelieveViewHolder
+import com.relieve.android.rsux.base.Component
+import com.relieve.android.rsux.base.RelieveViewHolder
 import com.relieve.android.components.*
+import com.relieve.android.components.adapter.HorizontalRecycler
+import com.relieve.android.components.adapter.VerticalGridRecycler
 import com.relieve.android.helper.dptoPx
-import com.relieve.android.lib_rsux.adapter.RvAdapter
+import com.relieve.android.rsux.adapter.RvAdapter
 import kotlinx.android.synthetic.main.recycler_view_with_toolbar.*
 
 class CallActivity : AppCompatActivity() {
@@ -83,7 +85,7 @@ class CallActivity : AppCompatActivity() {
             )))
             add(TitleBarItem(getString(R.string.emergency_fam), ""))
             add(
-                HorizontalRecycler (
+                HorizontalRecycler(
                     listOf(
                         SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT),
                         FamilyItem(".jpg", FamilyStatus.Good, "Ayah"),
