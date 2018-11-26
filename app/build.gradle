@@ -5,13 +5,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion builds.compileSdk
     defaultConfig {
         applicationId "com.relieve.android"
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion builds.minSdk
+        targetSdkVersion builds.compileSdk
+        versionCode generateVersionCode()
+        versionName generateVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
