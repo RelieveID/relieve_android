@@ -2,6 +2,7 @@ package com.relieve.android.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.relieve.android.R
 
 class DisasterActivity : AppCompatActivity() {
 

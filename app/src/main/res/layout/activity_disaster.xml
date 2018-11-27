@@ -5,5 +5,177 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.DisasterActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:navigationIcon="@drawable/ic_cross"
+        app:titleTextAppearance="@style/AppTheme.MainToolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNoticeTitle"
+        android:text="@string/notice"
+        android:textSize="22sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:lines="2"
+        android:fontFamily="@font/circular_std_black"
+        android:textColor="@color/colorTextBlack"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        app:layout_constraintTop_toBottomOf="@+id/lineShadow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@mipmap/map_dummy"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <View
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cardDisasterStat"
+        android:background="@drawable/bg_white_linear_transparant"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+    <View
+        android:id="@+id/lineShadow"
+        app:layout_constraintTop_toBottomOf="@id/tvNoticeTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/colorEmptyRect"
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:id="@+id/tvEmergencyCall"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp"
+        android:background="@drawable/rounded_corner_rect_danger_hollow"
+        android:fontFamily="@font/circular_std_bold"
+        android:textSize="18sp"
+        android:textColor="@color/colorDanger"
+        android:padding="16dp"
+        android:gravity="center"
+        android:text="@string/emergency_call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        app:srcCompat="@drawable/ic_call"
+        app:layout_constraintTop_toTopOf="@id/tvEmergencyCall"
+        app:layout_constraintBottom_toBottomOf="@id/tvEmergencyCall"
+        app:layout_constraintStart_toStartOf="@id/tvEmergencyCall"
+        android:layout_marginStart="44dp"
+        android:tint="@color/colorDanger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardDisasterStat"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@id/tvEmergencyCall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivDisasterIcon"
+                app:srcCompat="@drawable/ic_live"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:tint="@color/colorDanger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDisasterNews"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivDisasterIcon"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="8dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/circular_std_black"
+                android:textColor="@color/colorDanger"
+                android:textSize="14sp"
+                android:text="(02:18) - Masih Berlangsung"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDisasterType"
+                app:layout_constraintTop_toBottomOf="@id/tvDisasterNews"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvDisasterSize"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/circular_std_black"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="26sp"
+                android:text="Gempa"
+                android:layout_marginTop="12dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDisasterSize"
+                app:layout_constraintTop_toBottomOf="@id/tvDisasterNews"
+                app:layout_constraintStart_toEndOf="@+id/tvDisasterType"
+                app:layout_constraintEnd_toStartOf="@+id/tvDisasterScale"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/circular_std_black"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="26sp"
+                android:text="8.6"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDisasterScale"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="12dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/circular_std_black"
+                android:maxLines="1"
+                android:text="sr"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="18sp"
+                android:gravity="bottom"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvDisasterSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvDisasterSize"
+                app:layout_constraintTop_toBottomOf="@id/tvDisasterNews" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDisasterDetail"
+                app:layout_constraintTop_toBottomOf="@id/tvDisasterType"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/circular_std_book"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="10sp"
+                android:text="Tidak berpotensi tsunami"
+                android:layout_marginTop="4dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
