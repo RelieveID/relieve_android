@@ -77,7 +77,7 @@ class CallActivity : AppCompatActivity() {
             setContentView(layoutInflater.inflate(R.layout.recycler_view_full, null))
             this.rvFull.layoutManager = LinearLayoutManager(this.context)
             this.rvFull.adapter = VerticalAdapter().apply {
-                this.add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 16.dptoPx()))
+                this.add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 24.dptoPx()))
                 this.add(TitleBarItem("Daftar kontak ambulance", ""))
                 this.add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 16.dptoPx()))
                 this.add(CallItem("RS Islam Muhammadiyah", "0.8 Km", ""))
