@@ -1,41 +1,49 @@
 package com.relieve.android.rsux.adapter
 
+import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.relieve.android.rsux.base.Component
 import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
+import java.lang.Exception
 
 abstract class RvAdapter : RecyclerView.Adapter<RelieveViewHolder<Component>>() {
 
-    protected val items = ArrayList<Item<*>>()
+    protected val items = ArrayList<Item<Component>>()
 
     override fun getItemCount(): Int = items.size
 
     override fun getItemViewType(position: Int): Int =
         items[position].viewType
 
-    override fun onBindViewHolder(holder: RelieveViewHolder<Item<*>>, position: Int) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RelieveViewHolder<Component> {
+        return items.find { it.viewType == viewType }!!.createViewHolder(parent)
+    }
+
+    override fun onBindViewHolder(holder: RelieveViewHolder<Component>, position: Int) {
         holder.unbind()
         holder.bind(items[position])
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RelieveViewHolder<Component> =
-        items.find { it.viewType == viewType }!!.createViewHolder(parent)
-
-
-    fun add (component: Item<Component>) {
+    @Throws(TypeCastException::class)
+    fun <C : Component> add (component: Item<C>) {
         val currentSize = items.size
-        items.add(component)
-        notifyItemInserted(currentSize)
+        try {
+            items.add(component as Item<Component>)
+            notifyItemInserted(currentSize)
+        } catch (e : TypeCastException) { throw e }
     }
 
-    fun remove (component: Item<Component>) {
-        val index = items.indexOf(component)
-        if (index > -1) {
-            items.remove(component)
-            notifyItemRemoved(index)
-        }
+    @Throws(TypeCastException::class)
+    fun <C : Component> remove (item: Item<C>) {
+        try {
+            val index = items.indexOf(item as Item<Component>)
+            if (index > -1) {
+                items.remove(item)
+                notifyItemRemoved(index)
+            }
+        } catch (e : TypeCastException) { throw e }
     }
 
     fun remove (index: Int) {
