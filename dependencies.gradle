@@ -47,7 +47,8 @@ ext.versions = [
 
         moengage           : '9.2.02',
 
-        xAppCompat          : '1.0.2',
+        xAppCompat         : '1.0.2',
+        xSupportV4         : '1.0.0',
         xConstraintLayout  : '2.0.0-alpha2',
         xCoordinatorLayout : '1.0.0',
         xViewPager         : '1.0.0',

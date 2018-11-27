@@ -36,6 +36,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$versions.xAppCompat"
     implementation "androidx.constraintlayout:constraintlayout:$versions.xConstraintLayout"
     implementation "androidx.coordinatorlayout:coordinatorlayout:$versions.xCoordinatorLayout"
+    implementation "androidx.legacy:legacy-support-v4:$versions.xSupportV4"
 
     // Android Architecture Component
     implementation "androidx.core:core-ktx:$versions.ktxCore"

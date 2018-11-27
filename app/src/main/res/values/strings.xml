@@ -48,4 +48,13 @@
     <string name="emergency_fam">Panggilan Cepat</string>
     <string name="emergency_maximum_reached">Ups! maaf maksimal hanya 5</string>
     <string name="emergency_understand">Mengerti</string>
+    
+    <!--Boarding Home-->
+    <string name="boarding_dont_have_account">Don’t have an account?</string>
+    <string name="boarding_register_here">Register Here</string>
+    <string name="boarding_sign_google">Sign In With Google</string>
+    <string name="boarding_login_now">Login Now</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
