@@ -42,8 +42,7 @@ class VerticalGridRecycler (val localItem: List<Item<*>>,
         1
     }
 
-    class ViewHolder (val view: View)
-        : RelieveViewHolder<VerticalGridRecycler>(view) {
+    class ViewHolder (val view: View) : RelieveViewHolder<VerticalGridRecycler>(view) {
 
         override fun bind(data: VerticalGridRecycler) {
             data.localItem.forEach { data.add(it) }

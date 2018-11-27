@@ -73,7 +73,7 @@ class HomeFragment : Fragment() {
                 DiscoverItem(0, 0, "Lombok", 100, false),
                 DiscoverItem(0, 0, "Lombok", 3_000, false),
                 SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
-            )))
+            ), 1))
             add(TitleBarItem("Daftar Kerabat", "Pantau kondisi kerabat terdekat anda dimanapun berada"))
             add(HorizontalRecycler(listOf(
                 SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT),
@@ -84,7 +84,7 @@ class HomeFragment : Fragment() {
                 },
                 FamilyItem("", FamilyItem.FamilyStatus.Unknown, "", true),
                 SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
-            )))
+            ), 2))
         }
     }
 

@@ -10,10 +10,13 @@ import com.relieve.android.helper.dptoPx
 import com.relieve.android.rsux.adapter.RvAdapter
 import com.relieve.android.rsux.base.Component
 import com.relieve.android.rsux.base.Item
+/**
+ * Please Provide order if you use multiple horizontal recycler in single screen
+ * order = [1..n]
+ */
+class HorizontalRecycler(val localItem : List<Item<*>>, order: Int = 0) : Item<HorizontalRecycler>, RvAdapter(){
 
-class HorizontalRecycler(val localItem : List<Item<*>>) : Item<HorizontalRecycler>, RvAdapter(){
-
-    override val viewType = HorizontalRecycler::class.java.hashCode()
+    override val viewType = HorizontalRecycler::class.java.hashCode() + order
 
     override fun createViewHolder(parent: ViewGroup): ViewHolder {
         val rv = RecyclerView(parent.context).apply {
@@ -30,8 +33,7 @@ class HorizontalRecycler(val localItem : List<Item<*>>) : Item<HorizontalRecycle
         return ViewHolder(rv)
     }
 
-    class ViewHolder (val view: View)
-        : RelieveViewHolder<HorizontalRecycler>(view) {
+    class ViewHolder (val view: View) : RelieveViewHolder<HorizontalRecycler>(view) {
 
         override fun bind(data: HorizontalRecycler) {
             data.localItem.forEach { data.add(it) }
