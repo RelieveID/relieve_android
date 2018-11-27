@@ -1,32 +1,25 @@
 package com.relieve.android.components
 
-import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout.LayoutParams
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.relieve.android.adapter.RvAdapter
-import com.relieve.android.base.Component
-import com.relieve.android.base.RelieveViewHolder
-import com.relieve.android.helper.dptoPx
+import com.relieve.android.rsux.base.Item
+import com.relieve.android.rsux.base.RelieveViewHolder
 
-class SpaceItem(val width: Int, val height: Int) : Component {
-    companion object {
-        val VIEW_TYPE = SpaceItem::class.java.hashCode()
-        fun createViewHolder(ctx: Context): ViewHolder {
+class SpaceItem(val width: Int, val height: Int) : Item<SpaceItem> {
+    override val viewType = SpaceItem::class.java.hashCode()
 
-            return ViewHolder(View(ctx))
-        }
+    override fun createViewHolder(parent: ViewGroup): ViewHolder {
+        return ViewHolder(View(parent.context))
     }
-    override val viewType: Int
-        get() = VIEW_TYPE
 
-    class ViewHolder(val view: View) : RelieveViewHolder(view) {
-        override fun bind(data: Component) {
-            if (data is SpaceItem) {
-                view.layoutParams = LayoutParams(data.width, data.height)
-            }
+    class ViewHolder(val view: View) : RelieveViewHolder<SpaceItem>(view) {
+        override fun bind(data: SpaceItem) {
+            view.layoutParams = LayoutParams(data.width, data.height)
+        }
+
+        override fun unbind(data: SpaceItem) {
+
         }
     }
 }
