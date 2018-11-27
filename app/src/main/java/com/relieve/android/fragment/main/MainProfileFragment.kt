@@ -1,4 +1,4 @@
-package com.relieve.android.fragment
+package com.relieve.android.fragment.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.relieve.android.R
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
 
-class ProfileFragment : Fragment() {
+class MainProfileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {

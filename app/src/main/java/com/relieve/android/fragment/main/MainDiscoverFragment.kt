@@ -1,4 +1,4 @@
-package com.relieve.android.fragment
+package com.relieve.android.fragment.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ import com.relieve.android.rsux.adapter.VerticalGridRecycler
 import com.relieve.android.rsux.adapter.VerticalAdapter
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
 
-class DiscoverFragment : Fragment() {
+class MainDiscoverFragment : Fragment() {
     companion object {
         const val NUMBER_OF_COLUMN = 2
     }

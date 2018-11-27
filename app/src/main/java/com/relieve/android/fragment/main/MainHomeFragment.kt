@@ -1,4 +1,4 @@
-package com.relieve.android.fragment
+package com.relieve.android.fragment.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ import com.relieve.android.rsux.helper.dptoPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
 
-class HomeFragment : Fragment() {
+class MainHomeFragment : Fragment() {
     private val adapter = VerticalAdapter()
 
     override fun onCreateView(inflater: LayoutInflater,

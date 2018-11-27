@@ -32,7 +32,5 @@ class BoardingActivity : AppCompatActivity() {
             }
 
         }
-//        setSupportActionBar(toolbar)
-//        setupActionBarWithNavController(navController, AppBarConfiguration(navController.graph))
     }
 }
