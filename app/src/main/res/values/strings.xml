@@ -60,6 +60,7 @@
     <string name="boarding_nice_to_see_you">Nice to see you</string>
 
     <!--Boarding Login-->
+    <string name="boarding_register">Daftar</string>
     <string name="boarding_login">Login</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -72,6 +73,11 @@
     <string name="phone_number_area">+62</string>
     <string name="phone_number">Nomor Telpon</string>
     <string name="terms_n_condition_prompt">By registering you are accepting our <a href="http://www.google.com/">terms and condition</a> of use</string>
+
+    <!--Walkthrough-->
+    <string name="prev">Prev</string>
+    <string name="next">Next</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

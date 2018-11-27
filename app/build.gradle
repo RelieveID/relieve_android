@@ -38,6 +38,9 @@ dependencies {
     implementation "androidx.coordinatorlayout:coordinatorlayout:$versions.xCoordinatorLayout"
     implementation "androidx.legacy:legacy-support-v4:$versions.xSupportV4"
 
+    // pager
+    implementation "com.tbuonomo.andrui:viewpagerdotsindicator:$versions.dotsindicator"
+
     // Android Architecture Component
     implementation "androidx.core:core-ktx:$versions.ktxCore"
     implementation "androidx.fragment:fragment-ktx:$versions.ktxFragment"
