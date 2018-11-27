@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCallTitle"
+        android:layout_width="0dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/circular_std_medium"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvCallNow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="RS Islam Muhammadiyah" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCallSubitle"
+        tools:text="0.8 Km"
+        android:fontFamily="@font/circular_std_book"
+        android:textSize="12sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvCallTitle"
+        app:layout_constraintStart_toStartOf="@id/tvCallTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/colorTextGrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCallNow"
+        android:text="@string/emergency_call_now"
+        android:fontFamily="@font/circular_std_book"
+        android:textSize="12sp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingEnd="30dp"
+        android:paddingStart="42dp"
+        android:background="@drawable/rounded_corner_rect_grey_big"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatImageView
+        app:layout_constraintStart_toStartOf="@id/tvCallNow"
+        app:layout_constraintTop_toTopOf="@id/tvCallNow"
+        app:layout_constraintBottom_toBottomOf="@id/tvCallNow"
+        android:padding="10dp"
+        android:src="@drawable/ic_call"
+        android:tint="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

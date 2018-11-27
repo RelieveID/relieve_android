@@ -9,7 +9,9 @@ import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_emergency_call.view.*
 
-class EmergencyCallItem(@DrawableRes val icon: Int, val text: String)
+class EmergencyCallItem(@DrawableRes val icon: Int,
+                        val text: String,
+                        val onclick: (() -> Unit)? = null)
     : Item<EmergencyCallItem> {
 
     override val viewType = EmergencyCallItem::class.java.hashCode()
@@ -23,11 +25,13 @@ class EmergencyCallItem(@DrawableRes val icon: Int, val text: String)
         override fun bind(data: EmergencyCallItem) {
             view.ivEmergencyFoundationIcon.setImageResource(data.icon)
             view.tvEmergencyFoundation.text = data.text
+            view.setOnClickListener { data.onclick?.invoke() }
         }
 
         override fun unbind(data: EmergencyCallItem) {
             view.ivEmergencyFoundationIcon.setImageDrawable(null)
             view.tvEmergencyFoundation.text = null
+            view.setOnClickListener {  }
         }
     }
 }

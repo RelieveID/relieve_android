@@ -26,9 +26,10 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.CallActivity" />
         <activity android:name=".activity.CallListActivity" />
+        <activity android:name=".activity.DisasterActivity" />
     </application>
 
 </manifest>

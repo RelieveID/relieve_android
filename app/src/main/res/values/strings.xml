@@ -37,6 +37,7 @@
     <string name="no_chat_desc">Hubungi kerbat mu atau bergabung di group informasi sebuah bencana</string>
 
     <!--Call-->
+    <string name="emergency_call_now">Panggil</string>
     <string name="emergency_police">Kantor Polisi</string>
     <string name="emergency_hospital">Ambulance</string>
     <string name="emergency_red_cross">Palang Merah</string>

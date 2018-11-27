@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.relieve.android.R
 import com.relieve.android.components.*
 import com.relieve.android.rsux.adapter.HorizontalRecycler
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
 import com.relieve.android.rsux.helper.dptoPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
+import kotlinx.android.synthetic.main.recycler_view_full.*
 import kotlinx.android.synthetic.main.recycler_view_with_toolbar.*
 
 class CallActivity : AppCompatActivity() {
@@ -41,7 +43,9 @@ class CallActivity : AppCompatActivity() {
                 VerticalGridRecycler(
                 listOf(
                     EmergencyCallItem(R.drawable.ic_guard, getString(R.string.emergency_police)),
-                    EmergencyCallItem(R.drawable.ic_ambulance, getString(R.string.emergency_hospital)),
+                    EmergencyCallItem(R.drawable.ic_ambulance, getString(R.string.emergency_hospital)) {
+                        test()
+                    },
                     EmergencyCallItem(R.drawable.ic_red_cross, getString(R.string.emergency_red_cross)),
                     EmergencyCallItem(R.drawable.ic_fire, getString(R.string.emergency_fire_fighter)),
                     EmergencyCallItem(R.drawable.ic_flashlight, getString(R.string.emergency_sar)),
@@ -69,6 +73,20 @@ class CallActivity : AppCompatActivity() {
     }
 
     private fun test() {
-
+        BottomSheetDialog(this).apply {
+            setContentView(layoutInflater.inflate(R.layout.recycler_view_full, null))
+            this.rvFull.layoutManager = LinearLayoutManager(this.context)
+            this.rvFull.adapter = VerticalAdapter().apply {
+                this.add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 16.dptoPx()))
+                this.add(TitleBarItem("Daftar kontak ambulance", ""))
+                this.add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 16.dptoPx()))
+                this.add(CallItem("RS Islam Muhammadiyah", "0.8 Km", ""))
+                this.add(CallItem("RS Islam Muhammadiyah", "2.3 Km", ""))
+                this.add(CallItem("RS Islam Muhammadiyah", "2.8 Km", ""))
+                this.add(CallItem("RS Islam Muhammadiyah", "3.4 Km", ""))
+                this.add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 16.dptoPx()))
+            }
+            show()
+        }
     }
 }
