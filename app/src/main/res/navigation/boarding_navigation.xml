@@ -2,21 +2,48 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@+id/boardingLoginFragment">
+    app:startDestination="@+id/boardingHomeFragment">
 
     <fragment
         android:id="@+id/boardingHomeFragment"
         android:name="com.relieve.android.fragment.boarding.BoardingHomeFragment"
         android:label="@string/boarding_home"
-        tools:layout="@layout/fragment_boarding_home" />
+        tools:layout="@layout/fragment_boarding_home" >
+        <action
+            android:id="@+id/action_boardingHomeFragment_to_boardingLoginFragment"
+            app:destination="@id/boardingLoginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@+id/boardingHomeFragment" />
+        <action
+            android:id="@+id/action_boardingHomeFragment_to_boardingRegisterFragment"
+            app:destination="@id/boardingRegisterFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@+id/boardingHomeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/boardingLoginFragment"
+        android:label=" "
         android:name="com.relieve.android.fragment.boarding.BoardingLoginFragment"
-        android:label="@string/boarding_welcome"
-        tools:layout="@layout/fragment_boarding_login" />
+        tools:layout="@layout/fragment_boarding_login" >
+        <action
+            android:id="@+id/action_boardingLoginFragment_to_boardingRegisterFragment"
+            app:destination="@id/boardingRegisterFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_boardingLoginFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
     <fragment
         android:id="@+id/boardingRegisterFragment"
-        android:name="com.relieve.android.BoardingRegisterFragment"
-        android:label="fragment_boarding_register"
+        android:label=" "
+        android:name="com.relieve.android.fragment.boarding.BoardingRegisterFragment"
         tools:layout="@layout/fragment_boarding_register" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.relieve.android.activity.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>

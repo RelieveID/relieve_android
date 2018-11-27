@@ -8,6 +8,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         app:title="@string/app_name"
+        app:navigationIcon="@drawable/ic_back_arrow"
         app:titleTextAppearance="@style/AppTheme.MainToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

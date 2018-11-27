@@ -2,6 +2,7 @@ package com.relieve.android.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -23,5 +24,15 @@ class BoardingActivity : AppCompatActivity() {
 
     private fun setupNavigation() {
         toolbar.setupWithNavController(navController, AppBarConfiguration(navController.graph))
+        navController.addOnNavigatedListener { _, destination ->
+            when (destination.id) {
+                R.id.boardingLoginFragment, R.id.boardingRegisterFragment -> {
+                    toolbar.navigationIcon = ContextCompat.getDrawable(this, R.drawable.ic_back_arrow)
+                }
+            }
+
+        }
+//        setSupportActionBar(toolbar)
+//        setupActionBarWithNavController(navController, AppBarConfiguration(navController.graph))
     }
 }
