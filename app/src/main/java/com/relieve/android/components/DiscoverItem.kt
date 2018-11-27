@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout.LayoutParams
 import androidx.core.view.setMargins
 import com.relieve.android.R
-import com.relieve.android.helper.dptoPx
-import com.relieve.android.helper.secondToTimeText
+import com.relieve.android.rsux.helper.dptoPx
+import com.relieve.android.rsux.helper.secondToTimeText
 import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_disaster_news.view.*
@@ -44,7 +44,9 @@ class DiscoverItem(val latitude: Long,
                     view.tvDisasterLive.visibility = View.GONE
                     view.tvDisasterSubtitle.visibility = View.VISIBLE
 
-                    view.tvDisasterSubtitle.text = view.context.getString(R.string.disaster_time_template, secondToTimeText(data.secondAgo))
+                    view.tvDisasterSubtitle.text = view.context.getString(R.string.disaster_time_template,
+                        secondToTimeText(data.secondAgo)
+                    )
                 }
             }
         }

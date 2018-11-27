@@ -1,4 +1,4 @@
-package com.relieve.android.components.adapter
+package com.relieve.android.rsux.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -6,15 +6,13 @@ import android.widget.LinearLayout.LayoutParams
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.relieve.android.rsux.base.RelieveViewHolder
-import com.relieve.android.helper.dptoPx
-import com.relieve.android.rsux.adapter.RvAdapter
-import com.relieve.android.rsux.base.Component
+import com.relieve.android.rsux.helper.dptoPx
 import com.relieve.android.rsux.base.Item
 
 class VerticalGridRecycler (val localItem: List<Item<*>>,
                             private val columnNumber: Int,
                             val spanDecider: (viewType: Int) -> Int)
-    : Item<VerticalGridRecycler>, RvAdapter() {
+    : Item<VerticalGridRecycler>, VerticalAdapter() {
 
     override val viewType = VerticalGridRecycler::class.java.hashCode()
 

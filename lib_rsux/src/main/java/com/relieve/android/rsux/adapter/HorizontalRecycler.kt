@@ -1,4 +1,4 @@
-package com.relieve.android.components.adapter
+package com.relieve.android.rsux.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -6,15 +6,13 @@ import android.widget.LinearLayout.LayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.relieve.android.rsux.base.RelieveViewHolder
-import com.relieve.android.helper.dptoPx
-import com.relieve.android.rsux.adapter.RvAdapter
-import com.relieve.android.rsux.base.Component
+import com.relieve.android.rsux.helper.dptoPx
 import com.relieve.android.rsux.base.Item
 /**
  * Please Provide order if you use multiple horizontal recycler in single screen
  * order = [1..n]
  */
-class HorizontalRecycler(val localItem : List<Item<*>>, order: Int = 0) : Item<HorizontalRecycler>, RvAdapter(){
+class HorizontalRecycler(val localItem : List<Item<*>>, order: Int = 0) : Item<HorizontalRecycler>, VerticalAdapter(){
 
     override val viewType = HorizontalRecycler::class.java.hashCode() + order
 

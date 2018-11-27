@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat
 import com.relieve.android.R
 import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
-import com.relieve.android.helper.dptoPx
+import com.relieve.android.rsux.helper.dptoPx
 
 class ImageItem : Item<ImageItem> {
     override val viewType = ImageItem::class.java.hashCode()

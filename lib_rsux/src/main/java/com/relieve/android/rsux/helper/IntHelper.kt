@@ -1,4 +1,4 @@
-package com.relieve.android.helper
+package com.relieve.android.rsux.helper
 
 import android.content.res.Resources
 

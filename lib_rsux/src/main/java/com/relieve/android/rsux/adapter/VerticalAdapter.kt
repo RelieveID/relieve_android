@@ -6,7 +6,7 @@ import com.relieve.android.rsux.base.Component
 import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 
-open class RvAdapter : RecyclerView.Adapter<RelieveViewHolder<Component>>() {
+open class VerticalAdapter : RecyclerView.Adapter<RelieveViewHolder<Component>>() {
 
     protected val items = mutableListOf<Item<Component>>()
 

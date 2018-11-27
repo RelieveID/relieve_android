@@ -1,4 +1,4 @@
-package com.relieve.android.helper
+package com.relieve.android.rsux.helper
 
 fun secondToTimeText(seconds: Long) : String {
     return if (seconds == 0L) {
