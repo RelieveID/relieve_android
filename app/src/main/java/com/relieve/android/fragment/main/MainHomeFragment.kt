@@ -1,5 +1,6 @@
 package com.relieve.android.fragment.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.relieve.android.R
+import com.relieve.android.activity.DisasterActivity
 import com.relieve.android.components.*
 import com.relieve.android.rsux.adapter.HorizontalRecycler
 import com.relieve.android.rsux.helper.dptoPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
+import kotlinx.android.synthetic.main.sheet_notice.*
 
 class MainHomeFragment : Fragment() {
     private val adapter = VerticalAdapter()
@@ -70,6 +73,13 @@ class MainHomeFragment : Fragment() {
         context?.let { ctx ->
             BottomSheetDialog(ctx).apply {
                 setContentView(layoutInflater.inflate(R.layout.sheet_notice, null))
+                this.btnPositive.setOnClickListener {
+                    startActivity(Intent(ctx, DisasterActivity::class.java))
+                }
+
+                this.btnNegative.setOnClickListener {
+                    startActivity(Intent(ctx, DisasterActivity::class.java))
+                }
                 show()
             }
         }
