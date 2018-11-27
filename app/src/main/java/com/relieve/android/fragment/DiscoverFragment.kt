@@ -35,6 +35,7 @@ class DiscoverFragment : Fragment() {
     }
 
     private fun render() {
+        adapter.removeAll()
         adapter.apply {
             add(DisasterItem(0, 0,"Gunung Semeru Meletus", "Probolinggo, Jawa Timur"))
             add(TitleBarItem("Highlight Bencana", ""))

@@ -32,6 +32,7 @@ class CallActivity : AppCompatActivity() {
     }
 
     private fun render() {
+        adapter.removeAll()
         adapter.apply {
             add(UserBarItem("", getString(R.string.emergency_call)))
             add(LocationPickerItem())

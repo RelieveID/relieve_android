@@ -35,6 +35,7 @@ class CallListActivity : AppCompatActivity() {
     }
 
     private fun render() {
+        adapter.removeAll()
         adapter.apply {
             add(ImageItem())
             add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 8.dptoPx()))

@@ -62,6 +62,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun render() {
+        adapter.removeAll()
         adapter.apply {
             add(UserBarItem("Halo", "Muh. Alif Akbar"))
             add(StatusBarItem(".jpg", "Bojongsoang, Bandung Barat"))

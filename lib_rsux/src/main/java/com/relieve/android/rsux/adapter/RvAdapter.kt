@@ -50,4 +50,9 @@ open class RvAdapter : RecyclerView.Adapter<RelieveViewHolder<Component>>() {
             notifyItemRemoved(index)
         }
     }
+
+    fun removeAll () {
+        items.clear()
+        notifyDataSetChanged()
+    }
 }
