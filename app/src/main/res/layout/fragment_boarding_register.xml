@@ -197,7 +197,7 @@
             android:layout_height="wrap_content" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvLogin"
+            android:id="@+id/tvRegister"
             android:layout_margin="16dp"
             android:padding="12dp"
             android:background="@drawable/rounded_corner_rect_grey_big"
@@ -209,7 +209,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvTermsNCondition"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="@string/boarding_login"
+            android:text="@string/boarding_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,14 +13,12 @@
             android:id="@+id/action_boardingHomeFragment_to_boardingLoginFragment"
             app:destination="@id/boardingLoginFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popUpTo="@+id/boardingHomeFragment" />
+            app:exitAnim="@anim/nav_default_exit_anim" />
         <action
             android:id="@+id/action_boardingHomeFragment_to_boardingRegisterFragment"
             app:destination="@id/boardingRegisterFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popUpTo="@+id/boardingHomeFragment" />
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/boardingLoginFragment"
@@ -34,16 +32,33 @@
             app:exitAnim="@anim/nav_default_exit_anim" />
         <action
             android:id="@+id/action_boardingLoginFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
+            app:destination="@id/mainActivity"
+            app:popUpTo="@+id/boardingHomeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/boardingRegisterFragment"
         android:label=" "
         android:name="com.relieve.android.fragment.boarding.BoardingRegisterFragment"
-        tools:layout="@layout/fragment_boarding_register" />
+        tools:layout="@layout/fragment_boarding_register" >
+        <action
+            android:id="@+id/action_boardingRegisterFragment_to_walkthroughFragment"
+            app:destination="@id/walkthroughFragment" />
+    </fragment>
     <activity
         android:id="@+id/mainActivity"
         android:name="com.relieve.android.activity.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/walkthroughFragment"
+        android:name="com.relieve.android.fragment.walkthrough.WalkthroughFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_walkthrough" >
+        <action
+            android:id="@+id/action_walkthroughFragment_to_mainActivity"
+            app:destination="@id/mainActivity"
+            app:popUpTo="@+id/boardingHomeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

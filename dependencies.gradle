@@ -60,6 +60,7 @@ ext.versions = [
         lifecycle          : '2.0.0',
 
         retrofit           : '2.5.0',
+        dotsindicator      : '2.1.2',
         lottie             : '2.6.1',
         gson               : '2.8.5',
         glide              : '4.8.0',
