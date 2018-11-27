@@ -2,11 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@+id/boardingHomeFragment">
+    app:startDestination="@+id/boardingLoginFragment">
 
     <fragment
         android:id="@+id/boardingHomeFragment"
         android:name="com.relieve.android.fragment.boarding.BoardingHomeFragment"
-        android:label="Home Sweet Home"
+        android:label="@string/boarding_home"
         tools:layout="@layout/fragment_boarding_home" />
+    <fragment
+        android:id="@+id/boardingLoginFragment"
+        android:name="com.relieve.android.fragment.boarding.BoardingLoginFragment"
+        android:label="@string/boarding_welcome"
+        tools:layout="@layout/fragment_boarding_login" />
+    <fragment
+        android:id="@+id/boardingRegisterFragment"
+        android:name="com.relieve.android.BoardingRegisterFragment"
+        android:label="fragment_boarding_register"
+        tools:layout="@layout/fragment_boarding_register" />
 </navigation>
