@@ -1,6 +1,5 @@
 package com.relieve.android.components
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import androidx.core.view.setMargins
 import com.relieve.android.R
 import com.relieve.android.helper.dptoPx
 import com.relieve.android.helper.secondToTimeText
-import com.relieve.android.rsux.base.Component
+import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_disaster_news.view.*
 
@@ -18,7 +17,7 @@ class DiscoverItem(val latitude: Long,
                    val title: String,
                    val secondAgo: Long,
                    val shouldFillWidth: Boolean = false,
-                   val isLive: Boolean = false) : Component<DiscoverItem, DiscoverItem.ViewHolder> {
+                   val isLive: Boolean = false) : Item<DiscoverItem> {
 
     override val viewType = DiscoverItem::class.java.hashCode()
 
@@ -26,7 +25,7 @@ class DiscoverItem(val latitude: Long,
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_disaster_news, parent, false))
     }
 
-    class ViewHolder(val view: View) : RelieveViewHolder<DiscoverItem, DiscoverItem.ViewHolder>(view) {
+    class ViewHolder(val view: View) : RelieveViewHolder<DiscoverItem>(view) {
         override fun bind(data: DiscoverItem) {
             view.apply {
                 val width = if (data.shouldFillWidth) LayoutParams.MATCH_PARENT else 146.dptoPx()

@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.relieve.android.R
-import com.relieve.android.rsux.base.Component
+import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_user_bar.view.*
 
 class UserBarItem(val greet: String, val name: String)
-    : Component<UserBarItem, UserBarItem.ViewHolder> {
+    : Item<UserBarItem> {
 
     override val viewType = UserBarItem::class.java.hashCode()
 
@@ -17,7 +17,7 @@ class UserBarItem(val greet: String, val name: String)
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_user_bar, parent, false))
     }
 
-    class ViewHolder(val view: View) : RelieveViewHolder<UserBarItem, UserBarItem.ViewHolder>(view) {
+    class ViewHolder(val view: View) : RelieveViewHolder<UserBarItem>(view) {
         override fun bind(data: UserBarItem) {
             if (data.greet.isNotEmpty()) view.tvGreet.visibility = View.VISIBLE
             view.tvGreet.text = data.greet.capitalize()

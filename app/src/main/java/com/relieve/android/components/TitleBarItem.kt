@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.relieve.android.R
-import com.relieve.android.rsux.base.Component
+import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_title_bar.view.*
 
-class TitleBarItem(val title: String = "", val subtitle: String = "") : Component<TitleBarItem, TitleBarItem.ViewHolder> {
+class TitleBarItem(val title: String = "", val subtitle: String = "") : Item<TitleBarItem> {
     override val viewType = TitleBarItem::class.java.hashCode()
 
     override fun createViewHolder(parent: ViewGroup): ViewHolder {
@@ -16,7 +16,7 @@ class TitleBarItem(val title: String = "", val subtitle: String = "") : Componen
             .inflate(R.layout.view_title_bar, parent, false))
     }
 
-    class ViewHolder(val view: View) : RelieveViewHolder<TitleBarItem, TitleBarItem.ViewHolder>(view) {
+    class ViewHolder(val view: View) : RelieveViewHolder<TitleBarItem>(view) {
         override fun unbind() {
             view.tvTitle.text = null
             view.tvSubtitle.visibility = View.GONE

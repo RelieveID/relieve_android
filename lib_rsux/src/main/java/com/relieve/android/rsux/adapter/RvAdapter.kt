@@ -3,44 +3,44 @@ package com.relieve.android.rsux.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.relieve.android.rsux.base.Component
+import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 
-abstract class RvAdapter<C: Component<C, VH>, VH: RelieveViewHolder<C, VH>>
-    : RecyclerView.Adapter<VH>() {
+abstract class RvAdapter : RecyclerView.Adapter<RelieveViewHolder<Component>>() {
 
-    protected val components = ArrayList<C>()
+    protected val items = ArrayList<Item<*>>()
 
-    override fun getItemCount(): Int = components.size
+    override fun getItemCount(): Int = items.size
 
     override fun getItemViewType(position: Int): Int =
-        components[position].viewType
+        items[position].viewType
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
+    override fun onBindViewHolder(holder: RelieveViewHolder<Item<*>>, position: Int) {
         holder.unbind()
-        holder.bind(components[position])
+        holder.bind(items[position])
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
-        components.find { it.viewType == viewType }!!.createViewHolder(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RelieveViewHolder<Component> =
+        items.find { it.viewType == viewType }!!.createViewHolder(parent)
 
 
-    fun add (component: C) {
-        val currentSize = components.size
-        components.add(component)
+    fun add (component: Item<Component>) {
+        val currentSize = items.size
+        items.add(component)
         notifyItemInserted(currentSize)
     }
 
-    fun remove (component: C) {
-        val index = components.indexOf(component)
+    fun remove (component: Item<Component>) {
+        val index = items.indexOf(component)
         if (index > -1) {
-            components.remove(component)
+            items.remove(component)
             notifyItemRemoved(index)
         }
     }
 
     fun remove (index: Int) {
-        if (index > -1 && index < components.size) {
-            components.removeAt(index)
+        if (index > -1 && index < items.size) {
+            items.removeAt(index)
             notifyItemRemoved(index)
         }
     }

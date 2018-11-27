@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.relieve.android.R
-import com.relieve.android.rsux.base.Component
+import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_family.view.*
 
@@ -12,7 +12,7 @@ class FamilyItem(val image: String,
                  val status: FamilyStatus,
                  val nickName: String,
                  val isAddButton: Boolean = false,
-                 val onClick: (() -> Unit)? = null) : Component<FamilyItem, FamilyItem.ViewHolder> {
+                 val onClick: (() -> Unit)? = null) : Item<FamilyItem> {
 
     enum class FamilyStatus {
         Good, Bad, Unknown
@@ -25,7 +25,7 @@ class FamilyItem(val image: String,
             .inflate(R.layout.view_family, parent, false))
     }
 
-    class ViewHolder(val view: View) : RelieveViewHolder<FamilyItem, ViewHolder>(view) {
+    class ViewHolder(val view: View) : RelieveViewHolder<FamilyItem>(view) {
         override fun bind(data: FamilyItem) {
             view.tvUserName.text = data.nickName.capitalize()
             when (data.status) {

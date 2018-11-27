@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import com.relieve.android.R
-import com.relieve.android.rsux.base.Component
+import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_emergency_call.view.*
 
 class EmergencyOptionItem(@DrawableRes val icon: Int,
                           val text: String,
                           val onclick: (() -> Unit)? = null)
-    : Component<EmergencyOptionItem, EmergencyOptionItem.ViewHolder> {
+    : Item<EmergencyOptionItem> {
     override val viewType = EmergencyOptionItem::class.java.hashCode()
 
     override fun createViewHolder(parent: ViewGroup): ViewHolder {
@@ -21,7 +21,7 @@ class EmergencyOptionItem(@DrawableRes val icon: Int,
             .inflate(R.layout.view_emergency_call, parent, false))
     }
 
-    class ViewHolder(val view: View) : RelieveViewHolder<EmergencyOptionItem, ViewHolder>(view) {
+    class ViewHolder(val view: View) : RelieveViewHolder<EmergencyOptionItem>(view) {
         override fun bind(data: EmergencyOptionItem) {
             view.ivEmergencyFoundationIcon.setColorFilter(
                 ContextCompat.getColor(view.context, R.color.colorPrimary),

@@ -6,11 +6,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout.LayoutParams
 import androidx.core.content.ContextCompat
 import com.relieve.android.R
-import com.relieve.android.rsux.base.Component
+import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 import com.relieve.android.helper.dptoPx
 
-class ImageItem : Component<ImageItem, ImageItem.ViewHolder> {
+class ImageItem : Item<ImageItem> {
     override val viewType = ImageItem::class.java.hashCode()
 
     override fun createViewHolder(parent: ViewGroup): ViewHolder {
@@ -22,7 +22,7 @@ class ImageItem : Component<ImageItem, ImageItem.ViewHolder> {
         })
     }
 
-    class ViewHolder(val view: View) : RelieveViewHolder<ImageItem, ViewHolder> (view) {
+    class ViewHolder(val view: View) : RelieveViewHolder<ImageItem> (view) {
 
         override fun bind(data: ImageItem) {
 
