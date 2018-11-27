@@ -49,7 +49,7 @@ class DiscoverItem(val latitude: Long,
             }
         }
 
-        override fun unbind() {
+        override fun unbind(data: DiscoverItem) {
             view.tvDisasterTitle.text = null
             view.tvDisasterSubtitle.text = null
             view.tvDisasterLive.visibility = View.GONE

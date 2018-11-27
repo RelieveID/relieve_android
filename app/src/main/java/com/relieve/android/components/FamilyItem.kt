@@ -48,7 +48,7 @@ class FamilyItem(val image: String,
             }
         }
 
-        override fun unbind() {
+        override fun unbind(data: FamilyItem) {
             view.tvUserName.text = null
             view.vDangerBg.visibility = View.INVISIBLE
             view.vSafeBg.visibility = View.INVISIBLE

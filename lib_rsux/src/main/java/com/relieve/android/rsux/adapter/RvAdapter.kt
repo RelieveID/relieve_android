@@ -1,16 +1,14 @@
 package com.relieve.android.rsux.adapter
 
-import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.relieve.android.rsux.base.Component
 import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
-import java.lang.Exception
 
-abstract class RvAdapter : RecyclerView.Adapter<RelieveViewHolder<Component>>() {
+open class RvAdapter : RecyclerView.Adapter<RelieveViewHolder<Component>>() {
 
-    protected val items = ArrayList<Item<Component>>()
+    protected val items = mutableListOf<Item<Component>>()
 
     override fun getItemCount(): Int = items.size
 
@@ -22,7 +20,7 @@ abstract class RvAdapter : RecyclerView.Adapter<RelieveViewHolder<Component>>() 
     }
 
     override fun onBindViewHolder(holder: RelieveViewHolder<Component>, position: Int) {
-        holder.unbind()
+        holder.unbind(items[position])
         holder.bind(items[position])
     }
 

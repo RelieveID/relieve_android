@@ -18,7 +18,7 @@ class SpaceItem(val width: Int, val height: Int) : Item<SpaceItem> {
             view.layoutParams = LayoutParams(data.width, data.height)
         }
 
-        override fun unbind() {
+        override fun unbind(data: SpaceItem) {
 
         }
     }

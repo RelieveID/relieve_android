@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.relieve.android.R
+import com.relieve.android.rsux.base.Component
 import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_disaster_news.view.*
@@ -11,7 +12,7 @@ import kotlinx.android.synthetic.main.view_disaster_news.view.*
 class DisasterItem(val latitude: Long,
                    val longitude: Long,
                    val title: String,
-                   val subtitle: String) : Item<DisasterItem> {
+                   val subtitle: String) : Component, Item<DisasterItem> {
 
     override val viewType = DisasterItem::class.java.hashCode()
 
@@ -25,7 +26,7 @@ class DisasterItem(val latitude: Long,
             view.tvDisasterSubtitle.text = data.subtitle.capitalize()
         }
 
-        override fun unbind() {
+        override fun unbind(data: DisasterItem) {
             view.tvDisasterTitle.text = null
             view.tvDisasterSubtitle.text = null
         }

@@ -28,7 +28,7 @@ class ImageItem : Item<ImageItem> {
 
         }
 
-        override fun unbind() {
+        override fun unbind(data: ImageItem) {
 
         }
     }

@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.relieve.android.rsux.base.RelieveViewHolder
 import com.relieve.android.helper.dptoPx
 import com.relieve.android.rsux.adapter.RvAdapter
+import com.relieve.android.rsux.base.Component
 import com.relieve.android.rsux.base.Item
 
-class HorizontalRecycler<I: Item<I>>
-    : Item<HorizontalRecycler<I>>, RvAdapter(){
+class HorizontalRecycler(val localItem : List<Item<*>>) : Item<HorizontalRecycler>, RvAdapter(){
 
     override val viewType = HorizontalRecycler::class.java.hashCode()
 
-    override fun createViewHolder(parent: ViewGroup): ViewHolder<I> {
+    override fun createViewHolder(parent: ViewGroup): ViewHolder {
         val rv = RecyclerView(parent.context).apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
                 setPadding(0, 8.dptoPx(), 0, 8.dptoPx())
@@ -27,22 +27,18 @@ class HorizontalRecycler<I: Item<I>>
             adapter = this@HorizontalRecycler
         }
 
-        return ViewHolder(rv, this@HorizontalRecycler)
+        return ViewHolder(rv)
     }
 
-    class ViewHolder<I: Item<I>>
-        (val view: View, private val adapter: HorizontalRecycler<I>)
-        : RelieveViewHolder<HorizontalRecycler<I>>(view) {
+    class ViewHolder (val view: View)
+        : RelieveViewHolder<HorizontalRecycler>(view) {
 
-        override fun bind(data: HorizontalRecycler<I>) {
-            for (component in data.items) {
-                adapter.add(component)
-            }
-            adapter.notifyDataSetChanged()
+        override fun bind(data: HorizontalRecycler) {
+            data.localItem.forEach { data.add(it) }
         }
 
-        override fun unbind() {
-            adapter.items.clear()
+        override fun unbind(data: HorizontalRecycler) {
+            data.items.clear()
         }
     }
 }

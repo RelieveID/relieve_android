@@ -8,30 +8,32 @@ import androidx.recyclerview.widget.RecyclerView
 import com.relieve.android.rsux.base.RelieveViewHolder
 import com.relieve.android.helper.dptoPx
 import com.relieve.android.rsux.adapter.RvAdapter
+import com.relieve.android.rsux.base.Component
 import com.relieve.android.rsux.base.Item
 
-class VerticalGridRecycler <I: Item<I>>
-    (private val columnNumber: Int, val spanDecider: (viewType: Int) -> Int)
-    : Item<VerticalGridRecycler<I>>, RvAdapter() {
+class VerticalGridRecycler (val localItem: List<Item<*>>,
+                            private val columnNumber: Int,
+                            val spanDecider: (viewType: Int) -> Int)
+    : Item<VerticalGridRecycler>, RvAdapter() {
 
     override val viewType = VerticalGridRecycler::class.java.hashCode()
 
-    override fun createViewHolder(parent: ViewGroup): RelieveViewHolder<Item<*>> {
+    override fun createViewHolder(parent: ViewGroup): ViewHolder {
         val rv = RecyclerView(parent.context).apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
                 setPadding(12.dptoPx(), 0, 12.dptoPx(), 0)
             }
-
-            adapter = this@VerticalGridRecycler
 
             layoutManager = GridLayoutManager(context, columnNumber).apply {
                 spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                     override fun getSpanSize(position: Int) = this@VerticalGridRecycler.getSpanSize(position)
                 }
             }
+
+            adapter = this@VerticalGridRecycler
         }
 
-        return ViewHolder(rv, this)
+        return ViewHolder(rv)
     }
 
     fun getSpanSize(position: Int) = if (position < items.size) {
@@ -40,19 +42,15 @@ class VerticalGridRecycler <I: Item<I>>
         1
     }
 
-    class ViewHolder <I: Item<I>>
-        (val view: View, private val adapter: VerticalGridRecycler<I>)
-        : RelieveViewHolder<Item<*>>(view) {
+    class ViewHolder (val view: View)
+        : RelieveViewHolder<VerticalGridRecycler>(view) {
 
-        override fun bind(data: VerticalGridRecycler<I>) {
-            for (component in data.items) {
-                adapter.add(component)
-            }
-            adapter.notifyDataSetChanged()
+        override fun bind(data: VerticalGridRecycler) {
+            data.localItem.forEach { data.add(it) }
         }
 
-        override fun unbind() {
-            adapter.items.clear()
+        override fun unbind(data: VerticalGridRecycler) {
+            data.items.clear()
         }
     }
 }

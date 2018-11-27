@@ -19,7 +19,7 @@ class LocationPickerItem : Item<LocationPickerItem> {
 
         }
 
-        override fun unbind() {
+        override fun unbind(data: LocationPickerItem) {
 
         }
     }

@@ -17,16 +17,16 @@ class TitleBarItem(val title: String = "", val subtitle: String = "") : Item<Tit
     }
 
     class ViewHolder(val view: View) : RelieveViewHolder<TitleBarItem>(view) {
-        override fun unbind() {
-            view.tvTitle.text = null
-            view.tvSubtitle.visibility = View.GONE
-            view.tvSubtitle.text = null
-        }
-
         override fun bind(data: TitleBarItem) {
             view.tvTitle.text = data.title.capitalize()
             if (data.subtitle.isNotEmpty()) view.tvSubtitle.visibility = View.VISIBLE
             view.tvSubtitle.text = data.subtitle.capitalize()
+        }
+
+        override fun unbind(data: TitleBarItem) {
+            view.tvTitle.text = null
+            view.tvSubtitle.visibility = View.GONE
+            view.tvSubtitle.text = null
         }
     }
 }

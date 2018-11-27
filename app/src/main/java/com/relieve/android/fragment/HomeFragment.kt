@@ -19,40 +19,39 @@ import com.relieve.android.rsux.adapter.RvAdapter
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
 
 class HomeFragment : Fragment() {
-    class Adapter(ctx: Context) : RvAdapter<RelieveViewHolder>(ctx) {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RelieveViewHolder {
-            return when (viewType) {
-                TitleBarItem.VIEW_TYPE -> { TitleBarItem.createViewHolder(ctx, parent) }
-                UserBarItem.VIEW_TYPE -> { UserBarItem.createViewHolder(ctx, parent) }
-                StatusBarItem.VIEW_TYPE -> { StatusBarItem.createViewHolder(ctx, parent) }
-                HorizontalRecycler.VIEW_TYPE -> {
-                    HorizontalRecycler.createViewHolder(ctx) { childParent, childViewType ->
-                        when (childViewType) {
-                            SpaceItem.VIEW_TYPE -> { SpaceItem.createViewHolder(ctx) }
-                            DiscoverItem.VIEW_TYPE -> { DiscoverItem.createViewHolder(ctx, childParent) }
-                            FamilyItem.VIEW_TYPE -> { FamilyItem.createViewHolder(ctx, childParent) }
-                            else -> object : RelieveViewHolder(View(ctx)) {
-                                override fun bind(data: Component) {}
-                            }
-                        }
-                    }
-                }
-                DiscoverItem.VIEW_TYPE -> { DiscoverItem.createViewHolder(ctx, parent) }
-                FamilyItem.VIEW_TYPE -> { FamilyItem.createViewHolder(ctx, parent) }
-                else -> object : RelieveViewHolder(View(ctx)) {
-                    override fun bind(data: Component) {}
-                }
-            }
-        }
-    }
+//    class Adapter(ctx: Context) : RvAdapter<RelieveViewHolder>(ctx) {
+//        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RelieveViewHolder {
+//            return when (viewType) {
+//                TitleBarItem.VIEW_TYPE -> { TitleBarItem.createViewHolder(ctx, parent) }
+//                UserBarItem.VIEW_TYPE -> { UserBarItem.createViewHolder(ctx, parent) }
+//                StatusBarItem.VIEW_TYPE -> { StatusBarItem.createViewHolder(ctx, parent) }
+//                HorizontalRecycler.VIEW_TYPE -> {
+//                    HorizontalRecycler.createViewHolder(ctx) { childParent, childViewType ->
+//                        when (childViewType) {
+//                            SpaceItem.VIEW_TYPE -> { SpaceItem.createViewHolder(ctx) }
+//                            DiscoverItem.VIEW_TYPE -> { DiscoverItem.createViewHolder(ctx, childParent) }
+//                            FamilyItem.VIEW_TYPE -> { FamilyItem.createViewHolder(ctx, childParent) }
+//                            else -> object : RelieveViewHolder(View(ctx)) {
+//                                override fun bind(data: Component) {}
+//                            }
+//                        }
+//                    }
+//                }
+//                DiscoverItem.VIEW_TYPE -> { DiscoverItem.createViewHolder(ctx, parent) }
+//                FamilyItem.VIEW_TYPE -> { FamilyItem.createViewHolder(ctx, parent) }
+//                else -> object : RelieveViewHolder(View(ctx)) {
+//                    override fun bind(data: Component) {}
+//                }
+//            }
+//        }
+//    }
 
-    private lateinit var adapter: Adapter
+    private val adapter = RvAdapter()
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.recycler_view_full, container, false).apply {
-            adapter = Adapter(context)
             this.rvFull.layoutManager = LinearLayoutManager(context)
             this.rvFull.adapter = adapter
         }
@@ -67,32 +66,24 @@ class HomeFragment : Fragment() {
             add(UserBarItem("Halo", "Muh. Alif Akbar"))
             add(StatusBarItem(".jpg", "Bojongsoang, Bandung Barat"))
             add(TitleBarItem("Discover", "Update informasi terkini bencana di seluruh Indonesia"))
-            add(
-                HorizontalRecycler(
-                    listOf(
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT),
-                        DiscoverItem(0, 0, "Palu", 0, true),
-                        DiscoverItem(0, 0, "Lombok", 100, false),
-                        DiscoverItem(0, 0, "Lombok", 3_000, false),
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
-                    )
-                )
-            )
+            add(HorizontalRecycler(listOf(
+                SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT),
+                DiscoverItem(0, 0, "Palu", 0, false),
+                DiscoverItem(0, 0, "Lombok", 100, false),
+                DiscoverItem(0, 0, "Lombok", 3_000, false),
+                SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
+            )))
             add(TitleBarItem("Daftar Kerabat", "Pantau kondisi kerabat terdekat anda dimanapun berada"))
-            add(
-                HorizontalRecycler(
-                    listOf(
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT),
-                        FamilyItem(".jpg", FamilyStatus.Good, "Ayah"),
-                        FamilyItem(".jpg", FamilyStatus.Bad, "Ibu"),
-                        FamilyItem(".jpg", FamilyStatus.Unknown, "Kasih Ku") {
-                            test()
-                        },
-                        FamilyItem("", FamilyStatus.Unknown, "", true),
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
-                    )
-                )
-            )
+            add(HorizontalRecycler(listOf(
+                SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT),
+                FamilyItem(".jpg", FamilyItem.FamilyStatus.Good, "Ayah"),
+                FamilyItem(".jpg", FamilyItem.FamilyStatus.Bad, "Ibu"),
+                FamilyItem(".jpg", FamilyItem.FamilyStatus.Unknown, "Kasih Ku") {
+                    test()
+                },
+                FamilyItem("", FamilyItem.FamilyStatus.Unknown, "", true),
+                SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
+            )))
         }
     }
 

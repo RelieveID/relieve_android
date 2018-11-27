@@ -23,7 +23,7 @@ class StatusBarItem(val image: String = "",
             view.tvUserLocation.text = data.location.capitalize()
         }
 
-        override fun unbind() {
+        override fun unbind(data: StatusBarItem) {
             view.tvUserLocation.text = null
         }
     }
