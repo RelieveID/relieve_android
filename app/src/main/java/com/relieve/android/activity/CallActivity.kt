@@ -12,6 +12,7 @@ import com.relieve.android.rsux.adapter.HorizontalRecycler
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
 import com.relieve.android.rsux.helper.dptoPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
+import com.relieve.android.rsux.component.SpaceItem
 import kotlinx.android.synthetic.main.recycler_view_full.*
 import kotlinx.android.synthetic.main.recycler_view_with_toolbar.*
 
@@ -58,7 +59,10 @@ class CallActivity : AppCompatActivity() {
             add(
                 HorizontalRecycler(
                     listOf(
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT),
+                        SpaceItem(
+                            8.dptoPx(),
+                            LinearLayout.LayoutParams.MATCH_PARENT
+                        ),
                         FamilyItem(".jpg", FamilyItem.FamilyStatus.Good, "Ayah"),
                         FamilyItem(".jpg", FamilyItem.FamilyStatus.Bad, "Ibu"),
                         FamilyItem(".jpg", FamilyItem.FamilyStatus.Unknown, "Kasih Ku") {
@@ -77,14 +81,29 @@ class CallActivity : AppCompatActivity() {
             setContentView(layoutInflater.inflate(R.layout.recycler_view_full, null))
             this.rvFull.layoutManager = LinearLayoutManager(this.context)
             this.rvFull.adapter = VerticalAdapter().apply {
-                this.add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 24.dptoPx()))
+                this.add(
+                    SpaceItem(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        24.dptoPx()
+                    )
+                )
                 this.add(TitleBarItem("Daftar kontak ambulance", ""))
-                this.add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 16.dptoPx()))
+                this.add(
+                    SpaceItem(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        16.dptoPx()
+                    )
+                )
                 this.add(CallItem("RS Islam Muhammadiyah", "0.8 Km", ""))
                 this.add(CallItem("RS Islam Muhammadiyah", "2.3 Km", ""))
                 this.add(CallItem("RS Islam Muhammadiyah", "2.8 Km", ""))
                 this.add(CallItem("RS Islam Muhammadiyah", "3.4 Km", ""))
-                this.add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 16.dptoPx()))
+                this.add(
+                    SpaceItem(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        16.dptoPx()
+                    )
+                )
             }
             show()
         }

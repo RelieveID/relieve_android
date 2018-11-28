@@ -15,6 +15,7 @@ import com.relieve.android.components.*
 import com.relieve.android.rsux.adapter.HorizontalRecycler
 import com.relieve.android.rsux.helper.dptoPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
+import com.relieve.android.rsux.component.SpaceItem
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
 import kotlinx.android.synthetic.main.sheet_notice.*
 
@@ -43,7 +44,10 @@ class MainHomeFragment : Fragment() {
             add(
                 HorizontalRecycler(
                     listOf(
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT),
+                        SpaceItem(
+                            8.dptoPx(),
+                            LinearLayout.LayoutParams.MATCH_PARENT
+                        ),
                         DiscoverItem(0, 0, "Palu", 0, false),
                         DiscoverItem(0, 0, "Lombok", 100, false),
                         DiscoverItem(0, 0, "Lombok", 3_000, false),
@@ -55,7 +59,10 @@ class MainHomeFragment : Fragment() {
             add(
                 HorizontalRecycler(
                     listOf(
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT),
+                        SpaceItem(
+                            8.dptoPx(),
+                            LinearLayout.LayoutParams.MATCH_PARENT
+                        ),
                         FamilyItem(".jpg", FamilyItem.FamilyStatus.Good, "Ayah"),
                         FamilyItem(".jpg", FamilyItem.FamilyStatus.Bad, "Ibu"),
                         FamilyItem(".jpg", FamilyItem.FamilyStatus.Unknown, "Kasih Ku") {

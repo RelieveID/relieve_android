@@ -9,6 +9,7 @@ import com.relieve.android.components.*
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
 import com.relieve.android.rsux.helper.dptoPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
+import com.relieve.android.rsux.component.SpaceItem
 import kotlinx.android.synthetic.main.recycler_view_with_toolbar.*
 
 class CallListActivity : AppCompatActivity() {
@@ -49,6 +50,8 @@ class CallListActivity : AppCompatActivity() {
                 ) { 1 }
             )
         }
+
+
     }
 
     private fun test() {
