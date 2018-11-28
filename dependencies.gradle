@@ -23,6 +23,7 @@ ext.versions = [
 
         firebaseCore       : '16.0.5',
         firebaseInvites    : '16.0.5',
+        firebaseAuth       : '16.0.5',
         firebaseConfig     : '16.1.0',
         firebaseAppIndexing: '16.0.2',
         firebaseMessaging  : '17.3.4',

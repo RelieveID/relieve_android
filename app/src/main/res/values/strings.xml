@@ -68,6 +68,7 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="boarding_login">Login</string>
+    <string name="unknown_error">Terjadi kesalahan, silahkan coba beberapa saat lagi</string>
 
     <!--Boarding Register-->
     <string name="bod_format">%d-%d-%d</string>
