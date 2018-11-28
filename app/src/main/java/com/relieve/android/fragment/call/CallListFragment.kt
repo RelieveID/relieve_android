@@ -12,7 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
 import com.relieve.android.components.*
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
-import com.relieve.android.rsux.helper.dptoPx
+import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
 import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.rsux.component.SpaceItem
@@ -43,9 +43,9 @@ class CallListFragment : Fragment() {
         adapter.removeAll()
         adapter.apply {
             add(ImageItem())
-            add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 8.dptoPx()))
+            add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 8.dpToPx()))
             add(UserBarItem("", "Tentukan Panggilan Pilihanmu"))
-            add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 12.dptoPx()))
+            add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 12.dpToPx()))
             add(
                 VerticalGridRecycler(
                     listOf(

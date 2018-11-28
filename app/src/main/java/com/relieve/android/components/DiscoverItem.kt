@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout.LayoutParams
 import androidx.core.view.setMargins
 import com.relieve.android.R
-import com.relieve.android.rsux.helper.dptoPx
+import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.helper.secondToTimeText
 import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
@@ -28,9 +28,9 @@ class DiscoverItem(val latitude: Long,
     class ViewHolder(val view: View) : RelieveViewHolder<DiscoverItem>(view) {
         override fun bind(data: DiscoverItem) {
             view.apply {
-                val width = if (data.shouldFillWidth) LayoutParams.MATCH_PARENT else 146.dptoPx()
+                val width = if (data.shouldFillWidth) LayoutParams.MATCH_PARENT else 146.dpToPx()
                 layoutParams = LayoutParams(width, LayoutParams.WRAP_CONTENT).apply {
-                    setMargins(4.dptoPx())
+                    setMargins(4.dpToPx())
                 }
             }
 

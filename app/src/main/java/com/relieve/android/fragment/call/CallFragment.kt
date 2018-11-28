@@ -13,7 +13,7 @@ import com.relieve.android.R
 import com.relieve.android.components.*
 import com.relieve.android.rsux.adapter.HorizontalRecycler
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
-import com.relieve.android.rsux.helper.dptoPx
+import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
 import com.relieve.android.rsux.component.SpaceItem
 import kotlinx.android.synthetic.main.recycler_view_full.*
@@ -65,7 +65,7 @@ class CallFragment : Fragment() {
                 HorizontalRecycler(
                     listOf(
                         SpaceItem(
-                            8.dptoPx(),
+                            8.dpToPx(),
                             LinearLayout.LayoutParams.MATCH_PARENT
                         ),
                         FamilyItem(".jpg", FamilyItem.FamilyStatus.Good, "Ayah"),
@@ -74,7 +74,7 @@ class CallFragment : Fragment() {
                             test()
                         },
                         FamilyItem("", FamilyItem.FamilyStatus.Unknown, "", true),
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
+                        SpaceItem(8.dpToPx(), LinearLayout.LayoutParams.MATCH_PARENT)
                     )
                 )
             )
@@ -90,14 +90,14 @@ class CallFragment : Fragment() {
                     this.add(
                         SpaceItem(
                             LinearLayout.LayoutParams.MATCH_PARENT,
-                            24.dptoPx()
+                            24.dpToPx()
                         )
                     )
                     this.add(TitleBarItem("Daftar kontak ambulance", ""))
                     this.add(
                         SpaceItem(
                             LinearLayout.LayoutParams.MATCH_PARENT,
-                            16.dptoPx()
+                            16.dpToPx()
                         )
                     )
                     this.add(CallItem("RS Islam Muhammadiyah", "0.8 Km", ""))
@@ -107,7 +107,7 @@ class CallFragment : Fragment() {
                     this.add(
                         SpaceItem(
                             LinearLayout.LayoutParams.MATCH_PARENT,
-                            16.dptoPx()
+                            16.dpToPx()
                         )
                     )
                 }

@@ -12,7 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.relieve.android.R
 import com.relieve.android.components.*
 import com.relieve.android.rsux.adapter.HorizontalRecycler
-import com.relieve.android.rsux.helper.dptoPx
+import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
 import com.relieve.android.rsux.component.SpaceItem
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
@@ -44,13 +44,13 @@ class DashboardHomeFragment : Fragment() {
                 HorizontalRecycler(
                     listOf(
                         SpaceItem(
-                            8.dptoPx(),
+                            8.dpToPx(),
                             LinearLayout.LayoutParams.MATCH_PARENT
                         ),
                         DiscoverItem(0, 0, "Palu", 0, false),
                         DiscoverItem(0, 0, "Lombok", 100, false),
                         DiscoverItem(0, 0, "Lombok", 3_000, false),
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
+                        SpaceItem(8.dpToPx(), LinearLayout.LayoutParams.MATCH_PARENT)
                     ), 1
                 )
             )
@@ -59,7 +59,7 @@ class DashboardHomeFragment : Fragment() {
                 HorizontalRecycler(
                     listOf(
                         SpaceItem(
-                            8.dptoPx(),
+                            8.dpToPx(),
                             LinearLayout.LayoutParams.MATCH_PARENT
                         ),
                         FamilyItem(".jpg", FamilyItem.FamilyStatus.Good, "Ayah"),
@@ -68,7 +68,7 @@ class DashboardHomeFragment : Fragment() {
                             test()
                         },
                         FamilyItem("", FamilyItem.FamilyStatus.Unknown, "", true),
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
+                        SpaceItem(8.dpToPx(), LinearLayout.LayoutParams.MATCH_PARENT)
                     ), 2
                 )
             )
