@@ -8,12 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.relieve.android.R
 import com.relieve.android.rsux.base.EditTextChangeListener
 import com.relieve.android.viewmodel.boarding.BoardingLoginVM
 import kotlinx.android.synthetic.main.fragment_boarding_login.*
-
 
 class BoardingLoginFragment : Fragment() {
     private val vModel by lazy {
@@ -24,7 +22,6 @@ class BoardingLoginFragment : Fragment() {
                               savedInstanceState: Bundle?) : View? {
         return inflater.inflate(R.layout.fragment_boarding_login, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,14 +40,20 @@ class BoardingLoginFragment : Fragment() {
         inputUsername.editText?.addTextChangedListener(object : EditTextChangeListener() {
             override fun onTextChanged(text: CharSequence, start: Int, before: Int, count: Int) {
                 if (text.isEmpty()) inputUsername.error = getString(R.string.please_fill)
-                else inputUsername.error = null
+                else {
+                    inputUsername.error = null
+                    inputUsername.isErrorEnabled = false
+                }
             }
         })
 
         inputPassword.editText?.addTextChangedListener(object : EditTextChangeListener() {
             override fun onTextChanged(text: CharSequence, start: Int, before: Int, count: Int) {
                 if (text.isEmpty()) inputPassword.error = getString(R.string.please_fill)
-                else inputPassword.error = null
+                else {
+                    inputPassword.error = null
+                    inputPassword.isErrorEnabled = false
+                }
             }
         })
 
