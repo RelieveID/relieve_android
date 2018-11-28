@@ -116,5 +116,5 @@
         android:id="@+id/disasterFragment"
         android:name="com.relieve.android.fragment.disaster.DisasterFragment"
         android:label="activity_disaster"
-        tools:layout="@layout/activity_disaster" />
+        tools:layout="@layout/fragment_disaster" />
 </navigation>
