@@ -29,6 +29,9 @@ class BoardingActivity : AppCompatActivity() {
                 R.id.boardingLoginFragment, R.id.boardingRegisterFragment -> {
                     toolbar.navigationIcon = ContextCompat.getDrawable(this, R.drawable.ic_back_arrow)
                 }
+                R.id.walkthroughFragment -> {
+                    toolbar.navigationIcon = null
+                }
             }
 
         }
