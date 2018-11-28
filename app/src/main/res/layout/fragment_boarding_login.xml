@@ -37,15 +37,16 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivBoardingLogin"
                 app:layout_constraintTop_toBottomOf="@+id/tvGreet"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="26dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/rounded_corner_rect_grey_big"
+                app:srcCompat="@mipmap/login"
+                android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tvUsername"
+                android:id="@+id/inputUsername"
                 app:layout_constraintTop_toBottomOf="@+id/ivBoardingLogin"
                 android:layout_marginTop="48dp"
                 android:layout_marginStart="16dp"
@@ -65,8 +66,8 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tvPassword"
-                app:layout_constraintTop_toBottomOf="@+id/tvUsername"
+                android:id="@+id/inputPassword"
+                app:layout_constraintTop_toBottomOf="@+id/inputUsername"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 app:boxStrokeColor="@color/colorEmptyRect"
@@ -90,7 +91,7 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/circular_std_book"
                 android:textColor="@color/colorPrimary"
-                app:layout_constraintTop_toBottomOf="@id/tvPassword"
+                app:layout_constraintTop_toBottomOf="@id/inputPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:text="@string/forgot_password"
                 android:layout_width="wrap_content"

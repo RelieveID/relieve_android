@@ -61,11 +61,14 @@
     <string name="boarding_nice_to_see_you">Nice to see you</string>
 
     <!--Boarding Login-->
-    <string name="boarding_register">Daftar</string>
-    <string name="boarding_login">Login</string>
+    <string name="please_fill">Diisi dulu ya</string>
     <string name="username">Username</string>
-    <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="boarding_login">Login</string>
+
+    <!--Boarding Register-->
+    <string name="boarding_register">Daftar</string>
+    <string name="email">Email</string>
     <string name="confirm_password">Ketik Ulang Password</string>
     <string name="forgot_password">Lupa Password?</string>
     <string name="full_name">Nama Lengkap</string>

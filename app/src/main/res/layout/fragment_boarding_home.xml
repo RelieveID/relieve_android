@@ -21,10 +21,10 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbarBoardingHome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/rounded_corner_rect_grey_big"
+        app:srcCompat="@mipmap/landing_page"
         android:layout_margin="16dp"
         android:layout_width="match_parent"
-        android:layout_height="303dp" />
+        android:layout_height="312dp" />
 
 
     <TextView
