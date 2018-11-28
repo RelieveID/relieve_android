@@ -81,8 +81,6 @@ ext.versions = [
         annimonStream      : '1.1.6',
         fabric             : '1.26.1',
         parceler           : '1.1.6',
-        sectionedRv        : '0.2.3',
-        apmemLayouts       : '1.10@aar',
         junit              : '4.12',
         robolectric        : '4.0',
         mockk              : '1.8.12'

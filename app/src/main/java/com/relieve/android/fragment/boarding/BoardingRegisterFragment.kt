@@ -1,6 +1,7 @@
 package com.relieve.android.fragment.boarding
 
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import androidx.fragment.app.Fragment
@@ -11,9 +12,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.relieve.android.R
 import com.relieve.android.rsux.base.EditTextChangeListener
+import com.relieve.android.rsux.helper.isEmailValid
 import com.relieve.android.viewmodel.boarding.BoardingRegisterVM
 import com.relieve.android.viewmodel.boarding.UserData
 import kotlinx.android.synthetic.main.fragment_boarding_register.*
+import java.util.*
 
 class BoardingRegisterFragment : Fragment() {
     private val vModel by lazy {
@@ -72,6 +75,18 @@ class BoardingRegisterFragment : Fragment() {
             findNavController().navigate(R.id.action_boardingRegisterFragment_to_dashboardFragment)
         }
 
+        inputDateOfBirth.editText?.setOnClickListener {
+            val c = Calendar.getInstance()
+            val currentYear = c.get(Calendar.YEAR)
+            val currentMonth = c.get(Calendar.MONTH)
+            val currentDay = c.get(Calendar.DAY_OF_MONTH)
+
+            DatePickerDialog(inputDateOfBirth.context, { _, year, month, day ->
+                inputDateOfBirth.editText?.setText(getString(R.string.bod_format, year, month+1, day))
+            }, currentYear, currentMonth, currentDay).show()
+        }
+
+
         tvRegister.setOnClickListener {
             val username = inputUsername.editText?.text
             val password = inputPassword.editText?.text
@@ -84,15 +99,31 @@ class BoardingRegisterFragment : Fragment() {
 
             val texts = listOf(username, password, confirmPassword, fullName, dob, email, phoneArea, phoneNumber)
 
-            var hasEmpty = false
+            var allIsValid = true
             texts.forEachIndexed { index, editable ->
                 if (editable.isNullOrEmpty()) {
                     textInputs[index].error = getString(R.string.please_fill)
-                    hasEmpty = true
+                    allIsValid = false
                 }
             }
 
-            if (!hasEmpty) {
+            if (!email.toString().isEmailValid()) {
+                allIsValid = false
+                inputEmail.error = getString(R.string.error_email_format)
+            }
+
+            if (password.toString().length < 8) {
+                allIsValid = false
+                inputPassword.error = getString(R.string.error_password_length)
+            }
+
+            if (password.toString() != confirmPassword.toString()) {
+                allIsValid = false
+                inputPassword.error = getString(R.string.error_password_match)
+                inputConfirmPassword.error = getString(R.string.error_password_match)
+            }
+
+            if (allIsValid) {
                 vModel.registerClick(UserData(
                     username.toString(),
                     password.toString(),

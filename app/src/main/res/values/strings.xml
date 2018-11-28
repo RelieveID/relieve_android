@@ -62,11 +62,15 @@
 
     <!--Boarding Login-->
     <string name="please_fill">Diisi dulu ya</string>
+    <string name="error_email_format">Sepertinya kamu salah tulis email</string>
+    <string name="error_password_match">password kamu tidak sama</string>
+    <string name="error_password_length">buat password minimal 8 huruf</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="boarding_login">Login</string>
 
     <!--Boarding Register-->
+    <string name="bod_format">%d-%d-%d</string>
     <string name="boarding_register">Daftar</string>
     <string name="email">Email</string>
     <string name="confirm_password">Ketik Ulang Password</string>
