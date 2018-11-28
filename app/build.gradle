@@ -65,6 +65,9 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
     implementation "com.google.code.gson:gson:$versions.gson"
 
+    // firebase
+    implementation "com.google.firebase:firebase-core:$versions.firebaseCore"
+
     // leak canary
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakCanary"
@@ -79,3 +82,5 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:1.0.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
 }
+
+apply plugin: 'com.google.gms.google-services'
