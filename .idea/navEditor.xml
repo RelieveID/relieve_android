@@ -187,7 +187,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_boardingRegisterFragment_to_walkthroughFragment">
+                            <entry key="action_boardingRegisterFragment_to_dashboardFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -235,8 +235,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1079" />
-                            <option name="y" value="223" />
+                            <option name="x" value="905" />
+                            <option name="y" value="219" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -247,6 +247,11 @@
                               </value>
                             </entry>
                             <entry key="action_dashboardFragment_to_disasterFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_dashboardFragment_to_walkthroughFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -273,18 +278,9 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="763" />
-                            <option name="y" value="-83" />
+                            <option name="x" value="1073" />
+                            <option name="y" value="-211" />
                           </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_walkthroughFragment_to_dashboardFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

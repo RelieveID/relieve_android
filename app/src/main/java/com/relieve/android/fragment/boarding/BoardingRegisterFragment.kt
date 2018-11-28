@@ -37,7 +37,7 @@ class BoardingRegisterFragment : Fragment() {
             findNavController().navigateUp()
         }
         tvRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_boardingRegisterFragment_to_walkthroughFragment)
+            findNavController().navigate(R.id.action_boardingRegisterFragment_to_dashboardFragment)
         }
     }
 }

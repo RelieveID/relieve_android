@@ -9,6 +9,7 @@ import androidx.fragment.app.transaction
 import androidx.navigation.fragment.findNavController
 import com.relieve.android.helper.BottomNavBar
 import com.relieve.android.R
+import com.relieve.android.helper.PreferencesHelper
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 class DashboardFragment : Fragment() {
@@ -50,9 +51,21 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         bindNavClick()
 
+        shouldShowWalkthrought()
+
         val index = if (navStack.current > -1) navStack.current else 0
         selectScreen(index)
     }
+
+    private fun shouldShowWalkthrought() {
+        context?.run {
+            if (!PreferencesHelper(this).hasSeenWalkthrough) {
+                PreferencesHelper(this).hasSeenWalkthrough = true
+                findNavController().navigate(R.id.action_dashboardFragment_to_walkthroughFragment)
+            }
+        }
+    }
+
 
     private fun selectFragment(index: Int, isBackAction: Boolean = false) {
         if (index < fragments.size) {
