@@ -63,6 +63,9 @@ dependencies {
 
     // retrofit + gson
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+
     implementation "com.google.code.gson:gson:$versions.gson"
 
     // leak canary
