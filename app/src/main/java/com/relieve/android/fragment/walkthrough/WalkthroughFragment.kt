@@ -51,7 +51,7 @@ class WalkthroughFragment : Fragment() {
             if (current < fragments.size - 1) {
                 vpWalkThrough.setCurrentItem(current + 1, true)
             } else {
-                findNavController().navigate(R.id.mainActivity)
+                findNavController().navigate(R.id.action_walkthroughFragment_to_dashboardFragment)
             }
         }
     }

@@ -34,7 +34,7 @@ class BoardingLoginFragment : Fragment() {
         }
 
         tvLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_boardingLoginFragment_to_mainActivity)
+            findNavController().navigate(R.id.action_boardingLoginFragment_to_dashboardFragment)
         }
     }
 }

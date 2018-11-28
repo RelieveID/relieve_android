@@ -6,7 +6,7 @@ import com.relieve.android.R
 import kotlinx.android.synthetic.main.view_bottom_nav.view.*
 
 class BottomNavBar (val view: View) {
-    private val buttons = listOf(
+    private val buttons = listOf (
         view.ivHome to view.tvHome,
         view.ivDiscover to view.tvDiscover,
         view.ivChat to view.tvChat,
