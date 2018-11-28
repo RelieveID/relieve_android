@@ -13,14 +13,19 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvWithToolbar"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/rootCoordinator"
+        android:layout_weight="1"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintBottom_toTopOf="@+id/btnAction"
-        android:layout_weight="1"
-        tools:listitem="@layout/view_emergency_call"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvWithToolbar"
+            tools:listitem="@layout/view_emergency_call"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <TextView
         android:id="@+id/btnAction"
         android:background="@drawable/rounded_corner_rect_grey_big"
@@ -32,7 +37,7 @@
         android:height="52dp"
         android:text="@string/save_service"
         android:layout_margin="16dp"
-        app:layout_constraintTop_toBottomOf="@id/rvWithToolbar"
+        app:layout_constraintTop_toBottomOf="@id/rootCoordinator"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

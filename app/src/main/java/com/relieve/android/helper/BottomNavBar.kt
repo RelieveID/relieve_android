@@ -21,7 +21,8 @@ class BottomNavBar (val view: View) {
         }
     }
 
-    private fun selectButton(index: Int) {
+    fun selectButton(index: Int) {
+        resetButtons()
         buttons[index].first.setColorFilter(ContextCompat.getColor(view.context,
             R.color.colorPrimary
         ),
@@ -32,7 +33,6 @@ class BottomNavBar (val view: View) {
 
     fun setHomeClickListener (callback: () -> Unit) {
         view.homeClickArea.setOnClickListener {
-            resetButtons()
             selectButton(0)
             callback()
         }
@@ -40,7 +40,6 @@ class BottomNavBar (val view: View) {
 
     fun setDiscoverClickListener (callback: () -> Unit) {
         view.discoverClickArea.setOnClickListener {
-            resetButtons()
             selectButton(1)
             callback()
         }
@@ -54,7 +53,6 @@ class BottomNavBar (val view: View) {
 
     fun setChatClickListener (callback: () -> Unit) {
         view.chatClickArea.setOnClickListener {
-            resetButtons()
             selectButton(2)
             callback()
         }
@@ -62,7 +60,6 @@ class BottomNavBar (val view: View) {
 
     fun setProfileClickListener (callback: () -> Unit) {
         view.profileClickArea.setOnClickListener {
-            resetButtons()
             selectButton(3)
             callback()
         }
