@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager.widget.ViewPager
 import com.relieve.android.R
 import kotlinx.android.synthetic.main.fragment_walkthrough.*
 
@@ -37,14 +38,21 @@ class WalkthroughFragment : Fragment() {
             override fun getItem(position: Int) = fragments[position]
             override fun getCount() = fragments.size
         }
+        vpWalkThrough.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) { }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) { }
+
+            override fun onPageSelected(position: Int) {
+                if (position == fragments.size - 1) {
+                    tvNexSlide.text = getString(R.string.done)
+                } else {
+                    tvNexSlide.text = getString(R.string.next)
+                }
+            }
+        })
 
         dotsIndicator.setViewPager(vpWalkThrough)
-
-        tvPrevSlide.setOnClickListener {
-            val current = vpWalkThrough.currentItem
-            if (current > 0)
-            vpWalkThrough.setCurrentItem(current-1, true)
-        }
 
         tvNexSlide.setOnClickListener {
             val current = vpWalkThrough.currentItem

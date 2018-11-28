@@ -33,7 +33,7 @@ class CallFragment : Fragment() {
         rvWithToolbar.adapter = adapter
 
         toolbar.setNavigationOnClickListener {
-//            finish()
+            findNavController().navigateUp()
         }
 
         render()

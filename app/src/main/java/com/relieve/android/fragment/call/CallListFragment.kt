@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
@@ -29,7 +30,7 @@ class CallListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         toolbar.setNavigationOnClickListener {
-//            finish()
+            findNavController().navigateUp()
         }
 
         rvWithToolbar.layoutManager = LinearLayoutManager(context)

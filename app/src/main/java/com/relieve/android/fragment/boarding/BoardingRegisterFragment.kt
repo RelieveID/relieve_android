@@ -17,7 +17,6 @@ class BoardingRegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_boarding_register, container, false)
     }
 
@@ -34,8 +33,11 @@ class BoardingRegisterFragment : Fragment() {
     }
 
     private fun render() {
+        toolbarBoardingRegister.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
         tvRegister.setOnClickListener {
-            findNavController().navigate(R.id.walkthroughFragment)
+            findNavController().navigate(R.id.action_boardingRegisterFragment_to_walkthroughFragment)
         }
     }
 }
