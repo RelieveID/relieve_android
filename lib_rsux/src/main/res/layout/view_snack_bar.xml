@@ -3,31 +3,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
+    android:paddingStart="3dp"
+    android:paddingEnd="3dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
         android:background="@drawable/rounded_corner_rect_grey_big"
-        android:backgroundTint="@color/colorTextBlack"
-        android:padding="16dp"
+        android:backgroundTint="#3D3D3D"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="@string/emergency_maximum_reached"
-            android:fontFamily="@font/circular_std_book"
+            android:id="@+id/snackBarTitle"
+            android:text="Ups! maaf maksimal hanya 5"
             android:textColor="@android:color/white"
             android:textSize="14sp"
+            android:padding="16dp"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
         <TextView
-            android:text="@string/emergency_understand"
-            android:fontFamily="@font/circular_std_medium"
-            android:textColor="@color/colorAccent"
+            android:id="@+id/snackBarButton"
+            android:text="Mengerti "
+            android:textColor="#5EB6F9"
             android:textSize="14sp"
+            android:padding="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

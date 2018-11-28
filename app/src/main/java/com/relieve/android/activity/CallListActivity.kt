@@ -4,13 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
 import com.relieve.android.components.*
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
 import com.relieve.android.rsux.helper.dptoPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
+import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.rsux.component.SpaceItem
-import kotlinx.android.synthetic.main.recycler_view_with_toolbar.*
+import kotlinx.android.synthetic.main.recycler_view_with_toolbar_and_bottom_action.*
 
 class CallListActivity : AppCompatActivity() {
 
@@ -45,7 +47,9 @@ class CallListActivity : AppCompatActivity() {
                         EmergencyCallItem(R.drawable.ic_ambulance, getString(R.string.emergency_hospital)),
                         EmergencyCallItem(R.drawable.ic_red_cross, getString(R.string.emergency_red_cross)),
                         EmergencyCallItem(R.drawable.ic_fire, getString(R.string.emergency_fire_fighter)),
-                        EmergencyCallItem(R.drawable.ic_flashlight, getString(R.string.emergency_sar))
+                        EmergencyCallItem(R.drawable.ic_flashlight, getString(R.string.emergency_sar)) {
+                            test()
+                        }
                     ), 2
                 ) { 1 }
             )
@@ -55,6 +59,8 @@ class CallListActivity : AppCompatActivity() {
     }
 
     private fun test() {
-
+        SnackBarItem.make(rootCoordinator, Snackbar.LENGTH_INDEFINITE).apply {
+            setButtonClick { this.dismiss() }
+        }.show()
     }
 }

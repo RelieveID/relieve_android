@@ -29,9 +29,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
 
-    // views
+    // Views
     implementation "androidx.appcompat:appcompat:$versions.xAppCompat"
-    implementation "androidx.constraintlayout:constraintlayout:$versions.xConstraintLayout"
+    implementation "android.arch.navigation:navigation-ui-ktx:$versions.ktxNavigation"
 
     testImplementation "junit:junit:$versions.junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
