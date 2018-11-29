@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
+import com.relieve.android.helper.PreferencesHelper
 import com.relieve.android.network.data.relieve.UserData
 import com.relieve.android.rsux.base.EditTextChangeListener
 import com.relieve.android.rsux.component.SnackBarItem
@@ -23,6 +24,10 @@ import java.util.*
 class BoardingRegisterFragment : Fragment() {
     private val vModel by lazy {
         ViewModelProviders.of(this).get(BoardingViewModel::class.java)
+    }
+
+    private val preferencesHelper by lazy {
+        context?.run { PreferencesHelper(this) }
     }
 
     private val textInputs by lazy {
@@ -133,8 +138,15 @@ class BoardingRegisterFragment : Fragment() {
                     email.toString(),
                     "${ phoneArea.toString() } ${ phoneNumber.toString() }",
                     dob.toString()
-                )) { isSuccess ->
+                )) { isSuccess, resToken ->
                     if (isSuccess) {
+                        preferencesHelper?.apply {
+                            isSignedIn = true
+                            token = resToken?.token
+                            tokenRefresh = resToken?.refreshToken
+                            tokenExpire = resToken?.expiresIn ?: 0
+                        }
+
                         findNavController().navigate(R.id.action_boardingRegisterFragment_to_dashboardFragment)
                     } else {
                         SnackBarItem.make(rootBoardingRegister, Snackbar.LENGTH_LONG).apply {

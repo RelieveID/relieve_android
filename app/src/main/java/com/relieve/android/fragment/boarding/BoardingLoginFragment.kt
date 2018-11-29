@@ -6,15 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputLayout
 import com.relieve.android.R
 import com.relieve.android.helper.PreferencesHelper
 import com.relieve.android.rsux.base.EditTextChangeListener
 import com.relieve.android.rsux.component.SnackBarItem
+import com.relieve.android.rsux.helper.isEmailValid
 import com.relieve.android.viewmodel.boarding.BoardingViewModel
 import kotlinx.android.synthetic.main.fragment_boarding_login.*
+import kotlinx.android.synthetic.main.sheet_forgot_pass.*
 
 class BoardingLoginFragment : Fragment() {
     private val vModel by lazy {
@@ -48,6 +53,10 @@ class BoardingLoginFragment : Fragment() {
 
         tvRegisterHere.setOnClickListener {
             findNavController().navigate(R.id.action_boardingLoginFragment_to_boardingRegisterFragment)
+        }
+
+        tvForgotPassword.setOnClickListener {
+            forgotPassClick()
         }
 
         inputUsername.editText?.addTextChangedListener(object : EditTextChangeListener() {
@@ -104,5 +113,51 @@ class BoardingLoginFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun emailForgotSubmit(input: TextInputLayout, dialog: BottomSheetDialog) {
+        if (input.editText?.text.toString().isEmailValid()) {
+            vModel.forgotPassClick(input.editText?.text.toString()) { isSuccess, _ ->
+                dialog.dismiss()
+
+                if (!isSuccess) {
+                    SnackBarItem.make(rootBoardingLogin, Snackbar.LENGTH_INDEFINITE).apply {
+                        setMessage(getString(R.string.unknown_error))
+                        setButtonText(getString(R.string.ok))
+                        setButtonClick { dismiss() }
+                        show()
+                    }
+                }
+            }
+        } else {
+            input.error = getString(R.string.error_email_format)
+        }
+    }
+
+    private fun forgotPassClick() {
+        val contextNotNull = context ?: return
+
+        BottomSheetDialog(contextNotNull).apply {
+            setContentView(layoutInflater.inflate(R.layout.sheet_forgot_pass, null))
+
+            val input = inputForgotUsername
+            input.editText?.addTextChangedListener(object : EditTextChangeListener() {
+                override fun onTextChanged(text: CharSequence, start: Int, before: Int, count: Int) {
+                    if (text.isEmpty()) input.error = getString(R.string.please_fill)
+                    else {
+                        input.error = null
+                        input.isErrorEnabled = false
+                    }
+                }
+            })
+
+            this.tvSubmitForgotPass.setOnClickListener {
+                if (!input.editText?.text.isNullOrEmpty()) {
+                    emailForgotSubmit(input, this)
+                } else {
+                    input.error = getString(R.string.please_fill)
+                }
+            }
+        }.show()
     }
 }
