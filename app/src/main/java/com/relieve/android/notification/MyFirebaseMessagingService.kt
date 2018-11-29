@@ -6,7 +6,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
-import android.net.Uri
 import android.os.Build
 import android.util.Log
 
@@ -16,7 +15,6 @@ import com.relieve.android.R
 import com.relieve.android.activity.MainActivity
 
 import androidx.core.app.NotificationCompat
-import com.relieve.android.network.CamarService
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 

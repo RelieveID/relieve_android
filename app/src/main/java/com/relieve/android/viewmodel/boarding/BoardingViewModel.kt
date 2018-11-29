@@ -1,7 +1,7 @@
 package com.relieve.android.viewmodel.boarding
 
 import androidx.lifecycle.ViewModel
-import com.relieve.android.network.RelieveService
+import com.relieve.android.network.service.RelieveService
 import com.relieve.android.network.data.relieve.Login
 import com.relieve.android.network.data.relieve.Register
 import io.reactivex.android.schedulers.AndroidSchedulers

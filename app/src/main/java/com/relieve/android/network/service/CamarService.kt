@@ -1,5 +1,6 @@
-package com.relieve.android.network
+package com.relieve.android.network.service
 
+import com.relieve.android.network.Camar
 import com.relieve.android.network.data.camar.ApiResponse
 import com.relieve.android.network.data.camar.Device
 import io.reactivex.Observable
@@ -15,14 +16,12 @@ interface CamarService {
     fun postNewDevice(@Body device: Device): Observable<ApiResponse<Device>>
 
     companion object {
-        const val BASE_URL = "http://35.240.181.2/"
-
         fun create(): CamarService {
 
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl(BASE_URL)
+                    .baseUrl(Camar.URL)
                     .build()
 
             return retrofit.create(CamarService::class.java)
