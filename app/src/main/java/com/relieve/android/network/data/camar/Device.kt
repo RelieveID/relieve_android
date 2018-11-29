@@ -1,4 +1,4 @@
-package com.relieve.android.network.data
+package com.relieve.android.network.data.camar
 
 import com.google.gson.annotations.SerializedName
 

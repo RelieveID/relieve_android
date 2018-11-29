@@ -4,6 +4,7 @@ import android.os.Build
 import com.relieve.android.BuildConfig
 import com.relieve.android.network.data.relieve.ApiResponse
 import com.relieve.android.network.data.relieve.Login
+import com.relieve.android.network.data.relieve.Register
 import com.relieve.android.network.data.relieve.UserToken
 import io.reactivex.Observable
 import okhttp3.Interceptor
@@ -19,6 +20,9 @@ interface RelieveService {
 
     @POST("login")
     fun login(@Body bodyLogin: Login) : Observable<ApiResponse<UserToken>>
+
+    @POST("register")
+    fun register(@Body bodyRegister: Register) : Observable<ApiResponse<UserToken>>
 
     companion object {
         const val RELIEVE_BASE_URL = "http://35.240.181.2:3001/"

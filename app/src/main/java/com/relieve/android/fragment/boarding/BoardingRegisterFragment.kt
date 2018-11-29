@@ -11,10 +11,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.relieve.android.R
+import com.relieve.android.network.data.relieve.Register
 import com.relieve.android.rsux.base.EditTextChangeListener
 import com.relieve.android.rsux.helper.isEmailValid
 import com.relieve.android.viewmodel.boarding.BoardingRegisterVM
-import com.relieve.android.viewmodel.boarding.UserData
 import kotlinx.android.synthetic.main.fragment_boarding_register.*
 import java.util.*
 
@@ -124,7 +124,7 @@ class BoardingRegisterFragment : Fragment() {
             }
 
             if (allIsValid) {
-                vModel.registerClick(UserData(
+                vModel.registerClick(Register(
                     username.toString(),
                     password.toString(),
                     fullName.toString(),
