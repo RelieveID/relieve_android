@@ -40,6 +40,10 @@ class BoardingViewModel : ViewModel() {
             ).also { compositeDisposable.add(it) }
     }
 
+    fun forgotPassClick(email: String, onResponse: (Boolean, UserToken?) -> Unit) {
+        onResponse(false, null)
+    }
+
     fun onGoogleLogin(idToken: String,
                       fullName: String,
                       onResponse: (Boolean, UserToken?) -> Unit) {

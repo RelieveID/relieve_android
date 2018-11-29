@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tvTitle"
+        android:text="@string/forgot_pass_title"
+        android:textSize="18sp"
+        android:layout_marginTop="21dp"
+        android:fontFamily="@font/circular_std_black"
+        android:textColor="@color/colorTextBlack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:text="@string/forgot_pass_subtitle"
+        android:textSize="10sp"
+        android:fontFamily="@font/circular_std_book"
+        android:textColor="@color/colorTextGrey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputForgotUsername"
+        app:layout_constraintTop_toBottomOf="@+id/ivBoardingLogin"
+        android:layout_marginTop="16dp"
+        app:boxStrokeColor="@color/colorEmptyRect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:textColorHighlight="@color/colorPrimary"
+            android:hint="@string/forgot_email_username"
+            android:textColorHint="@color/colorEmptyRect"
+            android:textSize="16sp"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSubmitForgotPass"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:background="@drawable/rounded_corner_rect_grey_big"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/circular_std_book"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        app:fontFamily="@font/circular_std_medium"
+        app:layout_constraintTop_toBottomOf="@id/tvForgotPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/help_me"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

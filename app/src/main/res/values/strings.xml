@@ -62,6 +62,10 @@
     <string name="boarding_nice_to_see_you">Nice to see you</string>
 
     <!--Boarding Login-->
+    <string name="forgot_pass_title">Kamu lupa password?</string>
+    <string name="forgot_pass_subtitle">Beritau kami email / username kamu</string>
+    <string name="forgot_email_username">Email / Username</string>
+    <string name="help_me">Bantu Aku</string>
     <string name="ok">Oke</string>
     <string name="please_fill">Diisi dulu ya</string>
     <string name="error_email_format">Sepertinya kamu salah tulis email</string>

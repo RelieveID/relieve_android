@@ -27,6 +27,7 @@
     </style>
     <style name="AppBottomSheetDialogTheme"
         parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="bottomSheetStyle">@style/AppTheme.BottomModal</item>
     </style>
 </resources>
