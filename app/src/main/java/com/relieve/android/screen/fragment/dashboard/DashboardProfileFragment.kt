@@ -17,6 +17,6 @@ class DashboardProfileFragment : RsuxFragment<DashboardViewHolder.DashboardState
     private val adapter get() = view?.rvFull?.setupWithBaseAdapter()
 
     override fun render(state: DashboardViewHolder.DashboardState) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 }
