@@ -30,13 +30,13 @@ class BoardingViewModel : ViewModel() {
             ).also { compositeDisposable.add(it) }
     }
 
-    fun registerClick(userData: UserData, onResponse: (Boolean) -> Unit) {
+    fun registerClick(userData: UserData, onResponse: (Boolean, UserToken?) -> Unit) {
         relieveService.register(userData)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> onResponse(result.status?.isRequestSuccess() == true) },
-                { error -> onResponse(false) }
+                { result -> onResponse(result.status?.isRequestSuccess() == true, result.content) },
+                { error -> onResponse(false, null) }
             ).also { compositeDisposable.add(it) }
     }
 
