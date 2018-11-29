@@ -1,42 +1,35 @@
-package com.relieve.android.fragment.dashboard
+package com.relieve.android.screen.fragment.dashboard
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.relieve.android.R
 import com.relieve.android.components.*
-import com.relieve.android.rsux.adapter.BaseAdapter
 import com.relieve.android.rsux.adapter.HorizontalRecycler
 import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.component.SpaceItem
+import com.relieve.android.rsux.framework.RsuxFragment
+import com.relieve.android.rsux.helper.setupWithBaseAdapter
+import com.relieve.android.screen.viewmodel.DashboardViewHolder
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
 import kotlinx.android.synthetic.main.sheet_notice.*
 
-class DashboardHomeFragment : Fragment() {
-    private val adapter = BaseAdapter()
+class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, DashboardViewHolder>() {
+    override val vModel by lazy { ViewModelProviders.of(this).get(DashboardViewHolder::class.java) }
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.recycler_view_full, container, false).apply {
-            this.rvFull.layoutManager = LinearLayoutManager(context)
-            this.rvFull.adapter = adapter
-        }
+    init {
+        layoutId = R.layout.recycler_view_full
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        render()
+    private val adapter by lazy {
+        view?.rvFull?.setupWithBaseAdapter()
     }
 
-    private fun render() {
-        adapter.removeAll()
-        adapter.apply {
+    override fun render(state: DashboardViewHolder.DashboardState) {
+        adapter?.run {
+            removeAll()
+
             add(UserBarItem("Halo", "Muh. Alif Akbar"))
             add(StatusBarItem(".jpg", "Bojongsoang, Bandung Barat"))
             add(TitleBarItem("Discover", "Update informasi terkini bencana di seluruh Indonesia"))

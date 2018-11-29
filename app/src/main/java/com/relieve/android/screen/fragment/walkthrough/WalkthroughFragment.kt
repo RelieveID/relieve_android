@@ -1,4 +1,4 @@
-package com.relieve.android.fragment.walkthrough
+package com.relieve.android.screen.fragment.walkthrough
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,15 @@ import com.relieve.android.R
 import kotlinx.android.synthetic.main.fragment_walkthrough.*
 
 class WalkthroughFragment : Fragment() {
+    class WalkthroughItemFragment : Fragment() {
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
+            // Inflate the layout for this fragment
+            return inflater.inflate(R.layout.fragment_walkthrough_item, container, false)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

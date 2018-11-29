@@ -1,45 +1,39 @@
-package com.relieve.android.fragment.call
+package com.relieve.android.screen.fragment.call
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.relieve.android.R
 import com.relieve.android.components.*
+import com.relieve.android.rsux.adapter.BaseAdapter
 import com.relieve.android.rsux.adapter.HorizontalRecycler
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
 import com.relieve.android.rsux.helper.dpToPx
-import com.relieve.android.rsux.adapter.VerticalAdapter
 import com.relieve.android.rsux.component.SpaceItem
+import com.relieve.android.rsux.framework.RsuxFragment
+import com.relieve.android.rsux.helper.setupWithBaseAdapter
+import com.relieve.android.screen.viewmodel.CallViewModel
 import kotlinx.android.synthetic.main.recycler_view_full.*
 import kotlinx.android.synthetic.main.recycler_view_with_toolbar.*
 
-class CallFragment : Fragment() {
+class CallFragment : RsuxFragment<CallViewModel.CallState, CallViewModel>() {
+    override val vModel by lazy { ViewModelProviders.of(this).get(CallViewModel::class.java) }
 
-    private val adapter = VerticalAdapter()
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.recycler_view_with_toolbar, container, false)
+    private val adapter by lazy {
+        rvWithToolbar.setupWithBaseAdapter()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        rvWithToolbar.layoutManager = LinearLayoutManager(context)
-        rvWithToolbar.adapter = adapter
+    init {
+        layoutId = R.layout.recycler_view_with_toolbar
+    }
 
+    override fun render(state : CallViewModel.CallState) {
         toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
-        render()
-    }
-
-    private fun render() {
         adapter.removeAll()
         adapter.apply {
             add(UserBarItem("", getString(R.string.emergency_call)))
@@ -86,7 +80,7 @@ class CallFragment : Fragment() {
             BottomSheetDialog(this).apply {
                 setContentView(layoutInflater.inflate(R.layout.recycler_view_full, null))
                 this.rvFull.layoutManager = LinearLayoutManager(this.context)
-                this.rvFull.adapter = VerticalAdapter().apply {
+                this.rvFull.adapter = BaseAdapter().apply {
                     this.add(
                         SpaceItem(
                             LinearLayout.LayoutParams.MATCH_PARENT,

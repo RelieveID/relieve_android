@@ -1,4 +1,4 @@
-package com.relieve.android.fragment.boarding
+package com.relieve.android.screen.fragment.boarding
 
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -10,13 +10,12 @@ import com.relieve.android.rsux.base.EditTextChangeListener
 import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.rsux.framework.RsuxFragment
 import com.relieve.android.rsux.helper.isEmailValid
-import com.relieve.android.viewmodel.boarding.BoardingViewModel
+import com.relieve.android.screen.viewmodel.BoardingViewModel
 import kotlinx.android.synthetic.main.fragment_boarding_login.*
 import kotlinx.android.synthetic.main.sheet_forgot_pass.*
 
 class BoardingLoginFragment : RsuxFragment<BoardingViewModel.BoardingState, BoardingViewModel>() {
-    override val vModel: BoardingViewModel
-        get() = ViewModelProviders.of(this).get(BoardingViewModel::class.java)
+    override val vModel by lazy {  ViewModelProviders.of(this).get(BoardingViewModel::class.java) }
 
     init {
         R.layout.fragment_boarding_login

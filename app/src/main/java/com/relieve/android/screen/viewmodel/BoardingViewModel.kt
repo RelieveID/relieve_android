@@ -1,4 +1,4 @@
-package com.relieve.android.viewmodel.boarding
+package com.relieve.android.screen.viewmodel
 
 import com.relieve.android.network.data.relieve.GoogleData
 import com.relieve.android.network.service.RelieveService

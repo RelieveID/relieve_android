@@ -1,22 +1,16 @@
-package com.relieve.android.fragment.dashboard
+package com.relieve.android.screen.fragment.dashboard
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.transaction
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.relieve.android.helper.BottomNavBar
 import com.relieve.android.R
+import com.relieve.android.rsux.framework.RsuxFragment
 import com.relieve.android.rsux.helper.PreferencesHelper
+import com.relieve.android.screen.viewmodel.DashboardViewHolder
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
-class DashboardFragment : Fragment() {
-    companion object {
-        const val INDEX_KEY = "index_key"
-    }
-
+class DashboardFragment : RsuxFragment<DashboardViewHolder.DashboardState, DashboardViewHolder>() {
     class NavStack(val size: Int) {
         private val stack = mutableListOf<Int>()
 
@@ -35,6 +29,8 @@ class DashboardFragment : Fragment() {
         val current get() = if (stack.isNotEmpty()) stack.last() else -1
     }
 
+    override val vModel by lazy { ViewModelProviders.of(this).get(DashboardViewHolder::class.java) }
+
     val fragments = listOf (
         DashboardHomeFragment(), DashboardDiscoverFragment(), DashboardChatFragment(), DashboardProfileFragment()
     )
@@ -43,12 +39,11 @@ class DashboardFragment : Fragment() {
 
     private val bottomNavBar get() = BottomNavBar(navHome)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+    init {
+        layoutId = R.layout.fragment_dashboard
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun render(state: DashboardViewHolder.DashboardState) {
         bindNavClick()
 
         shouldShowWalkthrought()

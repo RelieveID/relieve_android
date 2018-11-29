@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/boardingHomeFragment"
-        android:name="com.relieve.android.fragment.boarding.BoardingHomeFragment"
+        android:name="com.relieve.android.screen.fragment.boarding.BoardingHomeFragment"
         android:label="@string/boarding_home"
         tools:layout="@layout/fragment_boarding_home" >
         <action
@@ -36,7 +36,7 @@
     <fragment
         android:id="@+id/boardingLoginFragment"
         android:label=" "
-        android:name="com.relieve.android.fragment.boarding.BoardingLoginFragment"
+        android:name="com.relieve.android.screen.fragment.boarding.BoardingLoginFragment"
         tools:layout="@layout/fragment_boarding_login" >
         <action
             android:id="@+id/action_boardingLoginFragment_to_boardingRegisterFragment"
@@ -58,7 +58,7 @@
     <fragment
         android:id="@+id/boardingRegisterFragment"
         android:label=" "
-        android:name="com.relieve.android.fragment.boarding.BoardingRegisterFragment"
+        android:name="com.relieve.android.screen.fragment.boarding.BoardingRegisterFragment"
         tools:layout="@layout/fragment_boarding_register" >
         <action
             android:id="@+id/action_boardingRegisterFragment_to_dashboardFragment"
@@ -72,12 +72,12 @@
     </fragment>
     <fragment
         android:id="@+id/walkthroughFragment"
-        android:name="com.relieve.android.fragment.walkthrough.WalkthroughFragment"
+        android:name="com.relieve.android.screen.fragment.walkthrough.WalkthroughFragment"
         android:label=" "
         tools:layout="@layout/fragment_walkthrough" />
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.relieve.android.fragment.dashboard.DashboardFragment"
+        android:name="com.relieve.android.screen.fragment.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
@@ -104,7 +104,7 @@
     </fragment>
     <fragment
         android:id="@+id/callFragment"
-        android:name="com.relieve.android.fragment.call.CallFragment"
+        android:name="com.relieve.android.screen.fragment.call.CallFragment"
         android:label="fragment_call"
         tools:layout="@layout/recycler_view_with_toolbar" >
         <action
@@ -117,12 +117,12 @@
     </fragment>
     <fragment
         android:id="@+id/callListFragment"
-        android:name="com.relieve.android.fragment.call.CallListFragment"
+        android:name="com.relieve.android.screen.fragment.call.CallListFragment"
         android:label="CallListFragment"
         tools:layout="@layout/recycler_view_with_toolbar" />
     <fragment
         android:id="@+id/disasterFragment"
-        android:name="com.relieve.android.fragment.disaster.DisasterFragment"
+        android:name="com.relieve.android.screen.fragment.disaster.DisasterFragment"
         android:label="activity_disaster"
         tools:layout="@layout/fragment_disaster" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.relieve.android.fragment.boarding
+package com.relieve.android.screen.fragment.boarding
 
 
 import android.app.DatePickerDialog
@@ -12,13 +12,12 @@ import com.relieve.android.rsux.base.EditTextChangeListener
 import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.rsux.framework.RsuxFragment
 import com.relieve.android.rsux.helper.isEmailValid
-import com.relieve.android.viewmodel.boarding.BoardingViewModel
+import com.relieve.android.screen.viewmodel.BoardingViewModel
 import kotlinx.android.synthetic.main.fragment_boarding_register.*
 import java.util.*
 
 class BoardingRegisterFragment : RsuxFragment<BoardingViewModel.BoardingState, BoardingViewModel>() {
-    override val vModel: BoardingViewModel
-        get() = ViewModelProviders.of(this).get(BoardingViewModel::class.java)
+    override val vModel by lazy {  ViewModelProviders.of(this).get(BoardingViewModel::class.java) }
 
     private val textInputs by lazy {
         listOf (

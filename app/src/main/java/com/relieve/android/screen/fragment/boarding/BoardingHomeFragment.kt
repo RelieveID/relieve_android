@@ -1,4 +1,4 @@
-package com.relieve.android.fragment.boarding
+package com.relieve.android.screen.fragment.boarding
 
 
 import android.content.Intent
@@ -11,7 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
 import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.rsux.framework.RsuxFragment
-import com.relieve.android.viewmodel.boarding.BoardingViewModel
+import com.relieve.android.screen.viewmodel.BoardingViewModel
 import kotlinx.android.synthetic.main.fragment_boarding_home.*
 
 class BoardingHomeFragment : RsuxFragment<BoardingViewModel.BoardingState, BoardingViewModel>() {
@@ -30,8 +30,8 @@ class BoardingHomeFragment : RsuxFragment<BoardingViewModel.BoardingState, Board
             .requestEmail()
             .build()
     }
-    override val vModel: BoardingViewModel
-        get() = ViewModelProviders.of(this).get(BoardingViewModel::class.java)
+
+    override val vModel by lazy {  ViewModelProviders.of(this).get(BoardingViewModel::class.java) }
 
     override fun render(state: BoardingViewModel.BoardingState) {
         if (preferencesHelper?.isSignedIn == true)
