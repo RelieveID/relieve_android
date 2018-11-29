@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputLayout
 import com.relieve.android.R
 import com.relieve.android.helper.PreferencesHelper
 import com.relieve.android.rsux.base.EditTextChangeListener
@@ -114,20 +115,22 @@ class BoardingLoginFragment : Fragment() {
         }
     }
 
-    private fun emailForgotSubmit(editText: EditText?, dialog: BottomSheetDialog) {
-        if (editText?.text.toString().isEmailValid()) {
-            vModel.forgotPassClick(editText?.text.toString()) { isSuccess, _ ->
+    private fun emailForgotSubmit(input: TextInputLayout, dialog: BottomSheetDialog) {
+        if (input.editText?.text.toString().isEmailValid()) {
+            vModel.forgotPassClick(input.editText?.text.toString()) { isSuccess, _ ->
                 dialog.dismiss()
 
                 if (!isSuccess) {
-                    SnackBarItem.make(rootBoardingLogin, Snackbar.LENGTH_LONG).apply {
-                        setMessage(getString(R.string.wrong_account))
+                    SnackBarItem.make(rootBoardingLogin, Snackbar.LENGTH_INDEFINITE).apply {
+                        setMessage(getString(R.string.unknown_error))
                         setButtonText(getString(R.string.ok))
                         setButtonClick { dismiss() }
                         show()
                     }
                 }
             }
+        } else {
+            input.error = getString(R.string.error_email_format)
         }
     }
 
@@ -149,7 +152,11 @@ class BoardingLoginFragment : Fragment() {
             })
 
             this.tvSubmitForgotPass.setOnClickListener {
-                emailForgotSubmit(input.editText, this)
+                if (!input.editText?.text.isNullOrEmpty()) {
+                    emailForgotSubmit(input, this)
+                } else {
+                    input.error = getString(R.string.please_fill)
+                }
             }
         }.show()
     }

@@ -36,8 +36,8 @@
             android:textColorHint="@color/colorEmptyRect"
             android:textSize="16sp"
             android:maxLines="1"
-            android:inputType="text"
-            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionDone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
