@@ -28,5 +28,6 @@ abstract class RsuxFragment<RS: RsuxState, RVM : RsuxViewModel<RS>> : Fragment()
         render(vModel.getCurrentState())
     }
 
+//    abstract fun registerObserver()
     abstract fun render(state: RS)
 }

@@ -25,6 +25,9 @@ class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, D
     private val adapter get() = view?.rvFull?.setupWithBaseAdapter()
 
     override fun render(state: DashboardViewHolder.DashboardState) {
+//        vModel.state.earthQuakesLiveData.observe(this) { a ->
+//
+//        }
         adapter?.run {
             removeAll()
 

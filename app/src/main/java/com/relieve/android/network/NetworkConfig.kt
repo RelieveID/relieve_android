@@ -3,7 +3,7 @@ package com.relieve.android.network
 private const val BASE_URL = "http://35.240.181.2"
 private const val SUCCESS_REQEUST_STATUS = 200
 
-fun Int.isRequestSuccess () = this == SUCCESS_REQEUST_STATUS
+fun Int?.isRequestSuccess () = this == SUCCESS_REQEUST_STATUS
 
 object Camar {
     private const val PATH = "v1"

@@ -23,7 +23,7 @@ interface CamarService {
     fun postNewDevice(@Body device: Device): Observable<ApiResponse<Device>>
 
     @GET("earthquakeList")
-    fun postNewDevice(@Query("limit") limit: Int, @Query("page") page: Int): Observable<ApiResponse<Event>>
+    fun getEarthQuakes(@Query("limit") limit: Int, @Query("page") page: Int): Observable<ApiResponse<List<Event>>>
 
     companion object {
         fun create(): CamarService {

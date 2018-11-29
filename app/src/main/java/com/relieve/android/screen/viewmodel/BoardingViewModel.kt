@@ -25,7 +25,7 @@ class BoardingViewModel : RsuxViewModel<BoardingViewModel.BoardingState>() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> onResponse(result.status?.isRequestSuccess() == true, result.content) },
+                { result -> onResponse(result.status.isRequestSuccess(), result.content) },
                 { error -> onResponse(false, null) }
             ).also { compositeDisposable.add(it) }
     }
@@ -35,7 +35,7 @@ class BoardingViewModel : RsuxViewModel<BoardingViewModel.BoardingState>() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> onResponse(result.status?.isRequestSuccess() == true, result.content) },
+                { result -> onResponse(result.status.isRequestSuccess(), result.content) },
                 { error -> onResponse(false, null) }
             ).also { compositeDisposable.add(it) }
     }
@@ -53,7 +53,7 @@ class BoardingViewModel : RsuxViewModel<BoardingViewModel.BoardingState>() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> onResponse(result.status?.isRequestSuccess() == true, result.content) },
+                { result -> onResponse(result.status.isRequestSuccess(), result.content) },
                 { error -> onResponse(false, null) }
             ).also { compositeDisposable.add(it) }
     }
