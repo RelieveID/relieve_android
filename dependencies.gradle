@@ -1,7 +1,7 @@
 ext.appVersion = [
         "major": 1,
         "minor": 1,
-        "patch": 0,
+        "patch": 2,
         "kind" : Kind.DEVELOPMENT
 ]
 
@@ -23,6 +23,7 @@ ext.versions = [
 
         firebaseCore       : '16.0.5',
         firebaseInvites    : '16.0.5',
+        firebaseAuth       : '16.0.5',
         firebaseConfig     : '16.1.0',
         firebaseAppIndexing: '16.0.2',
         firebaseMessaging  : '17.3.4',
@@ -81,8 +82,6 @@ ext.versions = [
         annimonStream      : '1.1.6',
         fabric             : '1.26.1',
         parceler           : '1.1.6',
-        sectionedRv        : '0.2.3',
-        apmemLayouts       : '1.10@aar',
         junit              : '4.12',
         robolectric        : '4.0',
         mockk              : '1.8.12'

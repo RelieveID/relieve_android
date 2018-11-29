@@ -1,25 +1,24 @@
-package com.relieve.android.fragment.main
+package com.relieve.android.fragment.dashboard
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.relieve.android.R
-import com.relieve.android.activity.DisasterActivity
 import com.relieve.android.components.*
 import com.relieve.android.rsux.adapter.HorizontalRecycler
-import com.relieve.android.rsux.helper.dptoPx
+import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
 import com.relieve.android.rsux.component.SpaceItem
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
 import kotlinx.android.synthetic.main.sheet_notice.*
 
-class MainHomeFragment : Fragment() {
+class DashboardHomeFragment : Fragment() {
     private val adapter = VerticalAdapter()
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -45,13 +44,13 @@ class MainHomeFragment : Fragment() {
                 HorizontalRecycler(
                     listOf(
                         SpaceItem(
-                            8.dptoPx(),
+                            8.dpToPx(),
                             LinearLayout.LayoutParams.MATCH_PARENT
                         ),
                         DiscoverItem(0, 0, "Palu", 0, false),
                         DiscoverItem(0, 0, "Lombok", 100, false),
                         DiscoverItem(0, 0, "Lombok", 3_000, false),
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
+                        SpaceItem(8.dpToPx(), LinearLayout.LayoutParams.MATCH_PARENT)
                     ), 1
                 )
             )
@@ -60,7 +59,7 @@ class MainHomeFragment : Fragment() {
                 HorizontalRecycler(
                     listOf(
                         SpaceItem(
-                            8.dptoPx(),
+                            8.dpToPx(),
                             LinearLayout.LayoutParams.MATCH_PARENT
                         ),
                         FamilyItem(".jpg", FamilyItem.FamilyStatus.Good, "Ayah"),
@@ -69,7 +68,7 @@ class MainHomeFragment : Fragment() {
                             test()
                         },
                         FamilyItem("", FamilyItem.FamilyStatus.Unknown, "", true),
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
+                        SpaceItem(8.dpToPx(), LinearLayout.LayoutParams.MATCH_PARENT)
                     ), 2
                 )
             )
@@ -80,14 +79,21 @@ class MainHomeFragment : Fragment() {
         context?.let { ctx ->
             BottomSheetDialog(ctx).apply {
                 setContentView(layoutInflater.inflate(R.layout.sheet_notice, null))
+                var moveToNext = false
                 this.btnPositive.setOnClickListener {
-                    startActivity(Intent(ctx, DisasterActivity::class.java))
+                    moveToNext = true
+                    dismiss()
                 }
 
                 this.btnNegative.setOnClickListener {
-                    startActivity(Intent(ctx, DisasterActivity::class.java))
+                    moveToNext = true
+                    dismiss()
                 }
                 show()
+
+                setOnDismissListener {
+                    if (moveToNext) findNavController().navigate(R.id.action_dashboardFragment_to_disasterFragment)
+                }
             }
         }
     }

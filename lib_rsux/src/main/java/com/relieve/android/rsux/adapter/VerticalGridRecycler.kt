@@ -6,7 +6,7 @@ import android.widget.LinearLayout.LayoutParams
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.relieve.android.rsux.base.RelieveViewHolder
-import com.relieve.android.rsux.helper.dptoPx
+import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.base.Item
 
 class VerticalGridRecycler (val localItem: List<Item<*>>,
@@ -19,7 +19,7 @@ class VerticalGridRecycler (val localItem: List<Item<*>>,
     override fun createViewHolder(parent: ViewGroup): ViewHolder {
         val rv = RecyclerView(parent.context).apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
-                setPadding(12.dptoPx(), 0, 12.dptoPx(), 0)
+                setPadding(12.dpToPx(), 0, 12.dpToPx(), 0)
             }
 
             layoutManager = GridLayoutManager(context, columnNumber).apply {

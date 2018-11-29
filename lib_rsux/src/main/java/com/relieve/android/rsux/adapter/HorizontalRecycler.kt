@@ -6,7 +6,7 @@ import android.widget.LinearLayout.LayoutParams
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.relieve.android.rsux.base.RelieveViewHolder
-import com.relieve.android.rsux.helper.dptoPx
+import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.base.Item
 /**
  * Please Provide order if you use multiple horizontal recycler in single screen
@@ -19,7 +19,7 @@ class HorizontalRecycler(val localItem : List<Item<*>>, order: Int = 0) : Item<H
     override fun createViewHolder(parent: ViewGroup): ViewHolder {
         val rv = RecyclerView(parent.context).apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
-                setPadding(0, 8.dptoPx(), 0, 8.dptoPx())
+                setPadding(0, 8.dpToPx(), 0, 8.dpToPx())
             }
 
             layoutManager = LinearLayoutManager(parent.context,

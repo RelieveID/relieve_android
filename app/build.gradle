@@ -68,6 +68,12 @@ dependencies {
 
     implementation "com.google.code.gson:gson:$versions.gson"
 
+    // firebase
+    implementation "com.google.firebase:firebase-core:$versions.firebaseCore"
+    implementation "com.google.firebase:firebase-auth:$versions.firebaseAuth"
+
+    implementation "com.google.android.gms:play-services-auth:$versions.playAuth"
+
     // fcm - notification
     implementation "com.google.firebase:firebase-messaging:$versions.firebaseMessaging"
 

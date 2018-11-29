@@ -1,35 +1,40 @@
-package com.relieve.android.activity
+package com.relieve.android.fragment.call
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.relieve.android.R
 import com.relieve.android.components.*
 import com.relieve.android.rsux.adapter.HorizontalRecycler
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
-import com.relieve.android.rsux.helper.dptoPx
+import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
 import com.relieve.android.rsux.component.SpaceItem
 import kotlinx.android.synthetic.main.recycler_view_full.*
 import kotlinx.android.synthetic.main.recycler_view_with_toolbar.*
 
-class CallActivity : AppCompatActivity() {
+class CallFragment : Fragment() {
 
     private val adapter = VerticalAdapter()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.recycler_view_with_toolbar)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.recycler_view_with_toolbar, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        rvWithToolbar.layoutManager = LinearLayoutManager(context)
+        rvWithToolbar.adapter = adapter
 
         toolbar.setNavigationOnClickListener {
-            finish()
+            findNavController().navigateUp()
         }
-
-        rvWithToolbar.layoutManager = LinearLayoutManager(this)
-        rvWithToolbar.adapter = adapter
 
         render()
     }
@@ -51,7 +56,7 @@ class CallActivity : AppCompatActivity() {
                     EmergencyCallItem(R.drawable.ic_fire, getString(R.string.emergency_fire_fighter)),
                     EmergencyCallItem(R.drawable.ic_flashlight, getString(R.string.emergency_sar)),
                     EmergencyOptionItem(R.drawable.ic_others, getString(R.string.emergency_other)) {
-                        startActivity(Intent(this@CallActivity, CallListActivity::class.java))
+                        findNavController().navigate(R.id.action_callFragment_to_callListFragment)
                     }
                 ), 2) { 1 }
             )
@@ -60,7 +65,7 @@ class CallActivity : AppCompatActivity() {
                 HorizontalRecycler(
                     listOf(
                         SpaceItem(
-                            8.dptoPx(),
+                            8.dpToPx(),
                             LinearLayout.LayoutParams.MATCH_PARENT
                         ),
                         FamilyItem(".jpg", FamilyItem.FamilyStatus.Good, "Ayah"),
@@ -69,7 +74,7 @@ class CallActivity : AppCompatActivity() {
                             test()
                         },
                         FamilyItem("", FamilyItem.FamilyStatus.Unknown, "", true),
-                        SpaceItem(8.dptoPx(), LinearLayout.LayoutParams.MATCH_PARENT)
+                        SpaceItem(8.dpToPx(), LinearLayout.LayoutParams.MATCH_PARENT)
                     )
                 )
             )
@@ -77,35 +82,37 @@ class CallActivity : AppCompatActivity() {
     }
 
     private fun test() {
-        BottomSheetDialog(this).apply {
-            setContentView(layoutInflater.inflate(R.layout.recycler_view_full, null))
-            this.rvFull.layoutManager = LinearLayoutManager(this.context)
-            this.rvFull.adapter = VerticalAdapter().apply {
-                this.add(
-                    SpaceItem(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        24.dptoPx()
+        context?.run {
+            BottomSheetDialog(this).apply {
+                setContentView(layoutInflater.inflate(R.layout.recycler_view_full, null))
+                this.rvFull.layoutManager = LinearLayoutManager(this.context)
+                this.rvFull.adapter = VerticalAdapter().apply {
+                    this.add(
+                        SpaceItem(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            24.dpToPx()
+                        )
                     )
-                )
-                this.add(TitleBarItem("Daftar kontak ambulance", ""))
-                this.add(
-                    SpaceItem(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        16.dptoPx()
+                    this.add(TitleBarItem("Daftar kontak ambulance", ""))
+                    this.add(
+                        SpaceItem(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            16.dpToPx()
+                        )
                     )
-                )
-                this.add(CallItem("RS Islam Muhammadiyah", "0.8 Km", ""))
-                this.add(CallItem("RS Islam Muhammadiyah", "2.3 Km", ""))
-                this.add(CallItem("RS Islam Muhammadiyah", "2.8 Km", ""))
-                this.add(CallItem("RS Islam Muhammadiyah", "3.4 Km", ""))
-                this.add(
-                    SpaceItem(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        16.dptoPx()
+                    this.add(CallItem("RS Islam Muhammadiyah", "0.8 Km", ""))
+                    this.add(CallItem("RS Islam Muhammadiyah", "2.3 Km", ""))
+                    this.add(CallItem("RS Islam Muhammadiyah", "2.8 Km", ""))
+                    this.add(CallItem("RS Islam Muhammadiyah", "3.4 Km", ""))
+                    this.add(
+                        SpaceItem(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            16.dpToPx()
+                        )
                     )
-                )
+                }
+                show()
             }
-            show()
         }
     }
 }

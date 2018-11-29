@@ -62,23 +62,31 @@
     <string name="boarding_nice_to_see_you">Nice to see you</string>
 
     <!--Boarding Login-->
-    <string name="boarding_register">Daftar</string>
-    <string name="boarding_login">Login</string>
+    <string name="please_fill">Diisi dulu ya</string>
+    <string name="error_email_format">Sepertinya kamu salah tulis email</string>
+    <string name="error_password_match">password kamu tidak sama</string>
+    <string name="error_password_length">buat password minimal 8 huruf</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="boarding_login">Login</string>
+    <string name="unknown_error">Terjadi kesalahan, silahkan coba beberapa saat lagi</string>
+
+    <!--Boarding Register-->
+    <string name="bod_format">%d-%d-%d</string>
+    <string name="boarding_register">Daftar</string>
+    <string name="email">Email</string>
     <string name="confirm_password">Ketik Ulang Password</string>
     <string name="forgot_password">Lupa Password?</string>
     <string name="full_name">Nama Lengkap</string>
     <string name="date_of_birth">Tanggal Lahir</string>
     <string name="fill_form">Cukup isi data dibawah</string>
-    <string name="gender">Jenis Kelamin</string>
     <string name="phone_number_area">+62</string>
     <string name="phone_number">Nomor Telpon</string>
     <string name="terms_n_condition_prompt">By registering you are accepting our <a href="http://www.google.com/">terms and condition</a> of use</string>
 
     <!--Walkthrough-->
-    <string name="prev">Prev</string>
-    <string name="next">Next</string>
+    <string name="done">Mengerti</string>
+    <string name="next">Lanjut</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

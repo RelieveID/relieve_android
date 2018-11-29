@@ -1,32 +1,39 @@
-package com.relieve.android.activity
+package com.relieve.android.fragment.call
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
 import com.relieve.android.components.*
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
-import com.relieve.android.rsux.helper.dptoPx
+import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.adapter.VerticalAdapter
 import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.rsux.component.SpaceItem
 import kotlinx.android.synthetic.main.recycler_view_with_toolbar_and_bottom_action.*
 
-class CallListActivity : AppCompatActivity() {
+class CallListFragment : Fragment() {
 
     private val adapter = VerticalAdapter()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.recycler_view_with_toolbar_and_bottom_action)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.recycler_view_with_toolbar_and_bottom_action, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         toolbar.setNavigationOnClickListener {
-            finish()
+            findNavController().navigateUp()
         }
 
-        rvWithToolbar.layoutManager = LinearLayoutManager(this)
+        rvWithToolbar.layoutManager = LinearLayoutManager(context)
         rvWithToolbar.adapter = adapter
 
         render()
@@ -36,9 +43,9 @@ class CallListActivity : AppCompatActivity() {
         adapter.removeAll()
         adapter.apply {
             add(ImageItem())
-            add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 8.dptoPx()))
+            add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 8.dpToPx()))
             add(UserBarItem("", "Tentukan Panggilan Pilihanmu"))
-            add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 12.dptoPx()))
+            add(SpaceItem(LinearLayout.LayoutParams.MATCH_PARENT, 12.dpToPx()))
             add(
                 VerticalGridRecycler(
                     listOf(

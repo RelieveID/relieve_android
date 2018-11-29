@@ -15,12 +15,14 @@ interface CamarService {
     fun postNewDevice(@Body device: Device): Observable<ApiResponse<Device>>
 
     companion object {
+        const val BASE_URL = "http://35.240.181.2/"
+
         fun create(): CamarService {
 
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("http://35.240.181.2/")
+                    .baseUrl(BASE_URL)
                     .build()
 
             return retrofit.create(CamarService::class.java)

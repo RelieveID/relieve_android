@@ -6,17 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.call.CallFragment">
+    tools:context=".fragment.dashboard.DashboardFragment">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        app:navigationIcon="@drawable/ic_cross"
+        app:title="@string/app_name"
         app:titleTextAppearance="@style/AppTheme.MainToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvWithToolbar"
+    <FrameLayout
+        android:id="@+id/fragmentPort"
         android:layout_weight="1"
-        tools:listitem="@layout/view_title_bar"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
+    <include
+        android:id="@+id/navHome"
+        layout="@layout/view_bottom_nav"/>
 </LinearLayout>
