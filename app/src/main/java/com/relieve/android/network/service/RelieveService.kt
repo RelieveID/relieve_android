@@ -1,5 +1,6 @@
 package com.relieve.android.network.service
 
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.relieve.android.BuildConfig
 import com.relieve.android.network.Bakau
 import com.relieve.android.network.data.relieve.*
@@ -26,26 +27,29 @@ interface RelieveService {
     companion object {
         fun create(): RelieveService {
 
-            val loggingInterceptor = HttpLoggingInterceptor().apply {
-                level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-            }
+            val okHttpClient = OkHttpClient().newBuilder().apply {
+                addInterceptor { chain ->
+                    val request = chain.request()
+                    val newRequest = request.newBuilder()
+                            .addHeader("Content-Type", "application/json")
+                            .addHeader(
+                                Bakau.HEADER_SECRET,
+                                Bakau.SECRET
+                            )
+                            .build()
 
-            val okHttpClient = OkHttpClient().newBuilder()
-                    .addInterceptor { chain ->
-                        val request = chain.request()
-                        val newRequest = request.newBuilder()
-                                .addHeader("Content-Type", "application/json")
-                                .addHeader(
-                                    Bakau.HEADER_SECRET,
-                                    Bakau.SECRET
-                                )
-                                .build()
+                    return@addInterceptor chain.proceed(newRequest)
+                }
 
-                        return@addInterceptor chain.proceed(newRequest)
+                val loggingInterceptor = HttpLoggingInterceptor().apply {
+                    level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+                }
 
-                    }
-                    .addInterceptor(loggingInterceptor)
-                    .build()
+                if (BuildConfig.DEBUG) {
+                    addNetworkInterceptor(StethoInterceptor())
+                    addInterceptor(loggingInterceptor)
+                }
+            }.build()
 
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
