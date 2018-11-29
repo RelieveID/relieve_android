@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -15,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
 import com.relieve.android.helper.PreferencesHelper
 import com.relieve.android.rsux.component.SnackBarItem
+import com.relieve.android.viewmodel.boarding.BoardingViewModel
 import kotlinx.android.synthetic.main.fragment_boarding_home.*
 
 class BoardingHomeFragment : Fragment() {
@@ -32,6 +34,10 @@ class BoardingHomeFragment : Fragment() {
 
     private val preferencesHelper by lazy {
         context?.run { PreferencesHelper(this) }
+    }
+
+    private val vModel by lazy {
+        ViewModelProviders.of(this).get(BoardingViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -73,12 +79,15 @@ class BoardingHomeFragment : Fragment() {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
-                if (account != null) {
+                if (account?.idToken != null) {
                     preferencesHelper?.isSignedIn = true
-                    findNavController().navigate(R.id.action_boardingHomeFragment_to_dashboardFragment)
+                    vModel.onGoogleLogin(account.idToken.toString()) {
+                        findNavController().navigate(R.id.action_boardingHomeFragment_to_dashboardFragment)
+                    }
                 } else {
                     SnackBarItem.make(rootBoardingHome, Snackbar.LENGTH_LONG).apply {
                         setMessage(getString(R.string.unknown_error))
+                        setButtonText(getString(R.string.ok))
                         setButtonClick { dismiss() }
                         show()
                     }
@@ -86,6 +95,7 @@ class BoardingHomeFragment : Fragment() {
             } catch (e: ApiException) {
                 SnackBarItem.make(rootBoardingHome, Snackbar.LENGTH_LONG).apply {
                     setMessage(getString(R.string.unknown_error))
+                    setButtonText(getString(R.string.ok))
                     setButtonClick { dismiss() }
                     show()
                 }

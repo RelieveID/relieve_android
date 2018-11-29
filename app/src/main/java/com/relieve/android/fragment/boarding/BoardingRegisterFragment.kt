@@ -10,17 +10,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
 import com.relieve.android.network.data.relieve.Register
 import com.relieve.android.rsux.base.EditTextChangeListener
+import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.rsux.helper.isEmailValid
-import com.relieve.android.viewmodel.boarding.BoardingRegisterVM
+import com.relieve.android.viewmodel.boarding.BoardingViewModel
 import kotlinx.android.synthetic.main.fragment_boarding_register.*
 import java.util.*
 
 class BoardingRegisterFragment : Fragment() {
     private val vModel by lazy {
-        ViewModelProviders.of(this).get(BoardingRegisterVM::class.java)
+        ViewModelProviders.of(this).get(BoardingViewModel::class.java)
     }
 
     private val textInputs by lazy {
@@ -134,6 +136,13 @@ class BoardingRegisterFragment : Fragment() {
                 )) { isSuccess ->
                     if (isSuccess) {
                         findNavController().navigate(R.id.action_boardingRegisterFragment_to_dashboardFragment)
+                    } else {
+                        SnackBarItem.make(rootBoardingRegister, Snackbar.LENGTH_LONG).apply {
+                            setMessage(getString(R.string.unknown_error))
+                            setButtonText(getString(R.string.ok))
+                            setButtonClick { dismiss() }
+                            show()
+                        }
                     }
                 }
             }
