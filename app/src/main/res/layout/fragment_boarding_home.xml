@@ -1,95 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.boarding.BoardingHomeFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rootBoardingHome"
-    tools:context=".fragment.boarding.BoardingHomeFragment">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarBoardingHome"
-        app:title="@string/app_name"
-        app:titleTextAppearance="@style/AppTheme.MainToolbar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    android:id="@+id/rootBoardingHome">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivBoardingHome"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarBoardingHome"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@mipmap/landing_page"
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="312dp" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarBoardingHome"
+            app:title="@string/app_name"
+            app:titleTextAppearance="@style/AppTheme.MainToolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBoardingHome"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarBoardingHome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@mipmap/landing_page"
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="312dp" />
 
 
-    <TextView
-        android:id="@+id/tvDontHaveAccount"
-        android:text="@string/boarding_dont_have_account"
-        android:textColor="@color/colorTextGrey"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvRegisterHere"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tvDontHaveAccount"
+            android:text="@string/boarding_dont_have_account"
+            android:textColor="@color/colorTextGrey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvRegisterHere"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/tvRegisterHere"
-        android:text="@string/boarding_register_here"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginStart="6dp"
-        app:layout_constraintStart_toEndOf="@+id/tvDontHaveAccount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/tvDontHaveAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tvRegisterHere"
+            android:text="@string/boarding_register_here"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginStart="6dp"
+            app:layout_constraintStart_toEndOf="@+id/tvDontHaveAccount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tvDontHaveAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/tvSignGoogle"
-        android:text="@string/boarding_sign_google"
-        android:background="@drawable/rounded_corner_rect_grey_big"
-        android:backgroundTint="@color/colorDanger"
-        android:padding="12dp"
-        android:gravity="center"
-        android:textSize="14sp"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/tvRegisterHere"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tvSignGoogle"
+            android:text="@string/boarding_sign_google"
+            android:background="@drawable/rounded_corner_rect_grey_big"
+            android:backgroundTint="@color/colorDanger"
+            android:padding="12dp"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/tvRegisterHere"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/tvSignNow"
-        android:text="@string/boarding_login_now"
-        android:background="@drawable/rounded_corner_rect_grey_big"
-        android:backgroundTint="@color/colorPrimary"
-        android:textSize="14sp"
-        android:padding="12dp"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/tvSignGoogle"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tvSignNow"
+            android:text="@string/boarding_login_now"
+            android:background="@drawable/rounded_corner_rect_grey_big"
+            android:backgroundTint="@color/colorPrimary"
+            android:textSize="14sp"
+            android:padding="12dp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/tvSignGoogle"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        app:srcCompat="@drawable/ic_google"
-        app:layout_constraintTop_toTopOf="@+id/tvSignGoogle"
-        app:layout_constraintBottom_toBottomOf="@+id/tvSignGoogle"
-        app:layout_constraintStart_toStartOf="@+id/tvSignGoogle"
-        android:layout_marginStart="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatImageView
+            app:srcCompat="@drawable/ic_google"
+            app:layout_constraintTop_toTopOf="@+id/tvSignGoogle"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSignGoogle"
+            app:layout_constraintStart_toStartOf="@+id/tvSignGoogle"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
