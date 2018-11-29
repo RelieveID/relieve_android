@@ -1,7 +1,7 @@
 package com.relieve.android.network
 
-import com.relieve.android.network.data.ApiResponse
-import com.relieve.android.network.data.Device
+import com.relieve.android.network.data.camar.ApiResponse
+import com.relieve.android.network.data.camar.Device
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
