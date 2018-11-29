@@ -11,15 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.relieve.android.R
 import com.relieve.android.components.*
+import com.relieve.android.rsux.adapter.BaseAdapter
 import com.relieve.android.rsux.adapter.HorizontalRecycler
 import com.relieve.android.rsux.helper.dpToPx
-import com.relieve.android.rsux.adapter.VerticalAdapter
 import com.relieve.android.rsux.component.SpaceItem
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
 import kotlinx.android.synthetic.main.sheet_notice.*
 
 class DashboardHomeFragment : Fragment() {
-    private val adapter = VerticalAdapter()
+    private val adapter = BaseAdapter()
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,

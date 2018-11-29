@@ -1,52 +1,28 @@
 package com.relieve.android.fragment.boarding
 
-
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.EditText
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.relieve.android.R
-import com.relieve.android.helper.PreferencesHelper
 import com.relieve.android.rsux.base.EditTextChangeListener
 import com.relieve.android.rsux.component.SnackBarItem
+import com.relieve.android.rsux.framework.RsuxFragment
 import com.relieve.android.rsux.helper.isEmailValid
 import com.relieve.android.viewmodel.boarding.BoardingViewModel
 import kotlinx.android.synthetic.main.fragment_boarding_login.*
 import kotlinx.android.synthetic.main.sheet_forgot_pass.*
 
-class BoardingLoginFragment : Fragment() {
-    private val vModel by lazy {
-        ViewModelProviders.of(this).get(BoardingViewModel::class.java)
+class BoardingLoginFragment : RsuxFragment<BoardingViewModel.BoardingState, BoardingViewModel>() {
+    override val vModel: BoardingViewModel
+        get() = ViewModelProviders.of(this).get(BoardingViewModel::class.java)
+
+    init {
+        R.layout.fragment_boarding_login
     }
 
-    private val preferencesHelper by lazy {
-        context?.run { PreferencesHelper(this) }
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?) : View? {
-        return inflater.inflate(R.layout.fragment_boarding_login, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        render()
-    }
-
-    override fun onDestroy() {
-        vModel.onDestroy()
-        super.onDestroy()
-    }
-
-    private fun render() {
+    override fun render(state: BoardingViewModel.BoardingState) {
         toolbarBoardingLogin.setNavigationOnClickListener {
             findNavController().navigateUp()
         }

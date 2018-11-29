@@ -9,7 +9,7 @@ import androidx.fragment.app.transaction
 import androidx.navigation.fragment.findNavController
 import com.relieve.android.helper.BottomNavBar
 import com.relieve.android.R
-import com.relieve.android.helper.PreferencesHelper
+import com.relieve.android.rsux.helper.PreferencesHelper
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 class DashboardFragment : Fragment() {

@@ -33,6 +33,9 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$versions.xAppCompat"
     implementation "android.arch.navigation:navigation-ui-ktx:$versions.ktxNavigation"
 
+    //rxandroid
+    implementation "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid"
+
     testImplementation "junit:junit:$versions.junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
 }

@@ -12,7 +12,7 @@ import com.relieve.android.rsux.base.Item
 class VerticalGridRecycler (val localItem: List<Item<*>>,
                             private val columnNumber: Int,
                             val spanDecider: (viewType: Int) -> Int)
-    : Item<VerticalGridRecycler>, VerticalAdapter() {
+    : Item<VerticalGridRecycler>, BaseAdapter() {
 
     override val viewType = VerticalGridRecycler::class.java.hashCode()
 

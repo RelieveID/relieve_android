@@ -12,7 +12,7 @@ import com.relieve.android.rsux.base.Item
  * Please Provide order if you use multiple horizontal recycler in single screen
  * order = [1..n]
  */
-class HorizontalRecycler(val localItem : List<Item<*>>, order: Int = 0) : Item<HorizontalRecycler>, VerticalAdapter(){
+class HorizontalRecycler(val localItem : List<Item<*>>, order: Int = 0) : Item<HorizontalRecycler>, BaseAdapter(){
 
     override val viewType = HorizontalRecycler::class.java.hashCode() + order
 

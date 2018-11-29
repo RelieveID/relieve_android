@@ -9,7 +9,6 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.relieve.android.R
-import com.relieve.android.helper.PreferencesHelper
 import kotlinx.android.synthetic.main.fragment_walkthrough.*
 
 class WalkthroughFragment : Fragment() {

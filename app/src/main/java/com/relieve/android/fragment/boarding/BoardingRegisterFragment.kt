@@ -2,33 +2,23 @@ package com.relieve.android.fragment.boarding
 
 
 import android.app.DatePickerDialog
-import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
-import com.relieve.android.helper.PreferencesHelper
 import com.relieve.android.network.data.relieve.UserData
 import com.relieve.android.rsux.base.EditTextChangeListener
 import com.relieve.android.rsux.component.SnackBarItem
+import com.relieve.android.rsux.framework.RsuxFragment
 import com.relieve.android.rsux.helper.isEmailValid
 import com.relieve.android.viewmodel.boarding.BoardingViewModel
 import kotlinx.android.synthetic.main.fragment_boarding_register.*
 import java.util.*
 
-class BoardingRegisterFragment : Fragment() {
-    private val vModel by lazy {
-        ViewModelProviders.of(this).get(BoardingViewModel::class.java)
-    }
-
-    private val preferencesHelper by lazy {
-        context?.run { PreferencesHelper(this) }
-    }
+class BoardingRegisterFragment : RsuxFragment<BoardingViewModel.BoardingState, BoardingViewModel>() {
+    override val vModel: BoardingViewModel
+        get() = ViewModelProviders.of(this).get(BoardingViewModel::class.java)
 
     private val textInputs by lazy {
         listOf (
@@ -43,18 +33,8 @@ class BoardingRegisterFragment : Fragment() {
         )
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_boarding_register, container, false)
-    }
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        enableTextClick()
-        render()
+    init {
+        R.layout.fragment_boarding_register
     }
 
     private fun enableTextClick() {
@@ -62,7 +42,9 @@ class BoardingRegisterFragment : Fragment() {
         tvTermsNCondition.movementMethod = LinkMovementMethod.getInstance()
     }
 
-    private fun render() {
+    override fun render(state: BoardingViewModel.BoardingState) {
+        enableTextClick()
+
         textInputs.forEach {
             it.editText?.addTextChangedListener(object : EditTextChangeListener() {
                 override fun onTextChanged(text: CharSequence, start: Int, before: Int, count: Int) {
