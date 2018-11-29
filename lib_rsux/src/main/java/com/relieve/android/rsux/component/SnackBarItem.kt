@@ -8,7 +8,9 @@ import androidx.core.content.ContextCompat.getColor
 import com.relieve.android.rsux.R
 import kotlinx.android.synthetic.main.view_snack_bar.view.*
 
-
+/**
+ * Please use Coordinator layout as parent to make intended view
+ * */
 class SnackBarItem(parent : ViewGroup,
                    content: View,
                    contentViewCallback: com.google.android.material.snackbar.ContentViewCallback)

@@ -8,14 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
 import com.relieve.android.rsux.base.EditTextChangeListener
-import com.relieve.android.viewmodel.boarding.BoardingLoginVM
+import com.relieve.android.rsux.component.SnackBarItem
+import com.relieve.android.viewmodel.boarding.BoardingViewModel
 import kotlinx.android.synthetic.main.fragment_boarding_login.*
 
 class BoardingLoginFragment : Fragment() {
     private val vModel by lazy {
-        ViewModelProviders.of(this).get(BoardingLoginVM::class.java)
+        ViewModelProviders.of(this).get(BoardingViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +35,7 @@ class BoardingLoginFragment : Fragment() {
         toolbarBoardingLogin.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
+
         tvRegisterHere.setOnClickListener {
             findNavController().navigate(R.id.action_boardingLoginFragment_to_boardingRegisterFragment)
         }
@@ -73,6 +76,13 @@ class BoardingLoginFragment : Fragment() {
                 vModel.loginClick(username.toString(), password.toString()) { isSuccess ->
                     if (isSuccess) {
                         findNavController().navigate(R.id.action_boardingLoginFragment_to_dashboardFragment)
+                    } else {
+                        SnackBarItem.make(rootBoardingLogin, Snackbar.LENGTH_LONG).apply {
+                            setMessage(getString(R.string.wrong_account))
+                            setButtonText(getString(R.string.ok))
+                            setButtonClick { dismiss() }
+                            show()
+                        }
                     }
                 }
             }

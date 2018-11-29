@@ -3,10 +3,11 @@ package com.relieve.android.viewmodel.boarding
 import androidx.lifecycle.ViewModel
 import com.relieve.android.network.RelieveService
 import com.relieve.android.network.data.relieve.Login
+import com.relieve.android.network.data.relieve.Register
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class BoardingLoginVM : ViewModel() {
+class BoardingViewModel : ViewModel() {
 
     private val relieveService by lazy {
         RelieveService.create()
@@ -20,6 +21,19 @@ class BoardingLoginVM : ViewModel() {
                         { result -> onResponse(true) },
                         { error -> onResponse(false) }
                 )
+    }
 
+    fun registerClick(userData: Register, onResponse: (Boolean) -> Unit) {
+        relieveService.register(userData)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { result -> onResponse(true) },
+                { error -> onResponse(false) }
+            )
+    }
+
+    fun onGoogleLogin(idToken: String, onResponse: (Boolean) -> Unit) {
+        onResponse(true)
     }
 }
