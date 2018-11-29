@@ -85,9 +85,24 @@ class BoardingHomeFragment : Fragment() {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
                 if (!account?.idToken.isNullOrEmpty() && !account?.displayName.isNullOrEmpty()) {
-                    preferencesHelper?.isSignedIn = true
-                    vModel.onGoogleLogin(account?.idToken.toString(), account?.displayName.toString()) {
-                        findNavController().navigate(R.id.action_boardingHomeFragment_to_dashboardFragment)
+                    vModel.onGoogleLogin(account?.idToken.toString(), account?.displayName.toString()) { isSuccess, resToken ->
+                        if (isSuccess) {
+                            preferencesHelper?.apply {
+                                isSignedIn = true
+                                token = resToken?.token
+                                tokenRefresh = resToken?.refreshToken
+                                tokenExpire = resToken?.expiresIn ?: 0
+                            }
+
+                            findNavController().navigate(R.id.action_boardingHomeFragment_to_dashboardFragment)
+                        } else {
+                            SnackBarItem.make(rootBoardingHome, Snackbar.LENGTH_LONG).apply {
+                                setMessage(getString(R.string.unknown_error))
+                                setButtonText(getString(R.string.ok))
+                                setButtonClick { dismiss() }
+                                show()
+                            }
+                        }
                     }
                 } else {
                     SnackBarItem.make(rootBoardingHome, Snackbar.LENGTH_LONG).apply {

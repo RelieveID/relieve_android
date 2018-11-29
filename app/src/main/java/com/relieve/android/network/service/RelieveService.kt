@@ -19,7 +19,7 @@ interface RelieveService {
     fun login(@Body bodyLogin: Login) : Observable<ApiResponse<UserToken>>
 
     @POST("google/callback")
-    fun googleLogin(@Body bodyData: GoogleData) : Observable<ApiResponse<Any>>
+    fun googleLogin(@Body bodyData: GoogleData) : Observable<ApiResponse<UserToken>>
 
     @POST("register")
     fun register(@Body bodyUserData: UserData) : Observable<ApiResponse<UserToken>>

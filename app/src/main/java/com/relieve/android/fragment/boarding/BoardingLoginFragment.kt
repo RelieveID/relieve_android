@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
+import com.relieve.android.helper.PreferencesHelper
 import com.relieve.android.rsux.base.EditTextChangeListener
 import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.viewmodel.boarding.BoardingViewModel
@@ -18,6 +19,10 @@ import kotlinx.android.synthetic.main.fragment_boarding_login.*
 class BoardingLoginFragment : Fragment() {
     private val vModel by lazy {
         ViewModelProviders.of(this).get(BoardingViewModel::class.java)
+    }
+
+    private val preferencesHelper by lazy {
+        context?.run { PreferencesHelper(this) }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -78,8 +83,15 @@ class BoardingLoginFragment : Fragment() {
             }
 
             if (!username.isNullOrEmpty() && !password.isNullOrBlank()) {
-                vModel.loginClick(username.toString(), password.toString()) { isSuccess ->
+                vModel.loginClick(username.toString(), password.toString()) { isSuccess, resToken ->
                     if (isSuccess) {
+                        preferencesHelper?.apply {
+                            isSignedIn = true
+                            token = resToken?.token
+                            tokenRefresh = resToken?.refreshToken
+                            tokenExpire = resToken?.expiresIn ?: 0
+                        }
+
                         findNavController().navigate(R.id.action_boardingLoginFragment_to_dashboardFragment)
                     } else {
                         SnackBarItem.make(rootBoardingLogin, Snackbar.LENGTH_LONG).apply {
