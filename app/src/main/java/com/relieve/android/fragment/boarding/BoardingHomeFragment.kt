@@ -77,14 +77,18 @@ class BoardingHomeFragment : Fragment() {
                     preferencesHelper?.isSignedIn = true
                     findNavController().navigate(R.id.action_boardingHomeFragment_to_dashboardFragment)
                 } else {
-                    SnackBarItem.make(rootBoardingHome, Snackbar.LENGTH_SHORT)
-                        .setMessage(getString(R.string.unknown_error))
-                        .show()
+                    SnackBarItem.make(rootBoardingHome, Snackbar.LENGTH_LONG).apply {
+                        setMessage(getString(R.string.unknown_error))
+                        setButtonClick { dismiss() }
+                        show()
+                    }
                 }
             } catch (e: ApiException) {
-                SnackBarItem.make(rootBoardingHome, Snackbar.LENGTH_SHORT)
-                    .setMessage(getString(R.string.unknown_error))
-                    .show()
+                SnackBarItem.make(rootBoardingHome, Snackbar.LENGTH_LONG).apply {
+                    setMessage(getString(R.string.unknown_error))
+                    setButtonClick { dismiss() }
+                    show()
+                }
             }
         }
     }
