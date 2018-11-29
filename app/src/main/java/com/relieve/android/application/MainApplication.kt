@@ -14,7 +14,6 @@ class MainApplication : MultiDexApplication() {
         // only request
         if (PreferencesHelper(applicationContext).tokenFCM.isNullOrEmpty()) {
             generateToken()
-
         }
     }
 
