@@ -1,42 +1,33 @@
-package com.relieve.android.fragment.dashboard
+package com.relieve.android.screen.fragment.dashboard
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.ViewModelProviders
 import com.relieve.android.R
 import com.relieve.android.components.DisasterItem
 import com.relieve.android.components.DiscoverItem
 import com.relieve.android.components.TitleBarItem
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
-import com.relieve.android.rsux.adapter.VerticalAdapter
+import com.relieve.android.rsux.framework.RsuxFragment
+import com.relieve.android.rsux.helper.setupWithBaseAdapter
+import com.relieve.android.screen.viewmodel.DashboardViewHolder
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
 
-class DashboardDiscoverFragment : Fragment() {
+class DashboardDiscoverFragment : RsuxFragment<DashboardViewHolder.DashboardState, DashboardViewHolder>() {
     companion object {
         const val NUMBER_OF_COLUMN = 2
     }
 
-    private val adapter = VerticalAdapter()
+    override val vModel by lazy { ViewModelProviders.of(this).get(DashboardViewHolder::class.java) }
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.recycler_view_full, container, false).apply {
-            this.rvFull.adapter = adapter
-            this.rvFull.layoutManager = LinearLayoutManager(context)
-        }
+    private val adapter get() = view?.rvFull?.setupWithBaseAdapter()
+
+    init {
+        layoutId = R.layout.recycler_view_full
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        render()
-    }
+    override fun render(state: DashboardViewHolder.DashboardState) {
+        adapter?.run {
+            removeAll()
 
-    private fun render() {
-        adapter.removeAll()
-        adapter.apply {
             add(DisasterItem(0, 0,"Gunung Semeru Meletus", "Probolinggo, Jawa Timur"))
             add(TitleBarItem("Highlight Bencana", ""))
             add(

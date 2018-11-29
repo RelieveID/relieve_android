@@ -1,12 +1,7 @@
-package com.relieve.android.fragment.boarding
+package com.relieve.android.screen.fragment.boarding
 
 
 import android.content.Intent
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -14,14 +9,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
-import com.relieve.android.helper.PreferencesHelper
 import com.relieve.android.rsux.component.SnackBarItem
-import com.relieve.android.viewmodel.boarding.BoardingViewModel
+import com.relieve.android.rsux.framework.RsuxFragment
+import com.relieve.android.screen.viewmodel.BoardingViewModel
 import kotlinx.android.synthetic.main.fragment_boarding_home.*
 
-class BoardingHomeFragment : Fragment() {
+class BoardingHomeFragment : RsuxFragment<BoardingViewModel.BoardingState, BoardingViewModel>() {
     companion object {
         const val RC_SIGN_IN = 101
+    }
+
+    init {
+        layoutId = R.layout.fragment_boarding_home
     }
 
     // Configure Google Sign In
@@ -32,34 +31,12 @@ class BoardingHomeFragment : Fragment() {
             .build()
     }
 
-    private val preferencesHelper by lazy {
-        context?.run { PreferencesHelper(this) }
-    }
+    override val vModel by lazy {  ViewModelProviders.of(this).get(BoardingViewModel::class.java) }
 
-    private val vModel by lazy {
-        ViewModelProviders.of(this).get(BoardingViewModel::class.java)
-    }
-
-    override fun onDestroy() {
-        vModel.onDestroy()
-        super.onDestroy()
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_boarding_home, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun render(state: BoardingViewModel.BoardingState) {
         if (preferencesHelper?.isSignedIn == true)
             findNavController().navigate(R.id.action_boardingHomeFragment_to_dashboardFragment)
-        else render()
-    }
 
-    private fun render() {
         tvSignNow.setOnClickListener {
             findNavController().navigate(R.id.action_boardingHomeFragment_to_boardingLoginFragment)
         }

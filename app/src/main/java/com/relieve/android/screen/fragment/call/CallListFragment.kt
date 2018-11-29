@@ -1,45 +1,34 @@
-package com.relieve.android.fragment.call
+package com.relieve.android.screen.fragment.call
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
 import com.relieve.android.components.*
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
 import com.relieve.android.rsux.helper.dpToPx
-import com.relieve.android.rsux.adapter.VerticalAdapter
+import com.relieve.android.rsux.helper.setupWithBaseAdapter
 import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.rsux.component.SpaceItem
+import com.relieve.android.rsux.framework.RsuxFragment
+import com.relieve.android.screen.viewmodel.CallViewModel
 import kotlinx.android.synthetic.main.recycler_view_with_toolbar_and_bottom_action.*
 
-class CallListFragment : Fragment() {
+class CallListFragment : RsuxFragment<CallViewModel.CallState, CallViewModel>() {
+    override val vModel by lazy { ViewModelProviders.of(this).get(CallViewModel::class.java) }
 
-    private val adapter = VerticalAdapter()
+    private val adapter get() = rvWithToolbar.setupWithBaseAdapter()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.recycler_view_with_toolbar_and_bottom_action, container, false)
+    init {
+        layoutId = R.layout.recycler_view_with_toolbar_and_bottom_action
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun render(state : CallViewModel.CallState) {
         toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
-        rvWithToolbar.layoutManager = LinearLayoutManager(context)
-        rvWithToolbar.adapter = adapter
-
-        render()
-    }
-
-    private fun render() {
         adapter.removeAll()
         adapter.apply {
             add(ImageItem())
