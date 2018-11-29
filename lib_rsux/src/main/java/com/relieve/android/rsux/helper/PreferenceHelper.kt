@@ -13,6 +13,7 @@ class PreferencesHelper(val context: Context){
         private const val TOKEN = "data.source.prefs.TOKEN"
         private const val REFRESH_TOKEN = "data.source.prefs.REFRESH_TOKEN"
         private const val TOKEN_EXPIRE = "data.source.prefs.TOKEN_EXPIRE"
+        private const val FCM_TOKEN = "data.source.prefs.FCM_TOKEN"
     }
     private val preferences = context.getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE)
 
@@ -24,6 +25,9 @@ class PreferencesHelper(val context: Context){
 
     var tokenExpire = preferences.getInt(TOKEN_EXPIRE, 0)
         set(value) = preferences.edit().putInt(TOKEN_EXPIRE, value).apply()
+
+    var tokenFCM = preferences.getString(FCM_TOKEN, "")
+        set(value) = preferences.edit().putString(FCM_TOKEN, value).apply()
 
     var hasSeenWalkthrough = preferences.getBoolean(HAS_SEEN_WALKTHROUGH, false)
         set(value) = preferences.edit().putBoolean(HAS_SEEN_WALKTHROUGH,value).apply()
