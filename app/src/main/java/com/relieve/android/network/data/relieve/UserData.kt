@@ -2,7 +2,7 @@ package com.relieve.android.network.data.relieve
 
 import com.google.gson.annotations.SerializedName
 
-data class Register(
+data class UserData(
 
         @field:SerializedName("username")
         val username: String? = null,

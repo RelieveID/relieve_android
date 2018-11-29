@@ -31,6 +31,11 @@ class BoardingLoginFragment : Fragment() {
         render()
     }
 
+    override fun onDestroy() {
+        vModel.onDestroy()
+        super.onDestroy()
+    }
+
     private fun render() {
         toolbarBoardingLogin.setNavigationOnClickListener {
             findNavController().navigateUp()

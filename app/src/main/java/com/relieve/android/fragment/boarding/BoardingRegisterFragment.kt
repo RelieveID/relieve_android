@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
-import com.relieve.android.network.data.relieve.Register
+import com.relieve.android.network.data.relieve.UserData
 import com.relieve.android.rsux.base.EditTextChangeListener
 import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.rsux.helper.isEmailValid
@@ -126,7 +126,7 @@ class BoardingRegisterFragment : Fragment() {
             }
 
             if (allIsValid) {
-                vModel.registerClick(Register(
+                vModel.registerClick(UserData(
                     username.toString(),
                     password.toString(),
                     fullName.toString(),

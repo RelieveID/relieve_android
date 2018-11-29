@@ -2,10 +2,7 @@ package com.relieve.android.network.service
 
 import com.relieve.android.BuildConfig
 import com.relieve.android.network.Bakau
-import com.relieve.android.network.data.relieve.ApiResponse
-import com.relieve.android.network.data.relieve.Login
-import com.relieve.android.network.data.relieve.Register
-import com.relieve.android.network.data.relieve.UserToken
+import com.relieve.android.network.data.relieve.*
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,8 +17,11 @@ interface RelieveService {
     @POST("login")
     fun login(@Body bodyLogin: Login) : Observable<ApiResponse<UserToken>>
 
+    @POST("google/callback")
+    fun googleLogin(@Body bodyData: GoogleData) : Observable<ApiResponse<Any>>
+
     @POST("register")
-    fun register(@Body bodyRegister: Register) : Observable<ApiResponse<UserToken>>
+    fun register(@Body bodyUserData: UserData) : Observable<ApiResponse<UserToken>>
 
     companion object {
         fun create(): RelieveService {

@@ -40,6 +40,11 @@ class BoardingHomeFragment : Fragment() {
         ViewModelProviders.of(this).get(BoardingViewModel::class.java)
     }
 
+    override fun onDestroy() {
+        vModel.onDestroy()
+        super.onDestroy()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -79,9 +84,9 @@ class BoardingHomeFragment : Fragment() {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
-                if (account?.idToken != null) {
+                if (!account?.idToken.isNullOrEmpty() && !account?.displayName.isNullOrEmpty()) {
                     preferencesHelper?.isSignedIn = true
-                    vModel.onGoogleLogin(account.idToken.toString()) {
+                    vModel.onGoogleLogin(account?.idToken.toString(), account?.displayName.toString()) {
                         findNavController().navigate(R.id.action_boardingHomeFragment_to_dashboardFragment)
                     }
                 } else {

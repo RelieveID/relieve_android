@@ -73,7 +73,7 @@
     <string name="unknown_error">Terjadi kesalahan, silahkan coba beberapa saat lagi</string>
     <string name="wrong_account">Username atau Password yang dimasukkan salah</string>
 
-    <!--Boarding Register-->
+    <!--Boarding UserData-->
     <string name="bod_format">%d-%d-%d</string>
     <string name="boarding_register">Daftar</string>
     <string name="email">Email</string>
