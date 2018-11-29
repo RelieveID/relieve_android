@@ -84,7 +84,9 @@ ext.versions = [
         parceler           : '1.1.6',
         junit              : '4.12',
         robolectric        : '4.0',
-        mockk              : '1.8.12'
+        mockk              : '1.8.12',
+        rxAndroid          : '2.0.2',
+        okhttp             : '3.12.0'
 ]
 
 enum Kind {

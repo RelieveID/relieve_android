@@ -1,19 +1,27 @@
 package com.relieve.android.viewmodel.boarding
 
 import androidx.lifecycle.ViewModel
+import com.relieve.android.network.RelieveService
+import com.relieve.android.network.data.relieve.Register
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
-class UserData (
-    username: String,
-    password: String,
-    fullName: String,
-    email: String,
-    phoneNum: String,
-    birthDate: String
-)
 
 class BoardingRegisterVM : ViewModel() {
 
-    fun registerClick(userData: UserData, onResponse: (Boolean) -> Unit) {
+    private val relieveService by lazy {
+        RelieveService.create()
+    }
+
+    fun registerClick(userData: Register, onResponse: (Boolean) -> Unit) {
+        relieveService.register(userData)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        { result -> onResponse(true) },
+                        { error -> onResponse(false) }
+                )
+
         onResponse(true)
     }
 }

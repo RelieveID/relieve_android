@@ -1,6 +1,9 @@
 package com.relieve.android.activity
 
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.iid.FirebaseInstanceId
+import com.relieve.android.helper.BottomNavBar
 import android.os.Bundle
 import androidx.navigation.findNavController
 import com.relieve.android.R
