@@ -6,6 +6,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.relieve.android.R
+import com.relieve.android.helper.*
 import com.relieve.android.rsux.base.EditTextChangeListener
 import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.rsux.framework.RsuxFragment

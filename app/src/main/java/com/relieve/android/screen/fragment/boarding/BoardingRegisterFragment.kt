@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
+import com.relieve.android.helper.*
 import com.relieve.android.network.data.relieve.UserData
 import com.relieve.android.rsux.base.EditTextChangeListener
 import com.relieve.android.rsux.component.SnackBarItem

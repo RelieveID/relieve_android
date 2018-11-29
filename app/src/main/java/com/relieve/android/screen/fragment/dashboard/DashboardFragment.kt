@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.relieve.android.helper.BottomNavBar
 import com.relieve.android.R
+import com.relieve.android.helper.hasSeenWalkthrough
 import com.relieve.android.rsux.framework.RsuxFragment
 import com.relieve.android.rsux.helper.PreferencesHelper
 import com.relieve.android.screen.viewmodel.DashboardViewHolder
