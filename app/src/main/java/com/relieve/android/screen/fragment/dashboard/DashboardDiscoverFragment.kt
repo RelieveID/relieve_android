@@ -18,9 +18,7 @@ class DashboardDiscoverFragment : RsuxFragment<DashboardViewHolder.DashboardStat
 
     override val vModel by lazy { ViewModelProviders.of(this).get(DashboardViewHolder::class.java) }
 
-    private val adapter by lazy {
-        view?.rvFull?.setupWithBaseAdapter()
-    }
+    private val adapter get() = view?.rvFull?.setupWithBaseAdapter()
 
     init {
         layoutId = R.layout.recycler_view_full

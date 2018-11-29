@@ -18,9 +18,7 @@ import kotlinx.android.synthetic.main.recycler_view_with_toolbar_and_bottom_acti
 class CallListFragment : RsuxFragment<CallViewModel.CallState, CallViewModel>() {
     override val vModel by lazy { ViewModelProviders.of(this).get(CallViewModel::class.java) }
 
-    private val adapter by lazy {
-        rvWithToolbar.setupWithBaseAdapter()
-    }
+    private val adapter get() = rvWithToolbar.setupWithBaseAdapter()
 
     init {
         layoutId = R.layout.recycler_view_with_toolbar_and_bottom_action

@@ -22,9 +22,7 @@ class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, D
         layoutId = R.layout.recycler_view_full
     }
 
-    private val adapter by lazy {
-        view?.rvFull?.setupWithBaseAdapter()
-    }
+    private val adapter get() = view?.rvFull?.setupWithBaseAdapter()
 
     override fun render(state: DashboardViewHolder.DashboardState) {
         adapter?.run {
