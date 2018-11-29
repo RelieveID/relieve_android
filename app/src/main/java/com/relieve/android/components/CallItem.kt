@@ -15,7 +15,7 @@ class CallItem(val title: String,
 
     override val viewType = CallItem::class.java.hashCode()
 
-    override fun createViewHolder(parent: ViewGroup): RelieveViewHolder<CallItem> {
+    override fun createViewHolder(parent: ViewGroup): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_call, parent, false))
     }
 

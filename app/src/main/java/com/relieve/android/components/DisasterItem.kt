@@ -16,7 +16,7 @@ class DisasterItem(val latitude: Long,
 
     override val viewType = DisasterItem::class.java.hashCode()
 
-    override fun createViewHolder(parent: ViewGroup): RelieveViewHolder<DisasterItem> {
+    override fun createViewHolder(parent: ViewGroup): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_disaster_live, parent, false))
     }
 
