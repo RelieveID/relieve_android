@@ -25,9 +25,10 @@ abstract class RsuxFragment<RS: RsuxState, RVM : RsuxViewModel<RS>> : Fragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        registerObserver()
         render(vModel.getCurrentState())
     }
 
-//    abstract fun registerObserver()
+    open fun registerObserver() {}
     abstract fun render(state: RS)
 }

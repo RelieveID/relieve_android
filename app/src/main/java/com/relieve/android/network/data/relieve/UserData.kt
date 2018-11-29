@@ -19,8 +19,11 @@ data class UserData(
     val phone: String? = null,
 
     @field:SerializedName("birthdate")
-    val birthdate: String? = null,
+    val birthDate: String? = null,
 
     @field:SerializedName("fcm_token")
-    val fcmToken: String? = null
+    val fcmToken: String? = null,
+
+    @field:SerializedName("isComplete")
+    val isComplete: Boolean? = null
 )

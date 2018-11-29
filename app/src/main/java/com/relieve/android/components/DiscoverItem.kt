@@ -12,8 +12,8 @@ import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_disaster_news.view.*
 
-class DiscoverItem(val latitude: Long,
-                   val longitude: Long,
+class DiscoverItem(val latitude: Double,
+                   val longitude: Double,
                    val title: String,
                    val secondAgo: Long,
                    val shouldFillWidth: Boolean = false,

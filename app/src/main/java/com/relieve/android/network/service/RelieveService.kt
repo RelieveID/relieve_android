@@ -11,9 +11,13 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface RelieveService {
+
+    @GET("user/profile")
+    fun getProfile() : Observable<ApiResponse<UserData>>
 
     @POST("login")
     fun login(@Body bodyLogin: Login) : Observable<ApiResponse<UserToken>>
@@ -25,18 +29,22 @@ interface RelieveService {
     fun register(@Body bodyUserData: UserData) : Observable<ApiResponse<UserToken>>
 
     companion object {
-        fun create(): RelieveService {
+        fun create(auth: String? = null): RelieveService {
 
             val okHttpClient = OkHttpClient().newBuilder().apply {
                 addInterceptor { chain ->
                     val request = chain.request()
-                    val newRequest = request.newBuilder()
-                            .addHeader("Content-Type", "application/json")
-                            .addHeader(
-                                Bakau.HEADER_SECRET,
-                                Bakau.SECRET
-                            )
-                            .build()
+                    val newRequest = request.newBuilder().apply {
+                        addHeader("Content-Type", "application/json")
+                        addHeader(
+                            Bakau.HEADER_SECRET,
+                            Bakau.SECRET
+                        )
+                        addHeader(
+                            Bakau.HEADER_AUTH,
+                            auth ?: ""
+                        )
+                    }.build()
 
                     return@addInterceptor chain.proceed(newRequest)
                 }

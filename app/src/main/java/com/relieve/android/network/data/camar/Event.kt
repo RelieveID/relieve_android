@@ -9,7 +9,7 @@ data class Event(
     @field:SerializedName("title")
     val title: String? = null,
 
-    @field:SerializedName("mag")
+    @field:SerializedName("location")
     val location: Location? = null,
 
     @field:SerializedName("mag")

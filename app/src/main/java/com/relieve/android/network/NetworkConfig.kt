@@ -17,4 +17,6 @@ object Bakau {
 
     const val HEADER_SECRET = "secret"
     const val SECRET = "YTvZ3kG9X9Vz6MLHdNIwnaTefjs2Udph"
+
+    const val HEADER_AUTH = "Authorization"
 }

@@ -1,12 +1,15 @@
 package com.relieve.android.screen.fragment.dashboard
 
 import android.widget.LinearLayout
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.relieve.android.R
 import com.relieve.android.components.*
+import com.relieve.android.helper.token
 import com.relieve.android.rsux.adapter.HorizontalRecycler
+import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.component.SpaceItem
 import com.relieve.android.rsux.framework.RsuxFragment
@@ -24,30 +27,43 @@ class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, D
 
     private val adapter get() = view?.rvFull?.setupWithBaseAdapter()
 
+    override fun registerObserver() {
+        super.registerObserver()
+        vModel.state.earthQuakesLiveData.observe(this, Observer {
+            render(vModel.state)
+        })
+
+        vModel.getUserProfile(preferencesHelper?.token)
+        vModel.discoverTopEvent()
+    }
     override fun render(state: DashboardViewHolder.DashboardState) {
-//        vModel.state.earthQuakesLiveData.observe(this) { a ->
-//
-//        }
         adapter?.run {
             removeAll()
 
-            add(UserBarItem("Halo", "Muh. Alif Akbar"))
+            state.userLiveData.value?.run {
+                add(UserBarItem("Halo,", fullname ?: "Muh. Alif Akbar"))
+            }
             add(StatusBarItem(".jpg", "Bojongsoang, Bandung Barat"))
             add(TitleBarItem("Discover", "Update informasi terkini bencana di seluruh Indonesia"))
-            add(
-                HorizontalRecycler(
-                    listOf(
-                        SpaceItem(
-                            8.dpToPx(),
-                            LinearLayout.LayoutParams.MATCH_PARENT
-                        ),
-                        DiscoverItem(0, 0, "Palu", 0, false),
-                        DiscoverItem(0, 0, "Lombok", 100, false),
-                        DiscoverItem(0, 0, "Lombok", 3_000, false),
-                        SpaceItem(8.dpToPx(), LinearLayout.LayoutParams.MATCH_PARENT)
-                    ), 1
-                )
-            )
+            state.earthQuakesLiveData.value?.run {
+
+                val discoverList : MutableList<Item<*>>  = this.map {
+                    val longitude = it.location?.coordinates?.get(0) ?: 0.0
+                    val latitude = it.location?.coordinates?.get(1) ?: 0.0
+                    val title = it.title ?: ""
+                    val time = (it.time ?: 1) / 1000
+                    val place = it.place ?: ""
+
+                    DiscoverItem(longitude, latitude, title, time, false)
+                }.toMutableList()
+
+                discoverList.also {
+                    it.add(0, SpaceItem(8.dpToPx(), LinearLayout.LayoutParams.MATCH_PARENT))
+                    it.add(it.size, SpaceItem(8.dpToPx(), LinearLayout.LayoutParams.MATCH_PARENT))
+                }
+
+                add(HorizontalRecycler (discoverList, 1))
+            }
             add(TitleBarItem("Daftar Kerabat", "Pantau kondisi kerabat terdekat anda dimanapun berada"))
             add(
                 HorizontalRecycler(

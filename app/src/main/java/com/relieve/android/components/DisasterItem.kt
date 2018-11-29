@@ -9,8 +9,8 @@ import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_disaster_news.view.*
 
-class DisasterItem(val latitude: Long,
-                   val longitude: Long,
+class DisasterItem(val latitude: Double,
+                   val longitude: Double,
                    val title: String,
                    val subtitle: String) : Component, Item<DisasterItem> {
 
