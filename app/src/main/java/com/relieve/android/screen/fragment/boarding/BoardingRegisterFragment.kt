@@ -33,7 +33,7 @@ class BoardingRegisterFragment : RsuxFragment<BoardingViewModel.BoardingState, B
     }
 
     init {
-        R.layout.fragment_boarding_register
+        layoutId = R.layout.fragment_boarding_register
     }
 
     private fun enableTextClick() {

@@ -18,7 +18,7 @@ class BoardingLoginFragment : RsuxFragment<BoardingViewModel.BoardingState, Boar
     override val vModel by lazy {  ViewModelProviders.of(this).get(BoardingViewModel::class.java) }
 
     init {
-        R.layout.fragment_boarding_login
+        layoutId = R.layout.fragment_boarding_login
     }
 
     override fun render(state: BoardingViewModel.BoardingState) {

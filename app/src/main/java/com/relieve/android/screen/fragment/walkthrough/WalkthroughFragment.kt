@@ -10,23 +10,36 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.relieve.android.R
 import kotlinx.android.synthetic.main.fragment_walkthrough.*
+import kotlinx.android.synthetic.main.fragment_walkthrough_item.view.*
 
 class WalkthroughFragment : Fragment() {
+    companion object {
+        const val IMAGE_KEY = "IMAGE_KEY"
+        const val TITLE_KEY = "TITLE_KEY"
+        const val SUBTITLE_KEY = "SUBTITLE_KEY"
+    }
     class WalkthroughItemFragment : Fragment() {
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            // Inflate the layout for this fragment
-            return inflater.inflate(R.layout.fragment_walkthrough_item, container, false)
+            var image = ""
+            var title = ""
+            var subtitle = ""
+            arguments?.also {
+                image = it.getString(IMAGE_KEY, "")
+                title = it.getString(TITLE_KEY, "")
+                subtitle = it.getString(SUBTITLE_KEY, "")
+            }
+            return inflater.inflate(R.layout.fragment_walkthrough_item, container, false).apply {
+                if (title.isNotEmpty()) tvWalkThroughTitle.text = title
+                if (subtitle.isNotEmpty()) tvWalkThroughDetail.text = subtitle
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView (inflater: LayoutInflater, container: ViewGroup?,
+                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_walkthrough, container, false)
     }
 
@@ -35,11 +48,39 @@ class WalkthroughFragment : Fragment() {
         render()
     }
 
-    val fragments = listOf(
-        WalkthroughItemFragment(),
-        WalkthroughItemFragment(),
-        WalkthroughItemFragment(),
-        WalkthroughItemFragment()
+    val fragments = listOf (
+        WalkthroughItemFragment().apply {
+            arguments = Bundle()
+            arguments?.apply {
+                putString(IMAGE_KEY, "")
+                putString(TITLE_KEY, "Tambahkan keluarga dan orang terpenting mu ke daftar kerabat")
+                putString(SUBTITLE_KEY, "Jangan sampai kamu ketinggalan informasi mengenai kesehatan mereka")
+            }
+        },
+        WalkthroughItemFragment().apply {
+            arguments = Bundle()
+            arguments?.apply {
+                putString(IMAGE_KEY, "")
+                putString(TITLE_KEY, "Selalu ingat memberi kabar, dengan sekali tap")
+                putString(SUBTITLE_KEY, "Notifikasi harian akan membuat mu selalu ingat memberitahu kondisi mu kepada kerabat")
+            }
+        },
+        WalkthroughItemFragment().apply {
+            arguments = Bundle()
+            arguments?.apply {
+                putString(IMAGE_KEY, "")
+                putString(TITLE_KEY, "Selalu waspada bencana dapat terjadi kapan saja")
+                putString(SUBTITLE_KEY, "Relieve akan memperingatkan mu jika ada bencana terjadi di dekat mu, tetap tenang dan siap evakuasi")
+            }
+        },
+        WalkthroughItemFragment().apply {
+            arguments = Bundle()
+            arguments?.apply {
+                putString(IMAGE_KEY, "")
+                putString(TITLE_KEY, "Ingin tau kondisi terupdate suatu lokasi bencana?")
+                putString(SUBTITLE_KEY, "Pantau terus perkembangan penanggulangan bencana, jangan lagi lewatkan informasi penting")
+            }
+        }
     )
 
     private fun render() {
