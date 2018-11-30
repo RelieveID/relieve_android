@@ -190,3 +190,5 @@ fabric.properties
 \.idea/codeStyles/Project\.xml
 
 \.idea/runConfigurations\.xml
+
+app/release/
