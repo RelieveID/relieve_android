@@ -1,6 +1,8 @@
 package com.relieve.android.network.data.camar
 
 import com.google.gson.annotations.SerializedName
+import java.time.Instant
+import java.util.*
 
 data class Event(
     @field:SerializedName("id")
@@ -23,4 +25,11 @@ data class Event(
 
     @field:SerializedName("time")
     val time: Long? = null
-)
+) {
+    fun getTimeDiffInSecond() = time?.run {
+        val netDate = Date(time * 1000)
+        val curDate = Date()
+
+        return@run (curDate.time - netDate.time) / 1000
+    } ?: 0
+}

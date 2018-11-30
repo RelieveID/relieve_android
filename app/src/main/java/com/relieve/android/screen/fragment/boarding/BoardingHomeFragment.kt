@@ -12,6 +12,7 @@ import com.relieve.android.R
 import com.relieve.android.helper.*
 import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.rsux.framework.RsuxFragment
+import com.relieve.android.rsux.framework.RsuxObserver
 import com.relieve.android.screen.viewmodel.BoardingViewModel
 import kotlinx.android.synthetic.main.fragment_boarding_home.*
 

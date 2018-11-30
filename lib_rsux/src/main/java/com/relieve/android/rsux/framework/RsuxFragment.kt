@@ -15,6 +15,7 @@ abstract class RsuxFragment<RS: RsuxState, RVM : RsuxViewModel<RS>> : Fragment()
     }
 
     abstract val vModel : RVM
+    val vObserver by lazy { RsuxObserver(this, vModel)  }
 
     @LayoutRes
     var layoutId = R.layout.blank
@@ -23,12 +24,15 @@ abstract class RsuxFragment<RS: RsuxState, RVM : RsuxViewModel<RS>> : Fragment()
         return inflater.inflate(layoutId, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         registerObserver()
+        requestData()
         render(vModel.getCurrentState())
     }
 
     open fun registerObserver() {}
+    open fun requestData() {}
+
     abstract fun render(state: RS)
 }

@@ -13,6 +13,7 @@ import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.component.SpaceItem
 import com.relieve.android.rsux.framework.RsuxFragment
+import com.relieve.android.rsux.framework.RsuxObserver
 import com.relieve.android.rsux.helper.setupWithBaseAdapter
 import com.relieve.android.screen.viewmodel.DashboardViewHolder
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
@@ -29,13 +30,16 @@ class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, D
 
     override fun registerObserver() {
         super.registerObserver()
-        vModel.state.earthQuakesLiveData.observe(this, Observer {
-            render(vModel.state)
-        })
 
+        vModel.state.earthQuakesLiveData.observe(this, vObserver)
+        vModel.state.userLiveData.observe(this, vObserver)
+    }
+
+    override fun requestData() {
         vModel.getUserProfile(preferencesHelper?.token)
         vModel.discoverTopEvent()
     }
+
     override fun render(state: DashboardViewHolder.DashboardState) {
         adapter?.run {
             removeAll()
@@ -51,7 +55,7 @@ class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, D
                     val longitude = it.location?.coordinates?.get(0) ?: 0.0
                     val latitude = it.location?.coordinates?.get(1) ?: 0.0
                     val title = it.title ?: ""
-                    val time = (it.time ?: 1) / 1000
+                    val time = it.getTimeDiffInSecond()
                     val place = it.place ?: ""
 
                     DiscoverItem(longitude, latitude, title, time, false)

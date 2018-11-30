@@ -1,6 +1,5 @@
 package com.relieve.android.screen.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.relieve.android.network.data.camar.Event
 import com.relieve.android.network.data.relieve.UserData
