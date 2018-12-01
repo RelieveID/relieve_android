@@ -5,7 +5,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 
 
-class PreferencesHelper(val context: Context){
+class PreferencesHelper(val context: Context) {
     companion object {
         private const val PREFERENCE_NAME = "RelieveIdPreference"
     }

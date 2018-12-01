@@ -19,6 +19,9 @@ interface RelieveService {
     @GET("user/profile")
     fun getProfile() : Observable<ApiResponse<UserData>>
 
+    @POST("user/update-fcm")
+    fun updateFcmToken(@Body token: UserToken) : Observable<ApiResponse<Any>>
+
     @POST("login")
     fun login(@Body bodyLogin: Login) : Observable<ApiResponse<UserToken>>
 

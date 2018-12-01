@@ -11,5 +11,9 @@ data class UserToken(
 	val expiresIn: Int? = null,
 
 	@field:SerializedName("token")
-	val token: String? = null
+	val token: String? = null,
+
+	@field:SerializedName("fcm_token")
+	val fcmToken: String? = null
+
 )

@@ -5,6 +5,7 @@ import com.relieve.android.R
 import com.relieve.android.components.DisasterItem
 import com.relieve.android.components.DiscoverItem
 import com.relieve.android.components.TitleBarItem
+import com.relieve.android.helper.token
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
 import com.relieve.android.rsux.framework.RsuxFragment
 import com.relieve.android.rsux.helper.setupWithBaseAdapter
@@ -16,7 +17,11 @@ class DashboardDiscoverFragment : RsuxFragment<DashboardViewHolder.DashboardStat
         const val NUMBER_OF_COLUMN = 2
     }
 
-    override val vModel by lazy { ViewModelProviders.of(this).get(DashboardViewHolder::class.java) }
+    override val vModel by lazy {
+        ViewModelProviders.of(this).get(DashboardViewHolder::class.java).also {
+            it.createRelieveService(preferencesHelper?.token)
+        }
+    }
 
     private val adapter get() = view?.rvFull?.setupWithBaseAdapter()
 
