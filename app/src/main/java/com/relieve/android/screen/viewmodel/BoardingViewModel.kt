@@ -19,9 +19,8 @@ class BoardingViewModel : RsuxViewModel<BoardingViewModel.BoardingState>() {
 
     fun loginClick(username: String,
                    password: String,
-                   fcmToken: String,
                    onResponse: (Boolean, UserToken?) -> Unit) {
-        relieveService.login(Login(password, username, fcmToken))
+        relieveService.login(Login(password, username))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -46,14 +45,15 @@ class BoardingViewModel : RsuxViewModel<BoardingViewModel.BoardingState>() {
 
     fun onGoogleLogin(idToken: String,
                       fullName: String,
-                      fcmToken: String,
                       onResponse: (Boolean, UserToken?) -> Unit) {
-        val googleData = GoogleData(idToken, UserData(fullname = fullName, fcmToken = fcmToken))
+        val googleData = GoogleData(idToken, UserData(fullname = fullName))
         relieveService.googleLogin(googleData)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> onResponse(result.status.isRequestSuccess(), result.content) },
+                { result ->
+                    onResponse(result.status.isRequestSuccess(), result.content)
+                },
                 { error -> onResponse(false, null) }
             ).also { compositeDisposable.add(it) }
     }

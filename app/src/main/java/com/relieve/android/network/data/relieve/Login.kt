@@ -8,8 +8,5 @@ data class Login(
 	val password: String? = null,
 
 	@field:SerializedName("username")
-	val username: String? = null,
-
-	@field:SerializedName("fcm_token")
-	val fcmToken: String? = null
+	val username: String? = null
 )

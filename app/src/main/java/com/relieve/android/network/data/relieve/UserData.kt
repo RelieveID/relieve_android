@@ -21,9 +21,9 @@ data class UserData(
     @field:SerializedName("birthdate")
     val birthDate: String? = null,
 
-    @field:SerializedName("fcm_token")
-    val fcmToken: String? = null,
+    @field:SerializedName("gender")
+    val gender: String? = null,
 
-    @field:SerializedName("isComplete")
+    @field:SerializedName("is_complete")
     val isComplete: Boolean? = null
 )
