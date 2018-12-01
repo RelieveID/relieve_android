@@ -87,7 +87,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 .updateFcmToken(UserToken(fcmToken = token))
                 .subscribeOn(Schedulers.io())
                 .retry(RETRY_SUM)
-                .subscribe().also { compositeDisposable.add(it) }
+                .subscribe({}, {}).also { compositeDisposable.add(it) }
         }
     }
 

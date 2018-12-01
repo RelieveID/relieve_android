@@ -1,6 +1,8 @@
 package com.relieve.android.screen.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import com.relieve.android.network.PAGINATION_LIMIT
+import com.relieve.android.network.PAGINATION_START
 import com.relieve.android.network.RETRY_SUM
 import com.relieve.android.network.data.camar.Event
 import com.relieve.android.network.data.relieve.UserData
@@ -14,10 +16,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() {
-    companion object {
-        private const val PAGINATION_LIMIT = 10
-        private const val PAGINATION_START = 1
-    }
 
     class DashboardState : RsuxState {
         val earthQuakesLiveData = MutableLiveData<List<Event>>()
@@ -38,12 +36,14 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
             getProfile().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .retry(RETRY_SUM)
-                .subscribe { result ->
-                    if (result.status.isRequestSuccess()) {
-                        // this will trigger observer
-                        state.userLiveData.value = result.content
-                    }
-                }.also { compositeDisposable.add(it) }
+                .subscribe (
+                    { result ->
+                        if (result.status.isRequestSuccess()) {
+                            // this will trigger observer
+                            state.userLiveData.value = result.content
+                        }
+                    }, {}
+                ).also { compositeDisposable.add(it) }
         }
     }
 
@@ -57,19 +57,21 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .retry(RETRY_SUM)
-            .subscribe { result ->
-                if (result.status.isRequestSuccess()) {
-                    // add page
-                    state.page.value = currentPage + 1
+            .subscribe (
+                { result ->
+                    if (result.status.isRequestSuccess()) {
+                        // add page
+                        state.page.value = currentPage + 1
 
-                    // this will trigger observer
-                    val currentData = state.earthQuakesLiveData.value?.toMutableList() ?: mutableListOf()
-                    result.data?.let {
-                        currentData.addAll(it)
-                        state.earthQuakesLiveData.value = currentData
+                        // this will trigger observer
+                        val currentData = state.earthQuakesLiveData.value?.toMutableList() ?: mutableListOf()
+                        result.data?.let {
+                            currentData.addAll(it)
+                            state.earthQuakesLiveData.value = currentData
+                        }
                     }
-                }
-            }.also { compositeDisposable.add(it) }
+                }, {}
+            ).also { compositeDisposable.add(it) }
     }
 
     fun updateFcmToken(fcmToken: String) {

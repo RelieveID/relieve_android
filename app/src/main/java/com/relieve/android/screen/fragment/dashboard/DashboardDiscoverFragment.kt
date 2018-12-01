@@ -1,11 +1,13 @@
 package com.relieve.android.screen.fragment.dashboard
 
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
 import com.relieve.android.R
 import com.relieve.android.components.DisasterItem
 import com.relieve.android.components.DiscoverItem
 import com.relieve.android.components.TitleBarItem
 import com.relieve.android.helper.token
+import com.relieve.android.rsux.adapter.EndlessRecyclerViewScrollListener
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
 import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.framework.RsuxFragment
@@ -35,6 +37,15 @@ class DashboardDiscoverFragment : RsuxFragment<DashboardViewHolder.DashboardStat
     }
 
     override fun requestData() {
+        adapter?.removeAll() // instantiate adapter by lazy
+        view?.rvFull?.layoutManager?.let{
+            view?.rvFull?.addOnScrollListener(object : EndlessRecyclerViewScrollListener(it){
+                override fun onLoadMore() {
+                    vModel.discoverNextEvent()
+                }
+            })
+        }
+
         vModel.discoverNextEvent()
     }
 

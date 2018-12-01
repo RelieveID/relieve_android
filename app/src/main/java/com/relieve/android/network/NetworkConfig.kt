@@ -6,6 +6,9 @@ const val RETRY_SUM: Long = 5
 
 fun Int?.isRequestSuccess () = this == SUCCESS_REQEUST_STATUS
 
+const val PAGINATION_LIMIT = 10
+const val PAGINATION_START = 1
+
 object Camar {
     private const val PATH = "v1"
 
