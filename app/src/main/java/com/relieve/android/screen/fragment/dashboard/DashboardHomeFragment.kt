@@ -15,6 +15,7 @@ import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.component.SpaceItem
 import com.relieve.android.rsux.framework.RsuxFragment
 import com.relieve.android.rsux.framework.RsuxObserver
+import com.relieve.android.rsux.helper.getTimeDiffInSecond
 import com.relieve.android.rsux.helper.setupWithBaseAdapter
 import com.relieve.android.screen.viewmodel.DashboardViewHolder
 import kotlinx.android.synthetic.main.recycler_view_full.view.*
@@ -74,9 +75,9 @@ class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, D
                 val discoverList : MutableList<Item<*>>  = this.map {
                     val longitude = it.location?.coordinates?.get(0) ?: 0.0
                     val latitude = it.location?.coordinates?.get(1) ?: 0.0
-                    val title = it.title ?: ""
-                    val time = it.getTimeDiffInSecond()
-                    val place = it.place ?: ""
+                    val title = it.eventDetail?.title ?: ""
+                    val time = it.time.getTimeDiffInSecond()
+                    val place = it.eventDetail?.place ?: ""
 
                     DiscoverItem(longitude, latitude, title, time, false)
                 }.toMutableList()
