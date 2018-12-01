@@ -192,7 +192,28 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_boardingRegisterFragment_to_dashboardFragment">
+                            <entry key="action_boardingRegisterFragment_to_boardingRegisterFragment2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="boardingRegisterFragment2">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="793" />
+                            <option name="y" value="-366" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_boardingRegisterFragment2_to_walkthroughFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
