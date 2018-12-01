@@ -9,7 +9,6 @@ import com.relieve.android.helper.hasSeenWalkthrough
 import com.relieve.android.helper.token
 import com.relieve.android.helper.tokenFCM
 import com.relieve.android.rsux.framework.RsuxFragment
-import com.relieve.android.rsux.helper.PreferencesHelper
 import com.relieve.android.screen.viewmodel.DashboardViewHolder
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
@@ -64,9 +63,9 @@ class DashboardFragment : RsuxFragment<DashboardViewHolder.DashboardState, Dashb
     }
 
     private fun shouldShowWalkthrought() {
-        context?.run {
-            if (!PreferencesHelper(this).hasSeenWalkthrough) {
-                PreferencesHelper(this).hasSeenWalkthrough = true
+        preferencesHelper?.run {
+            if (!hasSeenWalkthrough) {
+                hasSeenWalkthrough = true
                 findNavController().navigate(R.id.action_dashboardFragment_to_walkthroughFragment)
             }
         }

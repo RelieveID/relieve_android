@@ -15,10 +15,17 @@ import com.relieve.android.R
 import com.relieve.android.activity.MainActivity
 
 import androidx.core.app.NotificationCompat
+import com.relieve.android.helper.preference
+import com.relieve.android.helper.token
 import com.relieve.android.helper.tokenFCM
-import com.relieve.android.rsux.helper.PreferencesHelper
+import com.relieve.android.network.data.relieve.UserToken
+import com.relieve.android.network.isRequestSuccess
+import com.relieve.android.network.service.RelieveService
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
+    protected val compositeDisposable = CompositeDisposable()
 
     /**
      * Called when message is received.
@@ -58,7 +65,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         Log.d(TAG, "Refreshed token: " + token)
 
-        PreferencesHelper(applicationContext).tokenFCM = token
+        applicationContext.preference.tokenFCM = token
         sendRegistrationToServer(token)
     }
     // [END on_new_token]
@@ -73,7 +80,28 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      * @param token The new token.
      */
     private fun sendRegistrationToServer(token: String) {
+        val authToken = applicationContext.preference.token
+        if (!authToken.isNullOrEmpty()) {
+            RelieveService.create(authToken)
+                .updateFcmToken(UserToken(fcmToken = token))
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                    { result ->
+                        if (!result.status.isRequestSuccess()) {
+                            sendRegistrationToServer(token) // fail safe
+                        }
+                    },
+                    { error -> sendRegistrationToServer(token) } // fail safe
+                ).also { compositeDisposable.add(it) }
+        }
+    }
 
+    /**
+     * make sure no request is running
+     */
+    override fun onDestroy() {
+        compositeDisposable.dispose()
+        super.onDestroy()
     }
 
     /**

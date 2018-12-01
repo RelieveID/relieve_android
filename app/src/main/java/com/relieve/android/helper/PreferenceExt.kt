@@ -1,9 +1,7 @@
 package com.relieve.android.helper
 
+import android.content.Context
 import com.relieve.android.rsux.helper.PreferencesHelper
-
-
-const val PREFERENCE_NAME = "RelieveIdPreference"
 
 const val HAS_SEEN_WALKTHROUGH = "data.source.prefs.HAS_SEEN_WALKTHROUGH"
 const val IS_SIGNED_IN = "data.source.prefs.IS_SIGNED_IN"
@@ -12,6 +10,8 @@ const val REFRESH_TOKEN = "data.source.prefs.REFRESH_TOKEN"
 const val TOKEN_EXPIRE = "data.source.prefs.TOKEN_EXPIRE"
 const val FCM_TOKEN = "data.source.prefs.FCM_TOKEN"
 
+val Context.preference: PreferencesHelper
+    get() = PreferencesHelper(this)
 
 var PreferencesHelper.token : String?
     get() = preferences.getString(TOKEN, "")
