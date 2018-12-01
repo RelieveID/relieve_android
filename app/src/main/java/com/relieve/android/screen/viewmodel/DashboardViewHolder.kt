@@ -14,13 +14,19 @@ import com.relieve.android.rsux.framework.RsuxState
 import com.relieve.android.rsux.framework.RsuxViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import retrofit2.HttpException
 
 class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() {
+    companion object {
+        private const val SERVER_ERROR = 500
+    }
 
     class DashboardState : RsuxState {
         val earthQuakesLiveData = MutableLiveData<List<Event>>()
         val userLiveData = MutableLiveData<UserData>()
-        val page = MutableLiveData<Int>()
+        var page: Int = PAGINATION_START
+        var loading: Boolean = false
+        var hasReachEnd: Boolean = false
     }
 
     override val state = DashboardState()
@@ -52,26 +58,34 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
     }
 
     fun discoverNextEvent() {
-        val currentPage = state.page.value ?: PAGINATION_START
-        camarService.getEarthQuakes(PAGINATION_LIMIT, currentPage)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .retry(RETRY_SUM)
-            .subscribe (
-                { result ->
-                    if (result.status.isRequestSuccess()) {
-                        // add page
-                        state.page.value = currentPage + 1
+        if (!state.hasReachEnd && !state.loading) {
+            state.loading = true
+            camarService.getEarthQuakes(PAGINATION_LIMIT, state.page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .retry(RETRY_SUM)
+                .subscribe(
+                    { result ->
+                        state.loading = false
+                        if (result.status.isRequestSuccess()) {
+                            // add page
+                            state.page += 1
 
-                        // this will trigger observer
-                        val currentData = state.earthQuakesLiveData.value?.toMutableList() ?: mutableListOf()
-                        result.data?.let {
-                            currentData.addAll(it)
-                            state.earthQuakesLiveData.value = currentData
+                            // this will trigger observer
+                            val currentData = state.earthQuakesLiveData.value?.toMutableList() ?: mutableListOf()
+                            result.data?.let {
+                                currentData.addAll(it)
+                                state.earthQuakesLiveData.value = currentData
+                            }
+                        }
+                    }, { error ->
+                        state.loading = false
+                        if (error is HttpException) {
+                            state.hasReachEnd = error.code() == SERVER_ERROR
                         }
                     }
-                }, {}
-            ).also { compositeDisposable.add(it) }
+                ).also { compositeDisposable.add(it) }
+        }
     }
 
     fun updateFcmToken(fcmToken: String) {
