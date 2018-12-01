@@ -87,6 +87,7 @@
     <string name="full_name">Nama Lengkap</string>
     <string name="date_of_birth">Tanggal Lahir</string>
     <string name="fill_form">Cukup isi data dibawah</string>
+    <string name="fill_form_2">Beritau kami mengenai kamu</string>
     <string name="phone_number_area">+62</string>
     <string name="phone_number">Nomor Telpon</string>
     <string name="terms_n_condition_prompt">By registering you are accepting our <a href="https://github.com/RelieveID/terms-and-conditions/">terms and condition</a> of use</string>
