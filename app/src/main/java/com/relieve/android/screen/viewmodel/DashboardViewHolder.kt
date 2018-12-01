@@ -1,6 +1,7 @@
 package com.relieve.android.screen.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import com.relieve.android.network.RETRY_SUM
 import com.relieve.android.network.data.camar.Event
 import com.relieve.android.network.data.relieve.UserData
 import com.relieve.android.network.data.relieve.UserToken
@@ -13,9 +14,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() {
+    companion object {
+        private const val PAGINATION_LIMIT = 10
+        private const val PAGINATION_START = 1
+    }
+
     class DashboardState : RsuxState {
         val earthQuakesLiveData = MutableLiveData<List<Event>>()
         val userLiveData = MutableLiveData<UserData>()
+        val page = MutableLiveData<Int>()
     }
 
     override val state = DashboardState()
@@ -30,35 +37,39 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
         relieveService?.run {
             getProfile().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    { result ->
-                        if (result.status.isRequestSuccess()) {
-                            // this will trigger observer
-                            state.userLiveData.value = result.content
-                        } else {
-                            discoverTopEvent()
-                        }
-                    },
-                    { error -> getUserProfile() } // fail safe
-                ).also { compositeDisposable.add(it) }
+                .retry(RETRY_SUM)
+                .subscribe { result ->
+                    if (result.status.isRequestSuccess()) {
+                        // this will trigger observer
+                        state.userLiveData.value = result.content
+                    }
+                }.also { compositeDisposable.add(it) }
         }
     }
 
     fun discoverTopEvent() {
-        camarService.getEarthQuakes(6, 1)
+        discoverNextEvent()
+    }
+
+    fun discoverNextEvent() {
+        val currentPage = state.page.value ?: PAGINATION_START
+        camarService.getEarthQuakes(PAGINATION_LIMIT, currentPage)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { result ->
-                    if (result.status.isRequestSuccess()) {
-                        // this will trigger observer
-                        state.earthQuakesLiveData.value = result.data
-                    } else {
-                        discoverTopEvent()
+            .retry(RETRY_SUM)
+            .subscribe { result ->
+                if (result.status.isRequestSuccess()) {
+                    // add page
+                    state.page.value = currentPage + 1
+
+                    // this will trigger observer
+                    val currentData = state.earthQuakesLiveData.value?.toMutableList() ?: mutableListOf()
+                    result.data?.let {
+                        currentData.addAll(it)
+                        state.earthQuakesLiveData.value = currentData
                     }
-                },
-                { error -> discoverTopEvent() } // fail safe
-            ).also { compositeDisposable.add(it) }
+                }
+            }.also { compositeDisposable.add(it) }
     }
 
     fun updateFcmToken(fcmToken: String) {
@@ -66,14 +77,8 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
             updateFcmToken(UserToken(fcmToken = fcmToken))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    { result ->
-                        if (!result.status.isRequestSuccess()) {
-                            updateFcmToken(fcmToken)
-                        }
-                    },
-                    { error -> updateFcmToken(fcmToken) } // fail safe
-                ).also { compositeDisposable.add(it) }
+                .retry(RETRY_SUM)
+                .subscribe().also { compositeDisposable.add(it) }
         }
     }
 }

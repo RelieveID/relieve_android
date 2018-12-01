@@ -18,6 +18,7 @@ import androidx.core.app.NotificationCompat
 import com.relieve.android.helper.preference
 import com.relieve.android.helper.token
 import com.relieve.android.helper.tokenFCM
+import com.relieve.android.network.RETRY_SUM
 import com.relieve.android.network.data.relieve.UserToken
 import com.relieve.android.network.isRequestSuccess
 import com.relieve.android.network.service.RelieveService
@@ -85,14 +86,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             RelieveService.create(authToken)
                 .updateFcmToken(UserToken(fcmToken = token))
                 .subscribeOn(Schedulers.io())
-                .subscribe(
-                    { result ->
-                        if (!result.status.isRequestSuccess()) {
-                            sendRegistrationToServer(token) // fail safe
-                        }
-                    },
-                    { error -> sendRegistrationToServer(token) } // fail safe
-                ).also { compositeDisposable.add(it) }
+                .retry(RETRY_SUM)
+                .subscribe().also { compositeDisposable.add(it) }
         }
     }
 
