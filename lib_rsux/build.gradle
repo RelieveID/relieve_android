@@ -36,6 +36,9 @@ dependencies {
     //rxandroid
     implementation "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid"
 
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+
     testImplementation "junit:junit:$versions.junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
 }

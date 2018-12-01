@@ -19,6 +19,7 @@ import retrofit2.HttpException
 class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() {
     companion object {
         private const val SERVER_ERROR = 500
+        private const val TOKEN_ERROR = 401
     }
 
     class DashboardState : RsuxState {
@@ -27,6 +28,10 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
         var page: Int = PAGINATION_START
         var loading: Boolean = false
         var hasReachEnd: Boolean = false
+
+        // handle error auth
+        val tokenExpired = MutableLiveData<Boolean>()
+        val newToken = MutableLiveData<UserToken>()
     }
 
     override val state = DashboardState()
@@ -48,8 +53,8 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
                             // this will trigger observer
                             state.userLiveData.value = result.content
                         }
-                    }, {}
-                ).also { compositeDisposable.add(it) }
+                    }, { error -> handleError(error) })
+                .also { compositeDisposable.add(it) }
         }
     }
 
@@ -80,9 +85,7 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
                         }
                     }, { error ->
                         state.loading = false
-                        if (error is HttpException) {
-                            state.hasReachEnd = error.code() == SERVER_ERROR
-                        }
+                        handleError(error)
                     }
                 ).also { compositeDisposable.add(it) }
         }
@@ -94,7 +97,34 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .retry(RETRY_SUM)
-                .subscribe().also { compositeDisposable.add(it) }
+                .subscribe({}, { error -> handleError(error) })
+                .also { compositeDisposable.add(it) }
+        }
+    }
+
+    fun refreshToken(refreshToken: String) {
+        RelieveService.create().refreshToken(UserToken(refreshToken = refreshToken))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .retry(RETRY_SUM)
+            .subscribe(
+                { result ->
+                    if (result.status.isRequestSuccess()) {
+                        state.newToken.value = result.content
+                        state.tokenExpired.value = false
+                    }
+                }, { error ->
+                    val asd = 1
+                })
+            .also { compositeDisposable.add(it) }
+    }
+
+    override fun handleError(error: Throwable) {
+        if (error is HttpException) {
+            when (error.code()) {
+                SERVER_ERROR -> state.hasReachEnd = true
+                TOKEN_ERROR -> state.tokenExpired.value = true
+            }
         }
     }
 }

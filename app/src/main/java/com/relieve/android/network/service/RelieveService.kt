@@ -31,6 +31,9 @@ interface RelieveService {
     @POST("register")
     fun register(@Body bodyUserData: UserData) : Observable<ApiResponse<UserToken>>
 
+    @POST("refresh")
+    fun refreshToken(@Body oldToken: UserToken) : Observable<ApiResponse<UserToken>>
+
     companion object {
         fun create(auth: String? = null): RelieveService {
 

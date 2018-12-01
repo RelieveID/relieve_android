@@ -15,6 +15,8 @@ abstract class RsuxViewModel<RS : RsuxState> : ViewModel() {
         state.update()
     }
 
+    open fun handleError(error: Throwable) {}
+
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     open fun onDestroy() {
         compositeDisposable.dispose()

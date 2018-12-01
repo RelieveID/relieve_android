@@ -14,6 +14,9 @@ data class UserToken(
 	val token: String? = null,
 
 	@field:SerializedName("fcm_token")
-	val fcmToken: String? = null
+	val fcmToken: String? = null,
+
+	@field:SerializedName("new_token")
+	val newToken: String? = null
 
 )

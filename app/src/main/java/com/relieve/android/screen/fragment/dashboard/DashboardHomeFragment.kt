@@ -8,6 +8,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.relieve.android.R
 import com.relieve.android.components.*
 import com.relieve.android.helper.token
+import com.relieve.android.helper.tokenRefresh
 import com.relieve.android.rsux.adapter.HorizontalRecycler
 import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.helper.dpToPx
@@ -37,6 +38,21 @@ class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, D
 
         vModel.state.earthQuakesLiveData.observe(this, vObserver)
         vModel.state.userLiveData.observe(this, vObserver)
+        vModel.state.tokenExpired.observe(this, vObserver)
+
+        // error handler
+        vModel.state.tokenExpired.observe(this, Observer { isExpired ->
+            if (isExpired) {
+                preferencesHelper?.tokenRefresh?.let { vModel.refreshToken(it) }
+            } else {
+                // retry request
+                requestData()
+            }
+        })
+
+        vModel.state.newToken.observe(this, Observer {
+            preferencesHelper?.token = it.newToken
+        })
     }
 
     override fun requestData() {
