@@ -1,21 +1,14 @@
 package com.relieve.android.screen.fragment.boarding
 
 
-import android.app.DatePickerDialog
-import android.text.method.LinkMovementMethod
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.relieve.android.R
-import com.relieve.android.helper.*
-import com.relieve.android.network.data.relieve.UserData
 import com.relieve.android.rsux.base.EditTextChangeListener
-import com.relieve.android.rsux.component.SnackBarItem
 import com.relieve.android.rsux.framework.RsuxFragment
 import com.relieve.android.rsux.helper.isEmailValid
 import com.relieve.android.screen.viewmodel.BoardingViewModel
 import kotlinx.android.synthetic.main.fragment_boarding_register.*
-import java.util.*
 
 class BoardingRegisterFragment : RsuxFragment<BoardingViewModel.BoardingState, BoardingViewModel>() {
     override val vModel by lazy {  ViewModelProviders.of(this).get(BoardingViewModel::class.java) }
@@ -25,11 +18,7 @@ class BoardingRegisterFragment : RsuxFragment<BoardingViewModel.BoardingState, B
             inputUsername,
             inputPassword,
             inputConfirmPassword,
-            inputFullName,
-            inputDateOfBirth,
-            inputEmail,
-            inputPhoneNumberArea,
-            inputPhoneNumber
+            inputEmail
         )
     }
 
@@ -37,14 +26,7 @@ class BoardingRegisterFragment : RsuxFragment<BoardingViewModel.BoardingState, B
         layoutId = R.layout.fragment_boarding_register
     }
 
-    private fun enableTextClick() {
-        tvTermsNCondition.linksClickable = true
-        tvTermsNCondition.movementMethod = LinkMovementMethod.getInstance()
-    }
-
     override fun render(state: BoardingViewModel.BoardingState) {
-        enableTextClick()
-
         textInputs.forEach {
             it.editText?.addTextChangedListener(object : EditTextChangeListener() {
                 override fun onTextChanged(text: CharSequence, start: Int, before: Int, count: Int) {
@@ -60,33 +42,14 @@ class BoardingRegisterFragment : RsuxFragment<BoardingViewModel.BoardingState, B
         toolbarBoardingRegister.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
-        tvRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_boardingRegisterFragment_to_dashboardFragment)
-        }
 
-        inputDateOfBirth.editText?.setOnClickListener {
-            val c = Calendar.getInstance()
-            val currentYear = c.get(Calendar.YEAR)
-            val currentMonth = c.get(Calendar.MONTH)
-            val currentDay = c.get(Calendar.DAY_OF_MONTH)
-
-            DatePickerDialog(inputDateOfBirth.context, { _, year, month, day ->
-                inputDateOfBirth.editText?.setText(getString(R.string.bod_format, year, month+1, day))
-            }, currentYear, currentMonth, currentDay).show()
-        }
-
-
-        tvRegister.setOnClickListener {
+        tvRegisterNext.setOnClickListener {
             val username = inputUsername.editText?.text
             val password = inputPassword.editText?.text
             val confirmPassword = inputConfirmPassword.editText?.text
-            val fullName = inputFullName.editText?.text
-            val dob = inputDateOfBirth.editText?.text
             val email = inputEmail.editText?.text
-            val phoneArea = inputPhoneNumberArea.editText?.text
-            val phoneNumber = inputPhoneNumber.editText?.text
 
-            val texts = listOf(username, password, confirmPassword, fullName, dob, email, phoneArea, phoneNumber)
+            val texts = listOf(username, password, confirmPassword, email)
 
             var allIsValid = true
             texts.forEachIndexed { index, editable ->
@@ -101,6 +64,11 @@ class BoardingRegisterFragment : RsuxFragment<BoardingViewModel.BoardingState, B
                 inputEmail.error = getString(R.string.error_email_format)
             }
 
+            if (username.toString().contains(" ")) {
+                allIsValid = false
+                inputUsername.error = getString(R.string.error_username)
+            }
+
             if (password.toString().length < 8) {
                 allIsValid = false
                 inputPassword.error = getString(R.string.error_password_length)
@@ -113,32 +81,15 @@ class BoardingRegisterFragment : RsuxFragment<BoardingViewModel.BoardingState, B
             }
 
             if (allIsValid) {
-                vModel.registerClick(UserData(
-                    username.toString(),
-                    password.toString(),
-                    fullName.toString(),
-                    email.toString(),
-                    "${ phoneArea.toString() } ${ phoneNumber.toString() }",
-                    dob.toString()
-                )) { isSuccess, resToken ->
-                    if (isSuccess) {
-                        preferencesHelper?.apply {
-                            isSignedIn = true
-                            token = resToken?.token
-                            tokenRefresh = resToken?.refreshToken
-                            tokenExpire = resToken?.expiresIn ?: 0
-                        }
-
-                        findNavController().navigate(R.id.action_boardingRegisterFragment_to_dashboardFragment)
-                    } else {
-                        SnackBarItem.make(rootBoardingRegister, Snackbar.LENGTH_LONG).apply {
-                            setMessage(getString(R.string.unknown_error))
-                            setButtonText(getString(R.string.ok))
-                            setButtonClick { dismiss() }
-                            show()
-                        }
+                BoardingRegisterFragmentDirections
+                    .actionBoardingRegisterFragmentToBoardingRegisterFragment2(
+                        email.toString(),
+                        username.toString().toLowerCase(),
+                        password.toString()
+                    )
+                    .run {
+                        findNavController().navigate(this)
                     }
-                }
             }
         }
     }

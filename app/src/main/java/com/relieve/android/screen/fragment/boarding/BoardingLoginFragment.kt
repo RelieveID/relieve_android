@@ -59,15 +59,23 @@ class BoardingLoginFragment : RsuxFragment<BoardingViewModel.BoardingState, Boar
             val username = inputUsername.editText?.text
             val password = inputPassword.editText?.text
 
+            var allIsValid = true
             if (username.isNullOrEmpty()) {
                 inputUsername.error = getString(R.string.please_fill)
+                allIsValid = false
+            }
+
+            if (username.toString().contains(" ")) {
+                inputUsername.error = getString(R.string.error_username)
+                allIsValid = false
             }
 
             if (password.isNullOrBlank()) {
                 inputPassword.error = getString(R.string.please_fill)
+                allIsValid = false
             }
 
-            if (!username.isNullOrEmpty() && !password.isNullOrBlank()) {
+            if (allIsValid) {
                 vModel.loginClick(username.toString(), password.toString()) { isSuccess, resToken ->
                     if (isSuccess) {
                         preferencesHelper?.apply {

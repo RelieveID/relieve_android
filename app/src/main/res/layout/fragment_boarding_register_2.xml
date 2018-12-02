@@ -20,7 +20,7 @@
 
         <TextView
             android:id="@+id/tvGreet"
-            android:text="@string/fill_form"
+            android:text="@string/fill_form_2"
             android:textSize="22sp"
             android:layout_marginStart="18dp"
             android:layout_marginEnd="18dp"
@@ -34,103 +34,148 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputEmail"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/inputFullName"
                     app:boxStrokeColor="@color/colorEmptyRect"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="26dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <EditText
-                        android:textColorHighlight="@color/colorPrimary"
-                        android:hint="@string/email"
-                        android:textSize="16sp"
-                        android:maxLines="1"
-                        android:inputType="text"
-                        android:imeOptions="actionNext"
-                        android:importantForAutofill="noExcludeDescendants"
-                        android:textColorHint="@color/colorEmptyRect"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputUsername"
-                    app:layout_constraintTop_toBottomOf="@+id/inputEmail"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    app:boxStrokeColor="@color/colorEmptyRect"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
                     <EditText
                         android:textColorHighlight="@color/colorPrimary"
-                        android:hint="@string/username"
-                        android:imeOptions="actionNext"
+                        android:hint="@string/full_name"
                         android:textSize="16sp"
                         android:maxLines="1"
                         android:inputType="text"
                         android:importantForAutofill="noExcludeDescendants"
+                        android:imeOptions="actionNext"
                         android:textColorHint="@color/colorEmptyRect"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputPassword"
-                    app:layout_constraintTop_toBottomOf="@+id/inputUsername"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    app:passwordToggleEnabled="true"
+                    android:id="@+id/inputPhoneNumberArea"
+                    app:layout_constraintTop_toBottomOf="@+id/inputFullName"
                     app:boxStrokeColor="@color/colorEmptyRect"
-                    android:layout_width="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/inputPhoneNumber"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <EditText
                         android:textColorHighlight="@color/colorPrimary"
-                        android:hint="@string/password"
-                        android:textColorHint="@color/colorEmptyRect"
+                        android:text="@string/phone_number_area"
                         android:textSize="16sp"
                         android:maxLines="1"
-                        android:inputType="textPassword"
-                        android:importantForAutofill="noExcludeDescendants"
+                        android:inputType="phone"
                         android:imeOptions="actionNext"
+                        android:importantForAutofill="noExcludeDescendants"
+                        android:textColorHint="@color/colorEmptyRect"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputConfirmPassword"
-                    app:layout_constraintTop_toBottomOf="@+id/inputPassword"
+                    android:id="@+id/inputPhoneNumber"
+                    app:layout_constraintTop_toTopOf="@+id/inputPhoneNumberArea"
+                    app:layout_constraintStart_toEndOf="@+id/inputPhoneNumberArea"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:boxStrokeColor="@color/colorEmptyRect"
+                    android:layout_marginEnd="16dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:textColorHighlight="@color/colorPrimary"
+                        android:hint="@string/phone_number"
+                        android:textSize="16sp"
+                        android:textColorHint="@color/colorEmptyRect"
+                        android:maxLines="1"
+                        android:inputType="phone"
+                        android:imeOptions="actionDone"
+                        android:importantForAutofill="noExcludeDescendants"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputDateOfBirth"
+                    app:layout_constraintTop_toBottomOf="@+id/inputPhoneNumber"
+                    app:boxStrokeColor="@color/colorEmptyRect"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:textColorHighlight="@color/colorPrimary"
+                        android:hint="@string/date_of_birth"
+                        android:textSize="16sp"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        android:imeOptions="actionDone"
+                        android:importantForAutofill="noExcludeDescendants"
+                        android:focusable="false"
+                        android:textColorHint="@color/colorEmptyRect"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputGender"
+                    app:layout_constraintTop_toBottomOf="@+id/inputDateOfBirth"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:boxStrokeColor="@color/colorEmptyRect"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="26dp"
-                    app:passwordToggleEnabled="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <EditText
                         android:textColorHighlight="@color/colorPrimary"
-                        android:hint="@string/confirm_password"
+                        android:hint="@string/gender"
                         android:textSize="16sp"
-                        android:textColorHint="@color/colorEmptyRect"
                         android:maxLines="1"
-                        android:inputType="textPassword"
-                        android:importantForAutofill="noExcludeDescendants"
+                        android:inputType="text"
+                        android:focusable="false"
                         android:imeOptions="actionDone"
+                        android:text="@string/boy"
+                        android:importantForAutofill="noExcludeDescendants"
+                        android:textColorHint="@color/colorEmptyRect"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
+        <TextView
+            android:id="@+id/tvTermsNCondition"
+            app:layout_constraintTop_toBottomOf="@id/inputGender"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/circular_std_book"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:text="@string/terms_n_condition_prompt"
+            android:textColorLink="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRegisterNext"
+            android:id="@+id/tvRegisterSubmit"
             android:layout_margin="16dp"
             android:padding="12dp"
             android:background="@drawable/rounded_corner_rect_grey_big"
@@ -139,7 +184,10 @@
             android:textColor="@android:color/white"
             android:gravity="center"
             app:fontFamily="@font/circular_std_medium"
-            android:text="@string/next"
+            app:layout_constraintTop_toBottomOf="@id/tvTermsNCondition"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/boarding_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

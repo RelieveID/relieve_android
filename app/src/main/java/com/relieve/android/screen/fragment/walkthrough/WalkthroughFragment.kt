@@ -88,6 +88,7 @@ class WalkthroughFragment : Fragment() {
             override fun getItem(position: Int) = fragments[position]
             override fun getCount() = fragments.size
         }
+
         vpWalkThrough.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) { }
 

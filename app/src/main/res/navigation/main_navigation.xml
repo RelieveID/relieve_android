@@ -61,14 +61,30 @@
         android:name="com.relieve.android.screen.fragment.boarding.BoardingRegisterFragment"
         tools:layout="@layout/fragment_boarding_register" >
         <action
-            android:id="@+id/action_boardingRegisterFragment_to_dashboardFragment"
-            app:destination="@id/dashboardFragment"
+            android:id="@+id/action_boardingRegisterFragment_to_boardingRegisterFragment2"
+            app:destination="@id/boardingRegisterFragment2"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@+id/boardingHomeFragment"
-            app:popUpToInclusive="true" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/boardingRegisterFragment2"
+        android:name="com.relieve.android.screen.fragment.boarding.BoardingRegister2Fragment"
+        android:label="fragment_boarding_register_2"
+        tools:layout="@layout/fragment_boarding_register_2" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_boardingRegisterFragment2_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/walkthroughFragment"
