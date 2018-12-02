@@ -18,7 +18,6 @@ import retrofit2.HttpException
 
 class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() {
     companion object {
-        private const val SERVER_ERROR = 500
         private const val TOKEN_ERROR = 401
     }
 
@@ -27,7 +26,8 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
         val userLiveData = MutableLiveData<UserData>()
         var page: Int = PAGINATION_START
         var loading: Boolean = false
-        var hasReachEnd: Boolean = false
+        var maxResult: Int = 1
+        val hasReachEnd get() = (earthQuakesLiveData.value?.size ?: 0) >= maxResult
 
         // handle error auth
         val tokenExpired = MutableLiveData<Boolean>()
@@ -72,6 +72,9 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
                 .subscribe(
                     { result ->
                         state.loading = false
+
+                        result.maxResults?.let { state.maxResult = it }
+
                         if (result.status.isRequestSuccess()) {
                             // add page
                             state.page += 1
@@ -122,7 +125,6 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
     override fun handleError(error: Throwable) {
         if (error is HttpException) {
             when (error.code()) {
-                SERVER_ERROR -> state.hasReachEnd = true
                 TOKEN_ERROR -> state.tokenExpired.value = true
             }
         }
