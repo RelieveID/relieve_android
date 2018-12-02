@@ -21,6 +21,11 @@ import kotlinx.android.synthetic.main.recycler_view_full.view.*
 import kotlinx.android.synthetic.main.sheet_notice.*
 
 class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, DashboardViewHolder>() {
+    companion object {
+        private const val MAX_EVENT = 6
+        private const val PAGE_EVENT = 1
+    }
+
     override val vModel by lazy {
         ViewModelProviders.of(this).get(DashboardViewHolder::class.java).also {
             it.createRelieveService(preferencesHelper?.token)
@@ -58,7 +63,7 @@ class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, D
 
     override fun requestData() {
         vModel.getUserProfile()
-        vModel.discoverTopEvent()
+        vModel.discoverNextEvent(MAX_EVENT, PAGE_EVENT)
     }
 
     override fun render(state: DashboardViewHolder.DashboardState) {

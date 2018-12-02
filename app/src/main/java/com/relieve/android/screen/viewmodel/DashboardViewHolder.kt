@@ -58,14 +58,10 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
         }
     }
 
-    fun discoverTopEvent() {
-        discoverNextEvent()
-    }
-
-    fun discoverNextEvent() {
+    fun discoverNextEvent(limit: Int = PAGINATION_LIMIT, page: Int = state.page) {
         if (!state.hasReachEnd && !state.loading) {
             state.loading = true
-            camarService.getEvents(PAGINATION_LIMIT, state.page)
+            camarService.getEvents(limit, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .retry(RETRY_SUM)
