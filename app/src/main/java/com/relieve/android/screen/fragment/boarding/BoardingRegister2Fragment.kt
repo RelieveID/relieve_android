@@ -68,8 +68,8 @@ class BoardingRegister2Fragment : RsuxFragment<BoardingViewModel.BoardingState, 
             val currentDay = c.get(Calendar.DAY_OF_MONTH)
 
             DatePickerDialog(inputDateOfBirth.context, { _, year, month, day ->
-                val formatedDay = if (day >= 10) "$day" else "0$day"
-                inputDateOfBirth.editText?.setText(getString(R.string.bod_format, year, month+1, formatedDay))
+                val formattedDay = if (day >= 10) "$day" else "0$day"
+                inputDateOfBirth.editText?.setText(getString(R.string.bod_format, year, month+1, formattedDay))
             }, currentYear, currentMonth, currentDay).show()
         }
 
