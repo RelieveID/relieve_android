@@ -1,7 +1,6 @@
 package com.relieve.android.screen.fragment.dashboard
 
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.RecyclerView
 import com.relieve.android.R
 import com.relieve.android.components.DisasterItem
 import com.relieve.android.components.DiscoverItem
@@ -63,7 +62,6 @@ class DashboardDiscoverFragment : RsuxFragment<DashboardViewHolder.DashboardStat
                     val latitude = it.location?.coordinates?.get(1) ?: 0.0
                     val title = it.eventDetail?.title ?: ""
                     val time = it.time.getTimeDiffInSecond()
-                    val place = it.eventDetail?.place ?: ""
 
                     DiscoverItem(longitude, latitude, title, time, true)
                 }.toMutableList()

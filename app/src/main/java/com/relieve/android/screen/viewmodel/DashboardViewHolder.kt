@@ -39,7 +39,7 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
     private var relieveService: RelieveService? = null
 
     fun createRelieveService(authKey: String?) {
-        if (relieveService == null) relieveService = RelieveService.create(authKey)
+        relieveService = RelieveService.create(authKey)
     }
 
     fun getUserProfile () {
@@ -65,7 +65,7 @@ class DashboardViewHolder : RsuxViewModel<DashboardViewHolder.DashboardState>() 
     fun discoverNextEvent() {
         if (!state.hasReachEnd && !state.loading) {
             state.loading = true
-            camarService.getEarthQuakes(PAGINATION_LIMIT, state.page)
+            camarService.getEvents(PAGINATION_LIMIT, state.page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .retry(RETRY_SUM)

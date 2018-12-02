@@ -14,7 +14,6 @@ import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.helper.dpToPx
 import com.relieve.android.rsux.component.SpaceItem
 import com.relieve.android.rsux.framework.RsuxFragment
-import com.relieve.android.rsux.framework.RsuxObserver
 import com.relieve.android.rsux.helper.getTimeDiffInSecond
 import com.relieve.android.rsux.helper.setupWithBaseAdapter
 import com.relieve.android.screen.viewmodel.DashboardViewHolder
@@ -47,6 +46,7 @@ class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, D
                 preferencesHelper?.tokenRefresh?.let { vModel.refreshToken(it) }
             } else {
                 // retry request
+                vModel.createRelieveService(preferencesHelper?.token)
                 requestData()
             }
         })
@@ -77,7 +77,6 @@ class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, D
                     val latitude = it.location?.coordinates?.get(1) ?: 0.0
                     val title = it.eventDetail?.title ?: ""
                     val time = it.time.getTimeDiffInSecond()
-                    val place = it.eventDetail?.place ?: ""
 
                     DiscoverItem(longitude, latitude, title, time, false)
                 }.toMutableList()
