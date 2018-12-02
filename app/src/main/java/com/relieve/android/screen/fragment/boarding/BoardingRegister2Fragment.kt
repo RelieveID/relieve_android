@@ -67,6 +67,11 @@ class BoardingRegister2Fragment : RsuxFragment<BoardingViewModel.BoardingState, 
             }, currentYear, currentMonth, currentDay).show()
         }
 
+        inputGender.editText?.setOnClickListener {
+            val genders = listOf("Laki-Laki", "Perempuan")
+            }
+        }
+
 
         tvRegisterSubmit.setOnClickListener {
             val fullName = inputFullName.editText?.text
@@ -84,33 +89,39 @@ class BoardingRegister2Fragment : RsuxFragment<BoardingViewModel.BoardingState, 
                 }
             }
 
+            val username = BoardingRegister2FragmentArgs.fromBundle(arguments).username
+            val password = BoardingRegister2FragmentArgs.fromBundle(arguments).password
+            val email = BoardingRegister2FragmentArgs.fromBundle(arguments).email
+
             if (allIsValid) {
-//                vModel.registerClick(UserData(
-//                    username.toString(),
-//                    password.toString(),
-//                    fullName.toString(),
-//                    email.toString(),
-//                    "${ phoneArea.toString() } ${ phoneNumber.toString() }",
-//                    dob.toString()
-//                )) { isSuccess, resToken ->
-//                    if (isSuccess) {
-//                        preferencesHelper?.apply {
-//                            isSignedIn = true
-//                            token = resToken?.token
-//                            tokenRefresh = resToken?.refreshToken
-//                            tokenExpire = resToken?.expiresIn ?: 0
-//                        }
-//
+                vModel.registerClick(UserData(
+                    username,
+                    password,
+                    fullName.toString(),
+                    email,
+                    "${ phoneArea.toString() } ${ phoneNumber.toString() }",
+                    dob.toString()
+//                    ,
+//                    gender
+                )) { isSuccess, resToken ->
+                    if (isSuccess) {
+                        preferencesHelper?.apply {
+                            isSignedIn = true
+                            token = resToken?.token
+                            tokenRefresh = resToken?.refreshToken
+                            tokenExpire = resToken?.expiresIn ?: 0
+                        }
+
 //                        findNavController().navigate(R.id.action_boardingRegisterFragment_to_dashboardFragment)
-//                    } else {
-//                        SnackBarItem.make(rootBoardingRegister, Snackbar.LENGTH_LONG).apply {
-//                            setMessage(getString(R.string.unknown_error))
-//                            setButtonText(getString(R.string.ok))
-//                            setButtonClick { dismiss() }
-//                            show()
-//                        }
-//                    }
-//                }
+                    } else {
+                        SnackBarItem.make(rootBoardingRegister, Snackbar.LENGTH_LONG).apply {
+                            setMessage(getString(R.string.unknown_error))
+                            setButtonText(getString(R.string.ok))
+                            setButtonClick { dismiss() }
+                            show()
+                        }
+                    }
+                }
             }
         }
     }

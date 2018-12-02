@@ -17,34 +17,36 @@
             app:navigationIcon="@drawable/ic_back_arrow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <ScrollView
+
+        <TextView
+            android:id="@+id/tvGreet"
+            android:text="@string/fill_form"
+            android:textSize="22sp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/circular_std_black"
+            android:textColor="@color/colorTextBlack"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" />
+
+        <ScrollView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/tvGreet"
-                    android:text="@string/fill_form"
-                    android:textSize="22sp"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginEnd="18dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:fontFamily="@font/circular_std_black"
-                    android:textColor="@color/colorTextBlack"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputEmail"
-                    app:layout_constraintTop_toBottomOf="@+id/tvGreet"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:boxStrokeColor="@color/colorEmptyRect"
                     android:layout_marginTop="26dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
                     <EditText
                         android:textColorHighlight="@color/colorPrimary"
                         android:hint="@string/email"
@@ -88,7 +90,6 @@
                     app:boxStrokeColor="@color/colorEmptyRect"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
                     <EditText
                         android:textColorHighlight="@color/colorPrimary"
                         android:hint="@string/password"
@@ -105,13 +106,14 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputConfirmPassword"
                     app:layout_constraintTop_toBottomOf="@+id/inputPassword"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:boxStrokeColor="@color/colorEmptyRect"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="26dp"
                     app:passwordToggleEnabled="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
                     <EditText
                         android:textColorHighlight="@color/colorPrimary"
                         android:hint="@string/confirm_password"
@@ -120,30 +122,25 @@
                         android:maxLines="1"
                         android:inputType="textPassword"
                         android:importantForAutofill="noExcludeDescendants"
-                        android:imeOptions="actionNext"
+                        android:imeOptions="actionDone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvRegisterNext"
-                    android:layout_marginTop="52dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:padding="12dp"
-                    android:background="@drawable/rounded_corner_rect_grey_big"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:fontFamily="@font/circular_std_book"
-                    android:textColor="@android:color/white"
-                    android:gravity="center"
-                    app:fontFamily="@font/circular_std_medium"
-                    app:layout_constraintTop_toBottomOf="@id/inputConfirmPassword"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:text="@string/next"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRegisterNext"
+            android:layout_margin="16dp"
+            android:padding="12dp"
+            android:background="@drawable/rounded_corner_rect_grey_big"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="@font/circular_std_book"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            app:fontFamily="@font/circular_std_medium"
+            android:text="@string/next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
