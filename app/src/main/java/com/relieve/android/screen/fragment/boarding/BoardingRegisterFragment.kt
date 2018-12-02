@@ -64,6 +64,11 @@ class BoardingRegisterFragment : RsuxFragment<BoardingViewModel.BoardingState, B
                 inputEmail.error = getString(R.string.error_email_format)
             }
 
+            if (username.toString().contains(" ")) {
+                allIsValid = false
+                inputUsername.error = getString(R.string.error_username)
+            }
+
             if (password.toString().length < 8) {
                 allIsValid = false
                 inputPassword.error = getString(R.string.error_password_length)
@@ -79,7 +84,7 @@ class BoardingRegisterFragment : RsuxFragment<BoardingViewModel.BoardingState, B
                 BoardingRegisterFragmentDirections
                     .actionBoardingRegisterFragmentToBoardingRegisterFragment2(
                         email.toString(),
-                        username.toString(),
+                        username.toString().toLowerCase(),
                         password.toString()
                     )
                     .run {

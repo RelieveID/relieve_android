@@ -1,6 +1,7 @@
 package com.relieve.android.screen.fragment.boarding
 
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.text.method.LinkMovementMethod
 import androidx.lifecycle.ViewModelProviders
@@ -17,6 +18,10 @@ import kotlinx.android.synthetic.main.fragment_boarding_register_2.*
 import java.util.*
 
 class BoardingRegister2Fragment : RsuxFragment<BoardingViewModel.BoardingState, BoardingViewModel>() {
+    companion object {
+        private const val BOY = "m"
+        private const val GIRL = "f"
+    }
     override val vModel by lazy {  ViewModelProviders.of(this).get(BoardingViewModel::class.java) }
 
     private val textInputs by lazy {
@@ -63,13 +68,23 @@ class BoardingRegister2Fragment : RsuxFragment<BoardingViewModel.BoardingState, 
             val currentDay = c.get(Calendar.DAY_OF_MONTH)
 
             DatePickerDialog(inputDateOfBirth.context, { _, year, month, day ->
-                inputDateOfBirth.editText?.setText(getString(R.string.bod_format, year, month+1, day))
+                val formatedDay = if (day >= 10) "$day" else "0$day"
+                inputDateOfBirth.editText?.setText(getString(R.string.bod_format, year, month+1, formatedDay))
             }, currentYear, currentMonth, currentDay).show()
         }
 
+        var gender = BOY
         inputGender.editText?.setOnClickListener {
-            val genders = listOf("Laki-Laki", "Perempuan")
-            }
+            val options = arrayOf(getString(R.string.boy), getString(R.string.girl))
+            AlertDialog.Builder(context).setItems(options) { _, which ->
+                if (which == 0) {
+                    gender = BOY
+                    inputGender.editText?.setText(getString(R.string.boy))
+                } else {
+                    gender = GIRL
+                    inputGender.editText?.setText(getString(R.string.girl))
+                }
+            }.show()
         }
 
 
@@ -95,14 +110,13 @@ class BoardingRegister2Fragment : RsuxFragment<BoardingViewModel.BoardingState, 
 
             if (allIsValid) {
                 vModel.registerClick(UserData(
-                    username,
-                    password,
-                    fullName.toString(),
-                    email,
-                    "${ phoneArea.toString() } ${ phoneNumber.toString() }",
-                    dob.toString()
-//                    ,
-//                    gender
+                    username = username,
+                    password = password,
+                    fullname = fullName.toString(),
+                    email = email,
+                    phone = "${ phoneArea.toString() } ${ phoneNumber.toString() }",
+                    birthDate = dob.toString(),
+                    gender = gender
                 )) { isSuccess, resToken ->
                     if (isSuccess) {
                         preferencesHelper?.apply {
@@ -112,7 +126,7 @@ class BoardingRegister2Fragment : RsuxFragment<BoardingViewModel.BoardingState, 
                             tokenExpire = resToken?.expiresIn ?: 0
                         }
 
-//                        findNavController().navigate(R.id.action_boardingRegisterFragment_to_dashboardFragment)
+                        findNavController().navigate(R.id.action_boardingRegisterFragment2_to_dashboardFragment)
                     } else {
                         SnackBarItem.make(rootBoardingRegister, Snackbar.LENGTH_LONG).apply {
                             setMessage(getString(R.string.unknown_error))
