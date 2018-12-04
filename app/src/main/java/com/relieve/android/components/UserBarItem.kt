@@ -23,7 +23,7 @@ class UserBarItem(val greet: String, val name: String) : Item<UserBarItem> {
             view.tvName.text = data.name.capitalize()
         }
 
-        override fun unbind(data: UserBarItem) {
+        override fun unbind(data: UserBarItem?) {
             view.tvGreet.visibility = View.GONE
             view.tvGreet.text = null
             view.tvName.text = null

@@ -19,6 +19,15 @@
         app:liteMode="true"
         android:layout_width="match_parent"
         android:layout_height="120dp"/>
+    <View
+        android:background="@drawable/ic_border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"/>
     <LinearLayout
         app:layout_constraintTop_toTopOf="@+id/mvDisasterMap"
         app:layout_constraintLeft_toLeftOf="@+id/mvDisasterMap"

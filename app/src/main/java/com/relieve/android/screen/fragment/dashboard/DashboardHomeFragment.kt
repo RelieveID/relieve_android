@@ -83,7 +83,7 @@ class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, D
                     val title = it.eventDetail?.title ?: ""
                     val time = it.time.getTimeDiffInSecond()
 
-                    DiscoverItem(longitude, latitude, title, time, false)
+                    DiscoverItem(latitude, longitude, title, time, false)
                 }.toMutableList()
 
                 discoverList.also {

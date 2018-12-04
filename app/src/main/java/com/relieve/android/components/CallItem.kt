@@ -25,7 +25,7 @@ class CallItem(val title: String,
             view.tvCallSubitle.text = data.subtitle.capitalize()
         }
 
-        override fun unbind(data: CallItem) {
+        override fun unbind(data: CallItem?) {
             view.tvCallTitle.text = null
             view.tvCallSubitle.text = null
         }

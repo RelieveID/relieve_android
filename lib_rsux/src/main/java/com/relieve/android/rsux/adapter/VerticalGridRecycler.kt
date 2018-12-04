@@ -46,8 +46,8 @@ class VerticalGridRecycler (val localItem: List<Item<*>>,
             data.localItem.forEach { data.add(it) }
         }
 
-        override fun unbind(data: VerticalGridRecycler) {
-            data.items.clear()
+        override fun unbind(data: VerticalGridRecycler?) {
+            data?.items?.clear()
         }
     }
 }

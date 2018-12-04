@@ -23,7 +23,7 @@ class TitleBarItem(val title: String = "", val subtitle: String = "") : Item<Tit
             view.tvSubtitle.text = data.subtitle.capitalize()
         }
 
-        override fun unbind(data: TitleBarItem) {
+        override fun unbind(data: TitleBarItem?) {
             view.tvTitle.text = null
             view.tvSubtitle.visibility = View.GONE
             view.tvSubtitle.text = null

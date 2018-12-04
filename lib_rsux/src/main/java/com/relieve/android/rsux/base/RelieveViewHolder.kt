@@ -5,5 +5,5 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class RelieveViewHolder<C : Component>(view: View) : RecyclerView.ViewHolder(view) {
     abstract fun bind(data: C)
-    abstract fun unbind(data: C)
+    abstract fun unbind(data: C? = null)
 }

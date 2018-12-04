@@ -25,6 +25,12 @@ class HorizontalRecycler(val localItem : List<Item<*>>, order: Int = 0) : Item<H
             layoutManager = LinearLayoutManager(parent.context,
                 LinearLayoutManager.HORIZONTAL, false)
 
+            setRecyclerListener {
+                if (it is RelieveViewHolder<*>){
+                    it.unbind()
+                }
+            }
+
             adapter = this@HorizontalRecycler
         }
 
@@ -37,8 +43,8 @@ class HorizontalRecycler(val localItem : List<Item<*>>, order: Int = 0) : Item<H
             data.localItem.forEach { data.add(it) }
         }
 
-        override fun unbind(data: HorizontalRecycler) {
-            data.items.clear()
+        override fun unbind(data: HorizontalRecycler?) {
+            data?.items?.clear()
         }
     }
 }

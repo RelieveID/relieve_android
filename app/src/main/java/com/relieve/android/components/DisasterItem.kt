@@ -26,7 +26,7 @@ class DisasterItem(val latitude: Double,
             view.tvDisasterSubtitle.text = data.subtitle.capitalize()
         }
 
-        override fun unbind(data: DisasterItem) {
+        override fun unbind(data: DisasterItem?) {
             view.tvDisasterTitle.text = null
             view.tvDisasterSubtitle.text = null
         }

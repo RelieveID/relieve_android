@@ -28,7 +28,7 @@ class EmergencyCallItem(@DrawableRes val icon: Int,
             view.setOnClickListener { data.onclick?.invoke() }
         }
 
-        override fun unbind(data: EmergencyCallItem) {
+        override fun unbind(data: EmergencyCallItem?) {
             view.ivEmergencyFoundationIcon.setImageDrawable(null)
             view.tvEmergencyFoundation.text = null
             view.setOnClickListener {  }

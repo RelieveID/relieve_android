@@ -63,7 +63,7 @@ class DashboardDiscoverFragment : RsuxFragment<DashboardViewHolder.DashboardStat
                     val title = it.eventDetail?.title ?: ""
                     val time = it.time.getTimeDiffInSecond()
 
-                    DiscoverItem(longitude, latitude, title, time, true)
+                    DiscoverItem(latitude, longitude, title, time, true)
                 }.toMutableList()
 
                 add(VerticalGridRecycler (discoverList, NUMBER_OF_COLUMN){ 1 })
