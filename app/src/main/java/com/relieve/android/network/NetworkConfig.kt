@@ -1,6 +1,6 @@
 package com.relieve.android.network
 
-private const val BASE_URL = "http://35.240.181.2"
+private const val BASE_URL = "https://api.relieve.id"
 private const val SUCCESS_REQEUST_STATUS = 200
 const val RETRY_SUM: Long = 5
 
