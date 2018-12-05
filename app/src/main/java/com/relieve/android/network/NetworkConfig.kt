@@ -1,5 +1,9 @@
 package com.relieve.android.network
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+
 private const val BASE_URL = "https://api.relieve.id"
 private const val SUCCESS_REQEUST_STATUS = 200
 const val RETRY_SUM: Long = 5
@@ -23,4 +27,13 @@ object Bakau {
     const val SECRET = "YTvZ3kG9X9Vz6MLHdNIwnaTefjs2Udph"
 
     const val HEADER_AUTH = "Authorization"
+}
+
+fun hasNetwork(context: Context): Boolean? {
+    var isConnected: Boolean? = false // Initial Value
+    val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
+    if (activeNetwork != null && activeNetwork.isConnected)
+        isConnected = true
+    return isConnected
 }
