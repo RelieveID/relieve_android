@@ -17,10 +17,12 @@ fun secondToTimeText(seconds: Long) : String {
         val secondString = if (seconds > 0) "$remainingSecond detik" else ""
         val dayString = if (day > 0) "$day hari, " else ""
         val hourString = if (hour > 0) "$hour jam, " else ""
-        val minuteString = if (minute > 0 && remainingSecond > 30) {
-            "$minute menit, $secondString"
-        } else if (minute > 0) {
+        val minuteString = if (day > 0 && hour > 0) {
+            ""
+        } else if (hour > 0 && minute > 0) {
             "$minute menit"
+        } else if (minute > 0 && remainingSecond > 30) {
+            "$minute menit, $secondString"
         } else {
             secondString
         }

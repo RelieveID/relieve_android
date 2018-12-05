@@ -67,7 +67,7 @@
         android:fontFamily="@font/circular_std_medium"
         android:textSize="12sp"
         android:textColor="@color/colorTextGrey"
-        android:maxLines="1"
+        android:maxLines="2"
         android:ellipsize="end"
         app:layout_constraintTop_toBottomOf="@+id/tvDisasterTitle"
         app:layout_constraintStart_toStartOf="@+id/tvDisasterTitle"

@@ -1,12 +1,10 @@
 package com.relieve.android.components
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout.LayoutParams
 import androidx.core.view.setMargins
-import com.google.android.gms.maps.CameraUpdate
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.relieve.android.R
@@ -15,8 +13,6 @@ import com.relieve.android.rsux.helper.secondToTimeText
 import com.relieve.android.rsux.base.Item
 import com.relieve.android.rsux.base.RelieveViewHolder
 import kotlinx.android.synthetic.main.view_disaster_news.view.*
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -24,6 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 class DiscoverItem(val latitude: Double,
                    val longitude: Double,
                    val title: String,
+                   val subtitle: String,
                    val secondAgo: Long,
                    val shouldFillWidth: Boolean = false,
                    val isLive: Boolean = false) : Item<DiscoverItem> {
@@ -66,9 +63,9 @@ class DiscoverItem(val latitude: Double,
                     view.tvDisasterLive.visibility = View.GONE
                     view.tvDisasterSubtitle.visibility = View.VISIBLE
 
-                    view.tvDisasterSubtitle.text = view.context.getString(R.string.disaster_time_template,
+                    view.tvDisasterSubtitle.text = "${data.subtitle} ${view.context.getString(R.string.disaster_time_template,
                         secondToTimeText(data.secondAgo)
-                    )
+                    )}"
                 }
             }
         }

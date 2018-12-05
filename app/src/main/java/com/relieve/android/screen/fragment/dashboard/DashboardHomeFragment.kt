@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.relieve.android.R
 import com.relieve.android.components.*
+import com.relieve.android.helper.getLocationsFromMMI
 import com.relieve.android.helper.token
 import com.relieve.android.helper.tokenRefresh
 import com.relieve.android.rsux.adapter.HorizontalRecycler
@@ -80,10 +81,11 @@ class DashboardHomeFragment : RsuxFragment<DashboardViewHolder.DashboardState, D
                 val discoverList : MutableList<Item<*>>  = this.map {
                     val longitude = it.location?.coordinates?.get(0) ?: 0.0
                     val latitude = it.location?.coordinates?.get(1) ?: 0.0
-                    val title = it.eventDetail?.title ?: ""
+                    val title = "Gempa ${it.eventDetail?.magnitude} S.R"
+                    val subtitle = "di ${it.eventDetail?.mmi?.getLocationsFromMMI()}"
                     val time = it.time.getTimeDiffInSecond()
 
-                    DiscoverItem(latitude, longitude, title, time, false)
+                    DiscoverItem(latitude, longitude, title, subtitle, time, false)
                 }.toMutableList()
 
                 discoverList.also {

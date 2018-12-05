@@ -5,6 +5,7 @@ import com.relieve.android.R
 import com.relieve.android.components.DisasterItem
 import com.relieve.android.components.DiscoverItem
 import com.relieve.android.components.TitleBarItem
+import com.relieve.android.helper.getLocationsFromMMI
 import com.relieve.android.helper.token
 import com.relieve.android.rsux.adapter.EndlessRecyclerViewScrollListener
 import com.relieve.android.rsux.adapter.VerticalGridRecycler
@@ -60,10 +61,11 @@ class DashboardDiscoverFragment : RsuxFragment<DashboardViewHolder.DashboardStat
                 val discoverList : MutableList<Item<*>>  = this.map {
                     val longitude = it.location?.coordinates?.get(0) ?: 0.0
                     val latitude = it.location?.coordinates?.get(1) ?: 0.0
-                    val title = it.eventDetail?.title ?: ""
+                    val title = "Gempa ${it.eventDetail?.magnitude} S.R"
+                    val subtitle = "di ${it.eventDetail?.mmi?.getLocationsFromMMI()}"
                     val time = it.time.getTimeDiffInSecond()
 
-                    DiscoverItem(latitude, longitude, title, time, true)
+                    DiscoverItem(latitude, longitude, title, subtitle, time, true)
                 }.toMutableList()
 
                 add(VerticalGridRecycler (discoverList, NUMBER_OF_COLUMN){ 1 })
