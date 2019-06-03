@@ -100,8 +100,7 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$versions.lifecycle" // lifecycle
     testImplementation "androidx.room:room-testing:$versions.room" // room
     androidTestImplementation "android.arch.work:work-testing:$versions.work" // work manager
-    androidTestImplementation "android.arch.navigation:navigation-testing:$versions.ktxNavigation" // navigation
-    androidTestImplementation "androidx.test.ext:junit:1.0.0"
+    androidTestImplementation "androidx.test.ext:junit:1.1.1"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
 }
 

@@ -13,20 +13,20 @@ ext.builds = [
 
 ext.gradlePlugins = [
         firebase : '1.1.1',
-        gradle   : '3.2.1'
+        gradle   : '3.4.1'
 ]
 
 ext.versions = [
-        kotlin             : '1.3.10',
+        kotlin             : '1.3.31',
         kotlinCoroutines   : '0.22.5',
         anko               : '0.10.8',
 
-        firebaseCore       : '16.0.5',
+        firebaseCore       : '16.0.9',
         firebaseInvites    : '16.0.5',
-        firebaseAuth       : '16.0.5',
+        firebaseAuth       : '17.0.0',
         firebaseConfig     : '16.1.0',
         firebaseAppIndexing: '16.0.2',
-        firebaseMessaging  : '17.3.4',
+        firebaseMessaging  : '18.0.0',
         firebaseDatabase   : '16.0.1',
 
         safeArgs           : '1.0.0-alpha07',
@@ -37,7 +37,7 @@ ext.versions = [
         playAnalytics      : '16.0.5',
         playBase           : '16.0.1',
         playAuth           : '16.0.1',
-        playMaps           : '16.0.0',
+        playMaps           : '16.1.0',
         playPlaces         : '16.0.0',
         playLocation       : '16.0.0',
         playCore           : '1.3.5',
@@ -50,13 +50,13 @@ ext.versions = [
 
         xAppCompat         : '1.0.2',
         xSupportV4         : '1.0.0',
-        xConstraintLayout  : '2.0.0-alpha2',
+        xConstraintLayout  : '2.0.0-beta1',
         xCoordinatorLayout : '1.0.0',
         xViewPager         : '1.0.0',
 
-        ktxCore            : '1.0.1',
+        ktxCore            : '1.0.2',
         ktxFragment        : '1.0.0',
-        ktxNavigation      : '1.0.0-alpha07',
+        ktxNavigation      : '1.0.0',
 
         lifecycle          : '2.0.0',
 
@@ -75,10 +75,10 @@ ext.versions = [
         materialRatingBar  : '1.2.0',
         exoPlayer          : '2.8.1',
         leakCanary         : '1.6.2',
-        room               : '2.1.0-alpha02',
-        work               : '1.0.0-alpha11',
+        room               : '2.1.0-rc01',
+        work               : '1.0.1',
         espresso           : '3.1.0',
-        multidex           : '2.0.0',
+        multidex           : '2.0.1',
         annimonStream      : '1.1.6',
         fabric             : '1.26.1',
         parceler           : '1.1.6',
